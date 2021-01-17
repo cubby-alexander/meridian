@@ -52,6 +52,85 @@ export default function ModulePage(props) {
         return <div className={classes.description} dangerouslySetInnerHTML={htmlFromDB}/>;
     }
 
+    function renderDBtoHTML(htmlElements) {
+        let htmlContent = null;
+        return htmlElements.map((htmlElement) => {
+            switch (htmlElement.typeOfElement) {
+                case "header":
+                    htmlContent = <h6>{htmlElement.content}</h6>;
+                    break;
+                case "paragraph":
+                    htmlContent = <p>{htmlElement.content}</p>;
+                    break;
+                case "unordered list":
+                    htmlContent = <ul>
+                        {htmlElement.content.map((listItem) => {
+                            return <li key={htmlElements.indexOf(htmlElement)}>{listItem}</li>
+                        })}
+                    </ul>;
+                    break;
+                case "ordered list":
+                    htmlContent = <ol>
+                        {htmlElement.content.map((listItem) => {
+                            return <li key={htmlElements.indexOf(htmlElement)}>{listItem}</li>
+                        })}
+                    </ol>;
+                    break;
+                case "break":
+                    htmlContent = <br />;
+                    break;
+                case "table":
+                    htmlContent =
+                        <TableContainer>
+                            <h6 className={classes.tableTitle}>{htmlElement.tableTitle}</h6>
+                                <Table>
+                                    {parseTableArray(htmlElement.tableContent)}
+                                </Table>
+                        </TableContainer>;
+                    break;
+                case "checklist section":
+                    console.log(htmlElement);
+                    htmlContent =
+                        <div>
+                            <h6>{htmlElement.sectionTitle}</h6>
+                            {htmlElement.checklists.map((list) => (
+                                <div>
+                                    <p>{list.listScope}</p>;
+                                    {list.items.map((item) => (
+                                        <FormControlLabel
+                                            disabled
+                                            control={
+                                                <Checkbox
+                                                    tabIndex={-1}
+                                                    checked={true}
+                                                    checkedIcon={<Check className={classes.checkedIcon} />}
+                                                    icon={<Check className={classes.uncheckedIcon} />}
+                                                    classes={{
+                                                        checked: classes.checked,
+                                                        root: classes.checkRoot
+                                                    }}
+                                                />
+                                            }
+                                            classes={{
+                                                label: classes.label,
+                                                root: classes.labelRoot,
+                                                disabled: classes.disabledCheckboxAndRadio
+                                            }}
+                                            label={item}
+                                        />
+                                    ))}
+                                </div>
+                            ))}
+                        </div>;
+                    break;
+                default:
+                    htmlContent = null;
+                    break;
+            }
+            return htmlContent;
+        })
+    }
+
     const handleToggle = value => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
@@ -63,41 +142,6 @@ export default function ModulePage(props) {
         }
         setChecked(newChecked);
     };
-
-    const dumbArray = [
-        ["Talking Points", "What I'll Say"],
-        ["Describe what's going to change", `"I want to call everyone's attention to..."`],
-        ["Explain why the change needs to happen", `"This is happening because we need a more efficient system that can 
-        give us a better overview of who can work where.`]
-    ];
-
-    const sillyArray = [
-        [`Mark an "X" by the benefit I'll share`, `Benefit`, `What I'll Say`],
-        [``, `Improved patient care`, `"Implementing a different call light system will help us get to patients faster when they’re in need."`],
-        [`X`, `Long term financial health`, `"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."`],
-        [``, `Work-life balance`, `"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."`],
-        [``, `Opportunity to lead`, `"As part of this change, there are a few different projects some of you may be interested in leading."`],
-        [``, `Training for a new skill`, `"There’s an opportunity for you to participate in additional training and gain new skills."`],
-        [``, `Improved workflow`, `"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."`]
-    ];
-
-    const simpleArray = [
-        [`Talking Points`, `What I'll Say`],
-        [`Explain what they need to start doing`, `"To make this change happen, we’re going to have to start…"`],
-        [`Tell them what to stop doing`, `"This change also means stopping…"`],
-        [`Describe what to continue doing`, `"We’re going to continue to…"`]
-    ];
-
-    const ludicrousArray = [
-        [`Potential Question or Concern`, `What I'll Say`],
-        [`What is the timeline for the change?`, `"You can expect to see things changing in the next…"`],
-        [`When can staff expect more information?`, `I’ll have more updates to come around…"`],
-        [`How will the change affect existing workloads?`, `"In terms of your current workload, this change will…"`],
-        [`What kinds of training or knowledge will staff receive?`, `"To make this change happen, we’ll offer training and resources on…"`],
-        [`Who should staff turn to if they need help?`, `"If you need support as we implement this new change, you can contact…"`],
-        [`How can staff provide input or feedback on the change?`, `"You can provide input or feedback on how things are going by reaching out to…"`],
-        [`How will adoption of the change be tracked?`, `"We’ve identified the following metrics to track how adoption of the change is going…"`]
-    ];
 
     function parseTableArray(arrayFromDB) {
         let tableHead = <TableHead>
@@ -119,7 +163,6 @@ export default function ModulePage(props) {
             ))}
         </TableBody>;
         return [tableHead, tableBody]
-
     }
 
     const pills = db[0].slides.map((slide) => (
@@ -174,7 +217,7 @@ export default function ModulePage(props) {
                                                 <GridContainer justify="center">
                                                     <h4>{db[0].slides[0].shortTitle}</h4><GridItem xs={12}>
                                                     <div className={classes.description}>
-                                                        {grabHTML(db[0].slides[0].html)}
+                                                        {renderDBtoHTML(db[0].slides[0].htmlElements)}
                                                     </div>
                                                 </GridItem>
                                                 </GridContainer>
@@ -187,7 +230,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[1].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {grabHTML(db[0].slides[1].html)}
+                                                            {renderDBtoHTML(db[0].slides[1].htmlElements)}
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -200,85 +243,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[2].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <p>Prepare focused talking points with the “what,” “why,” and
-                                                                “how” behind the change to deliver a change announcement
-                                                                that will get your team’s buy-in early on.
-                                                            </p>
-                                                            <h6 className={classes.tableTitle}>The "What" and "Why" Behind the Change</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    {parseTableArray(dumbArray)}
-                                                                </Table>
-                                                            </TableContainer>
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>How the change will benefit staff</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    {parseTableArray(sillyArray)}
-                                                                </Table>
-                                                            </TableContainer>
-
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>How the change will impact the team</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    {parseTableArray(simpleArray)}
-                                                                </Table>
-                                                            </TableContainer>
-
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>Answers to potential questions</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    {parseTableArray(ludicrousArray)}
-                                                                </Table>
-                                                            </TableContainer>
-                                                            <br />
-                                                            <h6>Next steps to continue staff engagement with the change</h6>
-                                                            <p>Provide written resources</p>
-                                                            <FormControlLabel
-                                                                disabled
-                                                                control={
-                                                                    <Checkbox
-                                                                        tabIndex={-1}
-                                                                        checked={true}
-                                                                        checkedIcon={<Check className={classes.checkedIcon} />}
-                                                                        icon={<Check className={classes.uncheckedIcon} />}
-                                                                        classes={{
-                                                                            checked: classes.checked,
-                                                                            root: classes.checkRoot
-                                                                        }}
-                                                                    />
-                                                                }
-                                                                classes={{
-                                                                    label: classes.label,
-                                                                    root: classes.labelRoot,
-                                                                    disabled: classes.disabledCheckboxAndRadio
-                                                                }}
-                                                                label="E-Mail Summary"
-                                                                />
-                                                            <p>Set ongoing channels to discuss the change</p>
-                                                            <FormControlLabel
-                                                                disabled
-                                                                control={
-                                                                    <Checkbox
-                                                                        tabIndex={-1}
-                                                                        checked={true}
-                                                                        checkedIcon={<Check className={classes.checkedIcon} />}
-                                                                        icon={<Check className={classes.uncheckedIcon} />}
-                                                                        classes={{
-                                                                            checked: classes.checked,
-                                                                            root: classes.checkRoot
-                                                                        }}
-                                                                    />
-                                                                }
-                                                                classes={{
-                                                                    label: classes.label,
-                                                                    disabled: classes.disabledCheckboxAndRadio,
-                                                                    root: classes.labelRoot,
-                                                                }}
-                                                                label="Dedicated time during team meetings"
-                                                            />
+                                                            {renderDBtoHTML(db[0].slides[2].htmlElements)}
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -292,15 +257,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[3].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <p>Managers often announce what’s going to change without explaining
-                                                                the why behind it. Staff are more likely to feel a sense of purpose
-                                                                and buy-in to the change if they know why it’s needed for the
-                                                                organization's success. This also prevents staff from filling in
-                                                                the blanks with their own assumptions. </p>
-
-                                                                <p>Use the prompts in the first column of the table below to
-                                                                    customize the “what” and “why” behind the change.</p>
-                                                            <br />
+                                                            {renderDBtoHTML(db[0].slides[3].htmlElements)}
                                                             <h6 className={classes.tableTitle}>
                                                                 The “What” and “Why” Behind the Change</h6>
                                                             <TableContainer>
@@ -333,13 +290,6 @@ export default function ModulePage(props) {
                                                                     </TableBody>
                                                                 </Table>
                                                             </TableContainer>
-                                                            <br />
-                                                            <p>Tip: Before you announce the change to your staff, make sure
-                                                                you fully understand the change yourself. As you’re going
-                                                                through the tool builder, pause if you frequently find
-                                                                yourself unable to answer the prompts. This means you may
-                                                                have to go back to your manager or point person for the
-                                                                change to help with your announcement.</p>
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -353,65 +303,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[4].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <p>To boost your chances of making the “why” stick with your
-                                                                team, call out a benefit of the change that will resonate
-                                                                with your staff. When staff know what’s in it for them,
-                                                                they’ll be more likely to stay personally motivated to
-                                                                follow the change.</p>
-
-                                                            <p>Mark an “X” by one or two of the staff benefits in the first
-                                                                column of the table below and customize what you’ll say
-                                                                in the right-hand column. If helpful, add your own option.</p>
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>How the change will benefit staff</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    <TableHead >
-                                                                        <TableRow>
-                                                                            <TableCell classes={{root: classes.tableHeader}}>Mark an "X" by the benefit I'll share</TableCell>
-                                                                            <TableCell classes={{root: classes.tableHeader}}>Benefit</TableCell>
-                                                                            <TableCell classes={{root: classes.tableHeader}} align="left">What I'll Say</TableCell>
-                                                                        </TableRow>
-                                                                    </TableHead>
-                                                                    <TableBody>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row"></TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Improved patient care</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"Implementing a different call light system will help us get to patients faster when they’re in need."</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">X</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Long term financial health</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row"></TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Work-life balance</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row"></TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Opportunity to lead</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"As part of this change, there are a few different projects some of you may be interested in leading."</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row"></TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Training for a new skill</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"There’s an opportunity for you to participate in additional training and gain new skills."</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row"></TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Improved workflow</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."</TableCell>
-                                                                        </TableRow>
-                                                                    </TableBody>
-                                                                </Table>
-                                                            </TableContainer>
-                                                            <br />
-                                                            <p>Tip: Consider bringing additional evidence or data to back
-                                                                up your benefit, if possible. Examples include data from
-                                                                your department or the organization, or anecdotes from
-                                                                past changes. </p>
+                                                            {renderDBtoHTML(db[0].slides[4].htmlElements)}
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -425,41 +317,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[5].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <p>Knowing how the change specifically impacts your team will
-                                                                make it feel less abstract and more grounded in their day-to-day.
-                                                                Explain what the change will look and feel like for your
-                                                                team by clarifying any work they’ll need to start, stop,
-                                                                and continue doing.</p>
-
-                                                            <p>Review the table below and fill in according to your
-                                                                organization’s change.</p>
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>How the change will impact the team</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    <TableHead >
-                                                                        <TableRow>
-                                                                            <TableCell classes={{root: classes.tableHeader}}>Talking Points</TableCell>
-                                                                            <TableCell classes={{root: classes.tableHeader}} align="left">What I'll Say</TableCell>
-                                                                        </TableRow>
-                                                                    </TableHead>
-                                                                    <TableBody>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Explain what they need to start doing</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"To make this change happen, we’re going to have to start…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Tell them what to stop doing</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"This change also means stopping…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Describe what to continue doing</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"We’re going to continue to…"</TableCell>
-                                                                        </TableRow>
-                                                                    </TableBody>
-                                                                </Table>
-                                                            </TableContainer>
-
+                                                            {renderDBtoHTML(db[0].slides[5].htmlElements)}
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -473,74 +331,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[6].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <p>Even after articulating the “why” and “how” behind the change,
-                                                                staff may still have lingering questions or concerns that
-                                                                come up as they take everything in. Preparing for their
-                                                                top anticipated questions ahead of time allows you to more
-                                                                deeply engage with your team and get ahead of any potential
-                                                                rumors.</p>
-
-                                                            <p>Customize the table below with potential questions or concerns
-                                                                your staff may have in response to your announcement, along
-                                                                with your response. Add your own questions, if helpful.</p>
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>Answers to potential questions</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    <TableHead >
-                                                                        <TableRow>
-                                                                            <TableCell classes={{root: classes.tableHeader}}>Potential Question or Concern</TableCell>
-                                                                            <TableCell classes={{root: classes.tableHeader}} align="left">What I'll Say</TableCell>
-                                                                        </TableRow>
-                                                                    </TableHead>
-                                                                    <TableBody>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">What is the timeline for the change?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"You can expect to see things changing in the next…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">When can staff expect more information?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">I’ll have more updates to come around…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">How will the change affect existing workloads?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"In terms of your current workload, this change will…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">What kinds of training or knowledge will staff receive?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"To make this change happen, we’ll offer training and resources on…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Who should staff turn to if they need help?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"If you need support as we implement this new change, you can contact…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">How can staff provide input or feedback on the change?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"You can provide input or feedback on how things are going by reaching out to…"</TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">How will adoption of the change be tracked?</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">"We’ve identified the following metrics to track how adoption of the change is going…"</TableCell>
-                                                                        </TableRow>
-                                                                    </TableBody>
-                                                                </Table>
-                                                            </TableContainer>
-                                                            <br />
-                                                            <ol>
-                                                                <li> If possible, source questions directly from key members
-                                                                    of your team as you’re planning your announcement.</li>
-
-                                                                <li> If you get a question you don’t know the answer to,
-                                                                    be honest and let them know. It’s better to say you’ll
-                                                                    follow up than try to answer the question without
-                                                                    absolute certainty.</li>
-
-                                                                <li> If you’re delivering your announcement virtually, using
-                                                                    the chat function can help encourage quieter members
-                                                                    of your team to participate. You can also save the chat
-                                                                    to reference questions that don’t get answered during
-                                                                    the announcement.</li>
-                                                            </ol>
+                                                            {renderDBtoHTML(db[0].slides[6].htmlElements)}
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
