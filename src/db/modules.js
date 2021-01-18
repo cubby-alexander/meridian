@@ -95,76 +95,87 @@ export default [
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "The \"What\" and \"Why\" Behind the Change",
-                        tableContent: [
-                            ["Talking Points", "What I'll Say"],
-                            ["Describe what's going to change", `"I want to call everyone's attention to..."`],
-                            ["Explain why the change needs to happen", `"This is happening because we need a more efficient system that can give us a better overview of who can work where.`]
-                        ]
+                        content:
+                            {
+                                tableTitle: "The \"What\" and \"Why\" Behind the Change",
+                                table: [
+                                    ["Talking Points", "What I'll Say"],
+                                    ["Describe what's going to change", `"I want to call everyone's attention to..."`],
+                                    ["Explain why the change needs to happen", `"This is happening because we need a more efficient system that can give us a better overview of who can work where.`]
+                                ]
+                            }
                     },
 
                     {typeOfElement: "break"},
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "How the Change Will Benefit Staff",
-                        tableContent: [
-                            [`Mark an "X" by the benefit I'll share`, `Benefit`, `What I'll Say`],
-                            [``, `Improved patient care`, `"Implementing a different call light system will help us get to patients faster when they’re in need."`],
-                            [`X`, `Long term financial health`, `"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."`],
-                            [``, `Work-life balance`, `"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."`],
-                            [``, `Opportunity to lead`, `"As part of this change, there are a few different projects some of you may be interested in leading."`],
-                            [``, `Training for a new skill`, `"There’s an opportunity for you to participate in additional training and gain new skills."`],
-                            [``, `Improved workflow`, `"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."`]
-                        ]
+                        content: {
+                            tableTitle: "How the Change Will Benefit Staff",
+                            table: [
+                                [`Mark an "X" by the benefit I'll share`, `Benefit`, `What I'll Say`],
+                                [``, `Improved patient care`, `"Implementing a different call light system will help us get to patients faster when they’re in need."`],
+                                [`X`, `Long term financial health`, `"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."`],
+                                [``, `Work-life balance`, `"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."`],
+                                [``, `Opportunity to lead`, `"As part of this change, there are a few different projects some of you may be interested in leading."`],
+                                [``, `Training for a new skill`, `"There’s an opportunity for you to participate in additional training and gain new skills."`],
+                                [``, `Improved workflow`, `"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."`]
+                            ]
+                        }
                     },
 
                     {typeOfElement: "break"},
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "How the Change Will Impact the Team",
-                        tableContent: [
-                            [`Talking Points`, `What I'll Say`],
-                            [`Explain what they need to start doing`, `"To make this change happen, we’re going to have to start…"`],
-                            [`Tell them what to stop doing`, `"This change also means stopping…"`],
-                            [`Describe what to continue doing`, `"We’re going to continue to…"`]
-                        ]
+                        content: {
+                            tableTitle: "How the Change Will Impact the Team",
+                            table: [
+                                [`Talking Points`, `What I'll Say`],
+                                [`Explain what they need to start doing`, `"To make this change happen, we’re going to have to start…"`],
+                                [`Tell them what to stop doing`, `"This change also means stopping…"`],
+                                [`Describe what to continue doing`, `"We’re going to continue to…"`]
+                            ]
+                        }
                     },
 
                     {typeOfElement: "break"},
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "Answers to Additional Questions",
-                        tableContent: [
-                            [`Potential Question or Concern`, `What I'll Say`],
-                            [`What is the timeline for the change?`, `"You can expect to see things changing in the next…"`],
-                            [`When can staff expect more information?`, `"I’ll have more updates to come around…"`],
-                            [`How will the change affect existing workloads?`, `"In terms of your current workload, this change will…"`],
-                            [`What kinds of training or knowledge will staff receive?`, `"To make this change happen, we’ll offer training and resources on…"`],
-                            [`Who should staff turn to if they need help?`, `"If you need support as we implement this new change, you can contact…"`],
-                            [`How can staff provide input or feedback on the change?`, `"You can provide input or feedback on how things are going by reaching out to…"`],
-                            [`How will adoption of the change be tracked?`, `"We’ve identified the following metrics to track how adoption of the change is going…"`]
-                        ]
+                        content: {
+                            tableTitle: "Answers to Additional Questions",
+                            table: [
+                                [`Potential Question or Concern`, `What I'll Say`],
+                                [`What is the timeline for the change?`, `"You can expect to see things changing in the next…"`],
+                                [`When can staff expect more information?`, `"I’ll have more updates to come around…"`],
+                                [`How will the change affect existing workloads?`, `"In terms of your current workload, this change will…"`],
+                                [`What kinds of training or knowledge will staff receive?`, `"To make this change happen, we’ll offer training and resources on…"`],
+                                [`Who should staff turn to if they need help?`, `"If you need support as we implement this new change, you can contact…"`],
+                                [`How can staff provide input or feedback on the change?`, `"You can provide input or feedback on how things are going by reaching out to…"`],
+                                [`How will adoption of the change be tracked?`, `"We’ve identified the following metrics to track how adoption of the change is going…"`]
+                            ]
+                        }
                     },
 
                     {typeOfElement: "break"},
 
                     {
                         typeOfElement: "checklist section",
-                        sectionTitle: "Next steps to continue staff engagement with the change",
-                        checklists: [
-                            {
-                                listScope: "Provide written resources",
-                                items: ["E-Mail Summary"]
-                            },
+                        content: {
+                            sectionTitle: "Next steps to continue staff engagement with the change",
+                            checklists: [
+                                {
+                                    listScope: "Provide written resources",
+                                    items: ["E-Mail Summary"]
+                                },
 
-                            {
-                                listScope: "Set ongoing channels to discuss the change",
-                                items: ["Dedicated time during team meetings"]
-                            },
-                        ]
+                                {
+                                    listScope: "Set ongoing channels to discuss the change",
+                                    items: ["Dedicated time during team meetings"]
+                                },
+                            ]
+                        }
                     }
                 ],
             },
@@ -190,12 +201,15 @@ export default [
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "The \"What\" and \"Why\" Behind the Change",
-                        tableContent: [
-                            ["Talking Points", "What I'll Say"],
-                            ["Describe what's going to change", `"I want to call everyone's attention to..."`],
-                            ["Explain why the change needs to happen", `"This is happening because we need a more efficient system that can give us a better overview of who can work where.`]
-                        ]
+                        content:
+                            {
+                                tableTitle: "The \"What\" and \"Why\" Behind the Change",
+                                table: [
+                                    ["Talking Points", "What I'll Say"],
+                                    ["Describe what's going to change", `"I want to call everyone's attention to..."`],
+                                    ["Explain why the change needs to happen", `"This is happening because we need a more efficient system that can give us a better overview of who can work where.`]
+                                ]
+                            }
                     },
 
                     {typeOfElement: "break"},
@@ -230,16 +244,18 @@ export default [
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "How the Change Will Benefit Staff",
-                        tableContent: [
-                            [`Mark an "X" by the benefit I'll share`, `Benefit`, `What I'll Say`],
-                            [``, `Improved patient care`, `"Implementing a different call light system will help us get to patients faster when they’re in need."`],
-                            [`X`, `Long term financial health`, `"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."`],
-                            [``, `Work-life balance`, `"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."`],
-                            [``, `Opportunity to lead`, `"As part of this change, there are a few different projects some of you may be interested in leading."`],
-                            [``, `Training for a new skill`, `"There’s an opportunity for you to participate in additional training and gain new skills."`],
-                            [``, `Improved workflow`, `"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."`]
-                        ]
+                        content: {
+                            tableTitle: "How the Change Will Benefit Staff",
+                            table: [
+                                [`Mark an "X" by the benefit I'll share`, `Benefit`, `What I'll Say`],
+                                [``, `Improved patient care`, `"Implementing a different call light system will help us get to patients faster when they’re in need."`],
+                                [`X`, `Long term financial health`, `"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."`],
+                                [``, `Work-life balance`, `"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."`],
+                                [``, `Opportunity to lead`, `"As part of this change, there are a few different projects some of you may be interested in leading."`],
+                                [``, `Training for a new skill`, `"There’s an opportunity for you to participate in additional training and gain new skills."`],
+                                [``, `Improved workflow`, `"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."`]
+                            ]
+                        }
                     },
 
                     {typeOfElement: "break"},
@@ -275,14 +291,16 @@ export default [
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "How the Change Will Impact the Team",
-                        tableContent: [
-                            [`Talking Points`, `What I'll Say`],
-                            [`Explain what they need to start doing`, `"To make this change happen, we’re going to have to start…"`],
-                            [`Tell them what to stop doing`, `"This change also means stopping…"`],
-                            [`Describe what to continue doing`, `"We’re going to continue to…"`]
-                        ]
-                    }
+                        content: {
+                            tableTitle: "How the Change Will Impact the Team",
+                            table: [
+                                [`Talking Points`, `What I'll Say`],
+                                [`Explain what they need to start doing`, `"To make this change happen, we’re going to have to start…"`],
+                                [`Tell them what to stop doing`, `"This change also means stopping…"`],
+                                [`Describe what to continue doing`, `"We’re going to continue to…"`]
+                            ]
+                        }
+                    },
                 ]
             },
 
@@ -309,17 +327,19 @@ export default [
 
                     {
                         typeOfElement: "table",
-                        tableTitle: "Answers to Additional Questions",
-                        tableContent: [
-                            [`Potential Question or Concern`, `What I'll Say`],
-                            [`What is the timeline for the change?`, `"You can expect to see things changing in the next…"`],
-                            [`When can staff expect more information?`, `"I’ll have more updates to come around…"`],
-                            [`How will the change affect existing workloads?`, `"In terms of your current workload, this change will…"`],
-                            [`What kinds of training or knowledge will staff receive?`, `"To make this change happen, we’ll offer training and resources on…"`],
-                            [`Who should staff turn to if they need help?`, `"If you need support as we implement this new change, you can contact…"`],
-                            [`How can staff provide input or feedback on the change?`, `"You can provide input or feedback on how things are going by reaching out to…"`],
-                            [`How will adoption of the change be tracked?`, `"We’ve identified the following metrics to track how adoption of the change is going…"`]
-                        ]
+                        content: {
+                            tableTitle: "Answers to Additional Questions",
+                            table: [
+                                [`Potential Question or Concern`, `What I'll Say`],
+                                [`What is the timeline for the change?`, `"You can expect to see things changing in the next…"`],
+                                [`When can staff expect more information?`, `"I’ll have more updates to come around…"`],
+                                [`How will the change affect existing workloads?`, `"In terms of your current workload, this change will…"`],
+                                [`What kinds of training or knowledge will staff receive?`, `"To make this change happen, we’ll offer training and resources on…"`],
+                                [`Who should staff turn to if they need help?`, `"If you need support as we implement this new change, you can contact…"`],
+                                [`How can staff provide input or feedback on the change?`, `"You can provide input or feedback on how things are going by reaching out to…"`],
+                                [`How will adoption of the change be tracked?`, `"We’ve identified the following metrics to track how adoption of the change is going…"`]
+                            ]
+                        }
                     },
 
                     {typeOfElement: "break"},
@@ -367,20 +387,20 @@ export default [
 
                     {
                         typeOfElement: "checklist section",
-                        sectionTitle: "Next steps to continue staff engagement with the change",
-                        checklists: [
-                            {
-                                listScope: "Provide written resources",
-                                items: ["E-Mail Summary", "FAQ Documents", "Action Checklists"]
-                            },
+                        content: {
+                            sectionTitle: "Next steps to continue staff engagement with the change",
+                            checklists: [
+                                {
+                                    listScope: "Provide written resources",
+                                    items: ["E-Mail Summary"]
+                                },
 
-                            {
-                                listScope: "Set ongoing channels to discuss the change",
-                                items: ["Dedicated time during team meetings",
-                                    "Open office hours", "Individual check-ins",
-                                    "Set up specific channels using your ogranization's virtual chat platform"]
-                            },
-                        ]
+                                {
+                                    listScope: "Set ongoing channels to discuss the change",
+                                    items: ["Dedicated time during team meetings"]
+                                },
+                            ]
+                        }
                     }
                 ],
             },

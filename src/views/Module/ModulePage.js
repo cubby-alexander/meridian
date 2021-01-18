@@ -2,8 +2,9 @@ import React, {useState} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
-import {withStyles, makeStyles, useTheme} from "@material-ui/core/styles";
+import {makeStyles, useTheme} from "@material-ui/core/styles";
 // core components
+import FormBuilder from "../../components/FormBuilder/FormBuilder.js";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
 import GridContainer from "components/Grid/GridContainer.js";
@@ -17,7 +18,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Check from "@material-ui/icons/Check";
@@ -48,89 +48,6 @@ export default function ModulePage(props) {
         console.log(activeStep);
     };
 
-    function grabHTML(htmlFromDB) {
-        return <div className={classes.description} dangerouslySetInnerHTML={htmlFromDB}/>;
-    }
-
-    function renderDBtoHTML(htmlElements) {
-        let htmlContent = null;
-        return htmlElements.map((htmlElement) => {
-            switch (htmlElement.typeOfElement) {
-                case "header":
-                    htmlContent = <h6>{htmlElement.content}</h6>;
-                    break;
-                case "paragraph":
-                    htmlContent = <p>{htmlElement.content}</p>;
-                    break;
-                case "unordered list":
-                    htmlContent = <ul>
-                        {htmlElement.content.map((listItem) => {
-                            return <li key={htmlElements.indexOf(htmlElement)}>{listItem}</li>
-                        })}
-                    </ul>;
-                    break;
-                case "ordered list":
-                    htmlContent = <ol>
-                        {htmlElement.content.map((listItem) => {
-                            return <li key={htmlElements.indexOf(htmlElement)}>{listItem}</li>
-                        })}
-                    </ol>;
-                    break;
-                case "break":
-                    htmlContent = <br />;
-                    break;
-                case "table":
-                    htmlContent =
-                        <TableContainer>
-                            <h6 className={classes.tableTitle}>{htmlElement.tableTitle}</h6>
-                                <Table>
-                                    {parseTableArray(htmlElement.tableContent)}
-                                </Table>
-                        </TableContainer>;
-                    break;
-                case "checklist section":
-                    console.log(htmlElement);
-                    htmlContent =
-                        <div>
-                            <h6>{htmlElement.sectionTitle}</h6>
-                            {htmlElement.checklists.map((list) => (
-                                <div>
-                                    <p>{list.listScope}</p>;
-                                    {list.items.map((item) => (
-                                        <FormControlLabel
-                                            disabled
-                                            control={
-                                                <Checkbox
-                                                    tabIndex={-1}
-                                                    checked={true}
-                                                    checkedIcon={<Check className={classes.checkedIcon} />}
-                                                    icon={<Check className={classes.uncheckedIcon} />}
-                                                    classes={{
-                                                        checked: classes.checked,
-                                                        root: classes.checkRoot
-                                                    }}
-                                                />
-                                            }
-                                            classes={{
-                                                label: classes.label,
-                                                root: classes.labelRoot,
-                                                disabled: classes.disabledCheckboxAndRadio
-                                            }}
-                                            label={item}
-                                        />
-                                    ))}
-                                </div>
-                            ))}
-                        </div>;
-                    break;
-                default:
-                    htmlContent = null;
-                    break;
-            }
-            return htmlContent;
-        })
-    }
-
     const handleToggle = value => {
         const currentIndex = checked.indexOf(value);
         const newChecked = [...checked];
@@ -142,44 +59,6 @@ export default function ModulePage(props) {
         }
         setChecked(newChecked);
     };
-
-    function parseTableArray(arrayFromDB) {
-        let tableHead = <TableHead>
-            <TableRow>
-                {arrayFromDB[0].map((cell) => (
-                    <TableCell classes={{root: classes.tableHeader}}>{cell}</TableCell>
-                ))}
-            </TableRow>
-        </TableHead>;
-        let tableBody = <TableBody>
-            {arrayFromDB.map((row, index) => (
-                index !== 0 ?
-                    (<TableRow>
-                        {row.map((cell) => (
-                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">{cell}</TableCell>
-                        ))}
-                    </TableRow>)
-                : null
-            ))}
-        </TableBody>;
-        return [tableHead, tableBody]
-    }
-
-    const pills = db[0].slides.map((slide) => (
-        {
-            tabButton: slide.shortTitle,
-            tabContent: (
-                <GridContainer justify="center">
-                    <h4>slide.shortTitle}</h4>
-                    <GridItem xs={12}>
-                        <div className={classes.description}>
-                            {grabHTML(db[0].slides[0].html)}
-                        </div>
-                    </GridItem>
-                </GridContainer>
-            )
-        }
-    ));
 
     return (
         <div>
@@ -215,11 +94,12 @@ export default function ModulePage(props) {
                                             tabButton: db[0].slides[0].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[0].shortTitle}</h4><GridItem xs={12}>
-                                                    <div className={classes.description}>
-                                                        {renderDBtoHTML(db[0].slides[0].htmlElements)}
-                                                    </div>
-                                                </GridItem>
+                                                    <h4>{db[0].slides[0].shortTitle}</h4>
+                                                    <GridItem xs={12}>
+                                                        <div className={classes.description}>
+                                                            <FormBuilder html={db[0].slides[0].htmlElements} />
+                                                        </div>
+                                                    </GridItem>
                                                 </GridContainer>
                                             )
                                         },
@@ -230,7 +110,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[1].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {renderDBtoHTML(db[0].slides[1].htmlElements)}
+                                                            <FormBuilder html={db[0].slides[1].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -243,7 +123,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[2].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {renderDBtoHTML(db[0].slides[2].htmlElements)}
+                                                            <FormBuilder html={db[0].slides[2].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -257,7 +137,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[3].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {renderDBtoHTML(db[0].slides[3].htmlElements)}
+                                                            <FormBuilder html={db[0].slides[3].htmlElements} />
                                                             <h6 className={classes.tableTitle}>
                                                                 The “What” and “Why” Behind the Change</h6>
                                                             <TableContainer>
@@ -303,7 +183,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[4].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {renderDBtoHTML(db[0].slides[4].htmlElements)}
+                                                            <FormBuilder html={db[0].slides[4].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -317,7 +197,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[5].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {renderDBtoHTML(db[0].slides[5].htmlElements)}
+                                                            <FormBuilder html={db[0].slides[5].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -331,7 +211,7 @@ export default function ModulePage(props) {
                                                     <h4>{db[0].slides[6].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            {renderDBtoHTML(db[0].slides[6].htmlElements)}
+                                                            <FormBuilder html={db[0].slides[6].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
