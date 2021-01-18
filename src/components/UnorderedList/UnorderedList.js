@@ -7,7 +7,7 @@ export default function UnorderedList(props) {
     const [value, setInputId] = useState(0);
     return (<ul>
         {props.content.map((listItem, index) => {
-            return <ListItem value={listItem} key={listItem.key}/>
+            return <ListItem value={listItem} key={index}/>
         })}
     </ul>);
 }

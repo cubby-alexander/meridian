@@ -7,7 +7,7 @@ export default function OrderedList(props) {
     const [value, setInputId] = useState(0);
     return (<ol>
         {props.content.map((listItem, index) => {
-            return <ListItem props={listItem} key={listItem.key}/>
+            return <ListItem value={listItem} key={index}/>
         })}
     </ol>);
 }

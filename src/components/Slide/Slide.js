@@ -15,8 +15,6 @@ const useStyles = makeStyles(styles);
 
 export default function Slide(props) {
     const classes = useStyles();
-    const typeOfElement = props.typeOfElement;
-    const content = props.content;
     let htmlContent = null;
 
     switch (props.typeOfElement) {
@@ -39,12 +37,11 @@ export default function Slide(props) {
             htmlContent = <ContentTable content={props.content} />
             break;
         case "checklist section":
-            console.log(props);
             htmlContent =
                 <div>
                     <h6>{props.content.sectionTitle}</h6>
-                    {props.content.checklists.map((list) => (
-                        <div>
+                    {props.content.checklists.map((list, index) => (
+                        <div key={index}>
                             <p>{list.listScope}</p>;
                             {list.items.map((item) => (
                                 <FormControlLabel

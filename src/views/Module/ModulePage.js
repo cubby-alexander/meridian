@@ -426,14 +426,14 @@ export default function ModulePage(props) {
                                                         <div className={classes.description}>
                                                             <p>Announcing a change to staff is a key step to getting everyone
                                                                 to start adapting to a new way of working, but announcements
-                                                                often fail to get buy in for two key reasons:
+                                                                often fail to get buy in for two key reasons:</p>
                                                                 <ul>
                                                                     <li>The message doesn’t make staff feel personally
                                                                         invested in the change</li>
                                                                     <li>It isn’t clear how staff will support the change
                                                                         in their day-to-day</li>
                                                                 </ul>
-                                                                You can avoid these two pitfalls and win early support for the
+                                                                <p>You can avoid these two pitfalls and win early support for the
                                                                 change by crafting just a few key talking points to address these
                                                                 concerns for your next change announcement.</p>
                                                         </div>

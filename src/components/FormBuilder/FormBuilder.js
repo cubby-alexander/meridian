@@ -4,12 +4,11 @@ import Slide from "../Slide/Slide.js";
 export default function FormBuilder(props) {
     return (
         <div>
-            {props.html.map((htmlElement) => (
+            {props.html.map((htmlElement, index) => (
                 <Slide
                     typeOfElement={htmlElement.typeOfElement}
                     content={htmlElement.content}
-                    sectionTitle={htmlElement.sectionTitle}
-                    tableTitle={htmlElement.tableTitle}
+                    key={index}
                 />
             ))}
         </div>
