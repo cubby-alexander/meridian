@@ -55,7 +55,7 @@ export default function ContentTable(props) {
             <Table>
                 {parseTableArray(table)}
             </Table>
-            <div onClick={e => addRow()}>Test</div>
+            <div onClick={e => addRow()}>Test Authentication</div>
         </TableContainer>
     )
 }
