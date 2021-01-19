@@ -1,4 +1,5 @@
 import React from "react";
+import {useState} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -13,6 +14,7 @@ import styles from "assets/jss/material-kit-react/views/modulePage.js";
 const useStyles = makeStyles(styles);
 
 export default function ContentTable(props) {
+    const [table, setTable] = useState(props.content.table);
     const classes = useStyles();
     function parseTableArray(arrayFromDB) {
         let tableHead = <TableHead>
@@ -36,12 +38,24 @@ export default function ContentTable(props) {
         return [tableHead, tableBody]
     }
 
+    function addRow() {
+        let newTable = [];
+        const newRowLength = table[0].length;
+        const newRow = new Array(newRowLength).fill('');
+        table.map((row) => {
+            newTable.push(row)
+        });
+        newTable.push(newRow);
+        setTable(newTable);
+    }
+
     return (
         <TableContainer>
             <h6 className={classes.tableTitle}>{props.content.tableTitle}</h6>
             <Table>
-                {parseTableArray(props.content.table)}
+                {parseTableArray(table)}
             </Table>
+            <div onClick={e => addRow()}>Test</div>
         </TableContainer>
     )
 }
