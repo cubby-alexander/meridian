@@ -14,6 +14,32 @@
 
  */
 
+const hexToRgb = input => {
+  input = input + "";
+  input = input.replace("#", "");
+  let hexRegex = /[0-9A-Fa-f]/g;
+  if (!hexRegex.test(input) || (input.length !== 3 && input.length !== 6)) {
+    throw new Error("input is not a valid hex color.");
+  }
+  if (input.length === 3) {
+    let first = input[0];
+    let second = input[1];
+    let last = input[2];
+    input = first + first + second + second + last + last;
+  }
+  input = input.toUpperCase(input);
+  let first = input[0] + input[1];
+  let second = input[2] + input[3];
+  let last = input[4] + input[5];
+  return (
+      parseInt(first, 16) +
+      ", " +
+      parseInt(second, 16) +
+      ", " +
+      parseInt(last, 16)
+  );
+};
+
 // ##############################
 // // // Variables - Styles that are used on more than one component
 // #############################
@@ -75,7 +101,36 @@ const dangerColor = "#f44336";
 const successColor = "#4caf50";
 const infoColor = "#00acc1";
 const roseColor = "#e91e63";
-const grayColor = "#999999";
+const grayColor = [
+  "#999",
+  "#3C4858",
+  "#eee",
+  "#343434",
+  "#585858",
+  "#232323",
+  "#ddd",
+  "#6c757d",
+  "#333",
+  "#212121",
+  "#777",
+  "#D2D2D2",
+  "#AAA",
+  "#495057",
+  "#e5e5e5",
+  "#555",
+  "#f9f9f9",
+  "#ccc",
+  "#444",
+  "#f2f2f2",
+  "#89229b",
+  "#c0c1c2",
+  "#9a9a9a",
+  "#f5f5f5",
+  "#505050",
+  "#1f1f1f"
+];
+const whiteColor = "#FFF";
+const blackColor = "#000";
 
 const primaryBoxShadow = {
   boxShadow:
@@ -179,8 +234,83 @@ const cardSubtitle = {
   marginTop: "-.375rem"
 };
 
+const main = {
+  background: whiteColor,
+  position: "relative",
+  zIndex: "3"
+};
+
+const mainRaised = {
+  "@media (max-width: 576px)": {
+    marginTop: "-30px"
+  },
+  "@media (max-width: 830px)": {
+    marginLeft: "10px",
+    marginRight: "10px"
+  },
+  margin: "-60px 30px 0px",
+  borderRadius: "6px",
+  boxShadow:
+      "0 16px 24px 2px rgba(" +
+      hexToRgb(blackColor) +
+      ", 0.14), 0 6px 30px 5px rgba(" +
+      hexToRgb(blackColor) +
+      ", 0.12), 0 8px 10px -5px rgba(" +
+      hexToRgb(blackColor) +
+      ", 0.2)"
+};
+
+const section = {
+  backgroundPosition: "50%",
+  backgroundSize: "cover"
+};
+
+const sectionDark = {
+  backgroundColor: grayColor[3],
+  background:
+      "radial-gradient(ellipse at center," +
+      grayColor[4] +
+      " 0," +
+      grayColor[5] +
+      " 100%)"
+};
+
+const sectionDescription = {
+  marginTop: "130px"
+};
+
+const description = {
+  color: grayColor[0]
+};
+
+const mlAuto = {
+  marginLeft: "auto"
+};
+
+const mrAuto = {
+  marginRight: "auto"
+};
+
+const coloredShadow = {
+  // some jss/css to make the cards look a bit better on Internet Explorer
+  "@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)": {
+    display: "none !important"
+  },
+  transform: "scale(0.94)",
+  top: "12px",
+  filter: "blur(12px)",
+  position: "absolute",
+  width: "100%",
+  height: "100%",
+  backgroundSize: "cover",
+  zIndex: "-1",
+  transition: "opacity .45s",
+  opacity: "0"
+};
+
 export {
   //variables
+  hexToRgb,
   drawerWidth,
   transition,
   container,
@@ -195,6 +325,8 @@ export {
   infoColor,
   roseColor,
   grayColor,
+  whiteColor,
+  blackColor,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,
@@ -213,5 +345,12 @@ export {
   title,
   cardTitle,
   cardLink,
-  cardSubtitle
+  cardSubtitle,
+  coloredShadow,
+  description,
+  section,
+  sectionDark,
+  sectionDescription,
+  mlAuto,
+  mrAuto,
 };

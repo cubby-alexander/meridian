@@ -10,7 +10,7 @@ export default [
             {
                 title: "",
                 shortTitle: "Overview",
-                whatYouGet: "",
+                whatYouGet: "It's important to get your team to buy into major changes to your operation. Use this tool plan a change announcement that will get your team on board.",
                 htmlElements: [
                     {
                         typeOfElement: "header",

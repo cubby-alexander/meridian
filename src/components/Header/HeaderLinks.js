@@ -45,6 +45,9 @@ export default function HeaderLinks(props) {
             </a>,
               <Link to="/module" className={classes.dropdownLink}>
                   Sample Module
+              </Link>,
+              <Link to="/module-browse" className={classes.dropdownLink}>
+                  Sample Browse
               </Link>
           ]}
         />
