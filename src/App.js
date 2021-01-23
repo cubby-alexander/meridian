@@ -1,7 +1,7 @@
 import React from "react";
-
+import awsconfig from "./aws-exports";
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
 import { withAuthenticator, AmplifySignOut} from '@aws-amplify/ui-react';
-
 import {
     Router,
     Switch,
@@ -15,6 +15,7 @@ import ModulePage from "./views/Module/ModulePage";
 import ModuleBrowse from "./views/ModuleBrowse/ModuleBrowse";
 import LandingPage from "./views/LandingPage/LandingPage";
 import {createBrowserHistory} from "history";
+Amplify.configure(awsconfig);
 
 function App() {
     var hist = createBrowserHistory();
