@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -28,7 +28,13 @@ const useStyles = makeStyles(styles);
 
 export default function LandingPage(props) {
   const classes = useStyles();
-  const { ...rest } = props;
+  const {...rest} = props;
+  const infoRef = useRef(null);
+
+  function infoScroll() {
+    infoRef.current.scrollIntoView({behavior: "smooth"});
+  }
+
   return (
     <div>
       <Header
@@ -62,9 +68,7 @@ export default function LandingPage(props) {
                   <Button
                     color="primary"
                     size="md"
-                    href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ref=creativetim"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={infoScroll}
                   >
                     Learn More
                   </Button>
@@ -88,7 +92,9 @@ export default function LandingPage(props) {
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <ProductSection />
+          <div ref={infoRef}>
+            <ProductSection />
+          </div>
           <TeamSection />
           <WorkSection />
         </div>
