@@ -14,12 +14,11 @@ export default function TableRowBuilder(props) {
         <TableRow>
             {props.row.map((cell) => (
                 <TableCellBuilder
-                    cellType={"static"}
+                    cellType={props.type}
                     class={props.class}
                     component="th"
                     scope={props.class === "body" ? ("row") : null}
                     value={cell}
-                    staticValue={cell}
                 />
             ))}
         </TableRow>

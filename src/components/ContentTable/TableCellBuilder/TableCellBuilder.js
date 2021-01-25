@@ -16,7 +16,7 @@ export default function TableCellBuilder(props) {
                 classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                 component="th"
                 scope={props.class === "body" ? ("row") : null}>
-                {props.value}
+                {props.value.default}
             </TableCell>
         case "input":
              return <TableCell
@@ -25,7 +25,7 @@ export default function TableCellBuilder(props) {
                  component="th"
                  scope={props.class === "body" ? ("row") : null}>
                     <textarea
-                        placeholder={props.value}
+                        placeholder={props.value.current}
                         className={classes.tableInput}
                     />
              </TableCell>
@@ -35,7 +35,7 @@ export default function TableCellBuilder(props) {
                  classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                  component="th"
                  scope={props.class === "body" ? ("row") : null}>
-                 {props.value}
+                 {props.value.current}
              </TableCell>
        default: return null
     }

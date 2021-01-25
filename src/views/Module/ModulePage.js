@@ -37,6 +37,8 @@ export default function ModulePage(props) {
     const [checked, setChecked] = useState([]);
     const theme = useTheme();
     const { ...rest } = props;
+    const module = db.find(modulePage => modulePage.slug === props.match.params.moduleSlug);
+    const [dynamicHtml, setDynamicHtml] = useState(module.dynamicHtml);
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -80,7 +82,7 @@ export default function ModulePage(props) {
                         <GridContainer justify="center">
                             <GridItem xs={12} sm={12} md={6}>
                                 <div className={classes.module}>
-                                    <h3 className={classes.title}>{db[0].title}</h3>
+                                    <h3 className={classes.title}>{module.title}</h3>
                                 </div>
                             </GridItem>
                         </GridContainer>
@@ -91,39 +93,39 @@ export default function ModulePage(props) {
                                     color="primary"
                                     tabs={[
                                         {
-                                            tabButton: db[0].slides[0].shortTitle,
+                                            tabButton: module.slides[0].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[0].shortTitle}</h4>
+                                                    <h4>{module.slides[0].shortTitle}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[0].htmlElements} />
+                                                            <FormBuilder html={module.slides[0].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
                                             )
                                         },
                                         {
-                                            tabButton: db[0].slides[1].shortTitle,
+                                            tabButton: module.slides[1].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[1].title}</h4>
+                                                    <h4>{module.slides[1].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[1].htmlElements} />
+                                                            <FormBuilder html={module.slides[1].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
                                             )
                                         },
                                         {
-                                            tabButton: db[0].slides[2].shortTitle,
+                                            tabButton: module.slides[2].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[2].title}</h4>
+                                                    <h4>{module.slides[2].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[2].htmlElements} />
+                                                            <FormBuilder html={module.slides[2].htmlElements} dynamic={dynamicHtml} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -131,13 +133,13 @@ export default function ModulePage(props) {
                                         },
 
                                         {
-                                            tabButton: db[0].slides[3].shortTitle,
+                                            tabButton: module.slides[3].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[3].title}</h4>
+                                                    <h4>{module.slides[3].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[3].htmlElements} />
+                                                            <FormBuilder html={module.slides[3].htmlElements} dynamic={dynamicHtml} />
                                                             <h6 className={classes.tableTitle}>
                                                                 The “What” and “Why” Behind the Change</h6>
                                                             <TableContainer>
@@ -177,13 +179,13 @@ export default function ModulePage(props) {
                                         },
 
                                         {
-                                            tabButton: db[0].slides[4].shortTitle,
+                                            tabButton: module.slides[4].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[4].title}</h4>
+                                                    <h4>{module.slides[4].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[4].htmlElements} />
+                                                            <FormBuilder html={module.slides[4].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -191,13 +193,13 @@ export default function ModulePage(props) {
                                         },
 
                                         {
-                                            tabButton: db[0].slides[5].shortTitle,
+                                            tabButton: module.slides[5].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[5].title}</h4>
+                                                    <h4>{module.slides[5].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[5].htmlElements} />
+                                                            <FormBuilder html={module.slides[5].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -205,13 +207,13 @@ export default function ModulePage(props) {
                                         },
 
                                         {
-                                            tabButton: db[0].slides[6].shortTitle,
+                                            tabButton: module.slides[6].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[6].title}</h4>
+                                                    <h4>{module.slides[6].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={db[0].slides[6].htmlElements} />
+                                                            <FormBuilder html={module.slides[6].htmlElements} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -219,10 +221,10 @@ export default function ModulePage(props) {
                                         },
 
                                         {
-                                            tabButton: db[0].slides[7].shortTitle,
+                                            tabButton: module.slides[7].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[7].title}</h4>
+                                                    <h4>{module.slides[7].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
                                                             <p>Even with a strong change announcement, it’s crucial to keep
@@ -418,10 +420,10 @@ export default function ModulePage(props) {
                                         },
 
                                         {
-                                            tabButton: db[0].slides[8].shortTitle,
+                                            tabButton: module.slides[8].shortTitle,
                                             tabContent: (
                                                 <GridContainer justify="center">
-                                                    <h4>{db[0].slides[8].title}</h4>
+                                                    <h4>{module.slides[8].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
                                                             <p>Announcing a change to staff is a key step to getting everyone
@@ -448,12 +450,12 @@ export default function ModulePage(props) {
                             <GridItem xs={12}>
                                 <MobileStepper
                                     variant="progress"
-                                    steps={db[0].slides.length}
+                                    steps={module.slides.length}
                                     position="static"
                                     activeStep={activeStep}
                                     className={classes.root}
                                     nextButton={
-                                        <Button size="small" onClick={handleNext} disabled={activeStep === db[0].slides.length - 1}>
+                                        <Button size="small" onClick={handleNext} disabled={activeStep === module.slides.length - 1}>
                                             Next
                                             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
                                         </Button>

@@ -1,4 +1,5 @@
 import React from "react";
+import {useState} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -14,6 +15,7 @@ const useStyles = makeStyles(styles);
 
 
 export default function Slide(props) {
+    const [test, setTest] = useState("nerds");
     const classes = useStyles();
     let htmlContent = null;
 
@@ -33,8 +35,17 @@ export default function Slide(props) {
         case "break":
             htmlContent = <br />;
             break;
-        case "table":
-            htmlContent = <ContentTable content={props.content} />
+        case "static-table":
+            let staticTable = props.dynamic.tables.find(table => table.slug === props.content)
+            htmlContent = <ContentTable type={"static"} content={staticTable} />
+            break;
+        case "input-table":
+            let inputTable = props.dynamic.tables.find(table => table.slug === props.content)
+            htmlContent = <ContentTable type={"input"} content={inputTable} />
+            break;
+        case "compiled-table":
+            let compiledTable = props.dynamic.tables.find(table => table.slug === props.content)
+            htmlContent = <ContentTable type={"compiled"} content={compiledTable} />
             break;
         case "checklist section":
             htmlContent =

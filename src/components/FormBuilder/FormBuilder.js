@@ -9,6 +9,7 @@ export default function FormBuilder(props) {
                     typeOfElement={htmlElement.typeOfElement}
                     content={htmlElement.content}
                     key={index}
+                    dynamic={props.dynamic}
                 />
             ))}
         </div>

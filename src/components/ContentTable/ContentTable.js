@@ -13,8 +13,10 @@ import styles from "assets/jss/material-kit-react/views/modulePage.js";
 const useStyles = makeStyles(styles);
 
 export default function ContentTable(props) {
-    const [table, setTable] = useState(props.content.table);
+    const [table, setTable] = useState(props.content.tableValues);
     const classes = useStyles();
+
+    console.log(props.content.tableValues, "props");
 
     function addRow() {
         let newTable = [];
@@ -32,17 +34,18 @@ export default function ContentTable(props) {
             <h6 className={classes.tableTitle}>{props.content.tableTitle}</h6>
             <Table>
                 <TableHead>
-                    <TableRowBuilder row={table[0]} class={"head"} />
+                    <TableRowBuilder row={table[0]} type={"static"} class={"head"} />
                 </TableHead>
                 <TableBody>
                     {table.map((row, index) => (
                         index !== 0 ?
-                            (<TableRowBuilder row={row} class={"body"} />)
+                            (<TableRowBuilder row={row} type={props.type} class={"body"} />)
                             : null
                     ))}
                 </TableBody>
             </Table>
             <div onClick={e => addRow()}>I JUST NEED TO TEST SOMETHING</div>
+
         </TableContainer>
     )
 }
