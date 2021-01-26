@@ -1,23 +1,18 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
 import {makeStyles, useTheme} from "@material-ui/core/styles";
 // core components
-import FormBuilder from "../../components/FormBuilder/FormBuilder.js";
+import ModuleContext from "./ModuleContext";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
+import FormBuilder from "../../components/FormBuilder/FormBuilder.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Check from "@material-ui/icons/Check";
@@ -38,7 +33,7 @@ export default function ModulePage(props) {
     const theme = useTheme();
     const { ...rest } = props;
     const module = db.find(modulePage => modulePage.slug === props.match.params.moduleSlug);
-    const [dynamicHtml, setDynamicHtml] = useState(module.dynamicHtml);
+    const dynamicHtml = module.dynamicHtml;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -63,6 +58,7 @@ export default function ModulePage(props) {
     };
 
     return (
+        <ModuleContext.Provider value={dynamicHtml}>
         <div>
             <Header
                 color="transparent"
@@ -140,38 +136,6 @@ export default function ModulePage(props) {
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
                                                             <FormBuilder html={module.slides[3].htmlElements} dynamic={dynamicHtml} />
-                                                            <h6 className={classes.tableTitle}>
-                                                                The “What” and “Why” Behind the Change</h6>
-                                                            <TableContainer>
-                                                                <Table className={classes.table} aria-label="simple table">
-                                                                    <TableHead >
-                                                                        <TableRow>
-                                                                            <TableCell classes={{root: classes.tableHeader}}>Talking Points</TableCell>
-                                                                            <TableCell classes={{root: classes.tableHeader}} align="left">What I'll Say</TableCell>
-                                                                        </TableRow>
-                                                                    </TableHead>
-                                                                    <TableBody>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Describe what's going to change</TableCell>
-                                                                            <TableCell classes={{root: classes.tableInputRow}} align="left">
-                                                                                <textarea
-                                                                                    placeholder={"I want to call everyone's attention to..."}
-                                                                                    className={classes.tableInput}
-                                                                                />
-                                                                            </TableCell>
-                                                                        </TableRow>
-                                                                        <TableRow >
-                                                                            <TableCell classes={{root: classes.tableRow}} component="th" scope="row">Explain why the change needs to happen</TableCell>
-                                                                            <TableCell classes={{root: classes.tableRow}} align="left">
-                                                                                <textarea
-                                                                                placeholder={"This is happening because..."}
-                                                                                className={classes.tableInput}
-                                                                            />
-                                                                            </TableCell>
-                                                                        </TableRow>
-                                                                    </TableBody>
-                                                                </Table>
-                                                            </TableContainer>
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -185,7 +149,7 @@ export default function ModulePage(props) {
                                                     <h4>{module.slides[4].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[4].htmlElements} />
+                                                            <FormBuilder html={module.slides[4].htmlElements} dynamic={dynamicHtml} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -199,7 +163,7 @@ export default function ModulePage(props) {
                                                     <h4>{module.slides[5].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[5].htmlElements} />
+                                                            <FormBuilder html={module.slides[5].htmlElements} dynamic={dynamicHtml} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -213,7 +177,7 @@ export default function ModulePage(props) {
                                                     <h4>{module.slides[6].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[6].htmlElements} />
+                                                            <FormBuilder html={module.slides[6].htmlElements} dynamic={dynamicHtml} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -426,18 +390,7 @@ export default function ModulePage(props) {
                                                     <h4>{module.slides[8].title}</h4>
                                                     <GridItem xs={12}>
                                                         <div className={classes.description}>
-                                                            <p>Announcing a change to staff is a key step to getting everyone
-                                                                to start adapting to a new way of working, but announcements
-                                                                often fail to get buy in for two key reasons:</p>
-                                                                <ul>
-                                                                    <li>The message doesn’t make staff feel personally
-                                                                        invested in the change</li>
-                                                                    <li>It isn’t clear how staff will support the change
-                                                                        in their day-to-day</li>
-                                                                </ul>
-                                                                <p>You can avoid these two pitfalls and win early support for the
-                                                                change by crafting just a few key talking points to address these
-                                                                concerns for your next change announcement.</p>
+                                                            <FormBuilder html={module.slides[8].htmlElements} dynamic={dynamicHtml} />
                                                         </div>
                                                     </GridItem>
                                                 </GridContainer>
@@ -474,5 +427,6 @@ export default function ModulePage(props) {
             </div>
             <Footer />
         </div>
+        </ModuleContext.Provider>
     );
 }

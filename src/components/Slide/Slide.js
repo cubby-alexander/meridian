@@ -1,8 +1,9 @@
 import React from "react";
-import {useState} from "react";
+import {useContext} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
+import ModuleContext from "../../views/Module/ModuleContext";
 import UnorderedList from "../UnorderedList/UnorderedList";
 import OrderedList from "../OrderedList/OrderedList";
 import ContentTable from "../ContentTable/ContentTable";
@@ -15,7 +16,7 @@ const useStyles = makeStyles(styles);
 
 
 export default function Slide(props) {
-    const [test, setTest] = useState("nerds");
+    const dynamicContent = useContext(ModuleContext);
     const classes = useStyles();
     let htmlContent = null;
 
@@ -36,16 +37,16 @@ export default function Slide(props) {
             htmlContent = <br />;
             break;
         case "static-table":
-            let staticTable = props.dynamic.tables.find(table => table.slug === props.content)
-            htmlContent = <ContentTable type={"static"} content={staticTable} />
+            let staticTable = dynamicContent.tables.find(table => table.slug === props.content)
+            htmlContent = <ContentTable type={"static"} content={staticTable} tableSlug={props.content} />
             break;
         case "input-table":
-            let inputTable = props.dynamic.tables.find(table => table.slug === props.content)
-            htmlContent = <ContentTable type={"input"} content={inputTable} />
+            let inputTable = dynamicContent.tables.find(table => table.slug === props.content)
+            htmlContent = <ContentTable type={"input"} content={inputTable} tableSlug={props.content} />
             break;
-        case "compiled-table":
-            let compiledTable = props.dynamic.tables.find(table => table.slug === props.content)
-            htmlContent = <ContentTable type={"compiled"} content={compiledTable} />
+        case "rendered-table":
+            let renderedTable = dynamicContent.tables.find(table => table.slug === props.content)
+            htmlContent = <ContentTable type={"rendered"} content={renderedTable} tableSlug={props.content} />
             break;
         case "checklist section":
             htmlContent =

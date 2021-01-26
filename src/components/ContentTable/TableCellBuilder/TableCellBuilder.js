@@ -1,13 +1,24 @@
 import React from "react";
+import {useContext, useState} from "react";
 import classNames from "classnames";
 import {makeStyles} from "@material-ui/core/styles";
+import ModuleContext from "../../../views/Module/ModuleContext";
 import styles from "assets/jss/material-kit-react/views/modulePage.js";
 import TableCell from "@material-ui/core/TableCell";
 
 const useStyles = makeStyles(styles);
 
 export default function TableCellBuilder(props) {
+    const context = useContext(ModuleContext);
+    const [cellValue, setCellValue] = useState(props.value.current);
     const classes = useStyles();
+
+    function userSetValue(table, rowId, cellId, updatedValue) {
+        let newCurrent = "";
+        context.tables[0].tableValues[rowId][cellId].current = updatedValue;
+        newCurrent = updatedValue;
+        setCellValue(newCurrent);
+    }
 
     switch (props.cellType) {
         case "static":
@@ -25,13 +36,14 @@ export default function TableCellBuilder(props) {
                  component="th"
                  scope={props.class === "body" ? ("row") : null}>
                     <textarea
-                        placeholder={props.value.current}
+                        value={cellValue}
+                        onChange={e => userSetValue("test", props.rowId, props.cellId, e.target.value)}
                         className={classes.tableInput}
                     />
              </TableCell>
         case "rendered":
              return <TableCell
-                 id={props.id - 'input'}
+                 id={props.id - 'rendered'}
                  classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                  component="th"
                  scope={props.class === "body" ? ("row") : null}>

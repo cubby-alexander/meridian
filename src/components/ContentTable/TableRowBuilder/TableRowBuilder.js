@@ -9,15 +9,18 @@ const useStyles = makeStyles(styles);
 
 export default function TableRowBuilder(props) {
     const classes = useStyles();
+    console.log(props.rowId);
 
     return (
         <TableRow>
-            {props.row.map((cell) => (
+            {props.row.map((cell, index) => (
                 <TableCellBuilder
                     cellType={props.type}
                     class={props.class}
                     component="th"
                     scope={props.class === "body" ? ("row") : null}
+                    cellId={index}
+                    rowId={props.rowId}
                     value={cell}
                 />
             ))}

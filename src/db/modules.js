@@ -420,6 +420,11 @@ export default [
                         typeOfElement: "paragraph",
                         content: "",
                     },
+
+                    {
+                        typeOfElement: "rendered-table",
+                        content: "the-what-and-why-behind-the-change"
+                    },
                 ],
             }
         ],
