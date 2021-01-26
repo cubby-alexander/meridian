@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState} from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -11,11 +11,7 @@ import FormBuilder from "../../components/FormBuilder/FormBuilder.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
-import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Check from "@material-ui/icons/Check";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
@@ -28,7 +24,7 @@ const useStyles = makeStyles(styles);
 
 export default function ModulePage(props) {
     const classes = useStyles();
-    const [activeStep, setActiveStep] = useState(0);
+    const [activeStep, setActiveStep] = useState(3);
     const [checked, setChecked] = useState([]);
     const theme = useTheme();
     const { ...rest } = props;
@@ -84,128 +80,49 @@ export default function ModulePage(props) {
                         </GridContainer>
                         <GridContainer justify="center">
                             <GridItem xs={12} sm={12} md={12} className={classes.navWrapper}>
-                                <NavPills
-                                    alignCenter
-                                    color="primary"
-                                    tabs={[
-                                        {
-                                            tabButton: module.slides[0].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[0].shortTitle}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[0].htmlElements} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
-                                        {
-                                            tabButton: module.slides[1].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[1].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[1].htmlElements} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
-                                        {
-                                            tabButton: module.slides[2].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[2].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[2].htmlElements} dynamic={dynamicHtml} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
+                                <GridContainer justify="center">
+                                    <h4>{module.slides[activeStep].title}</h4>
+                                    <GridItem xs={12}>
+                                        <div className={classes.description}>
+                                            <FormBuilder html={module.slides[activeStep].htmlElements} />
+                                        </div>
+                                    </GridItem>
+                                </GridContainer>
+                            </GridItem>
+                        </GridContainer>
+                        <GridContainer justify="center">
+                            <GridItem xs={12} sm={12} md={8}>
+                                <MobileStepper
+                                    variant="progress"
+                                    steps={module.slides.length}
+                                    position="static"
+                                    activeStep={activeStep}
+                                    className={classes.root}
+                                    nextButton={
+                                        <Button size="small" onClick={handleNext} disabled={activeStep === module.slides.length - 1}>
+                                            Next
+                                            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                                        </Button>
+                                    }
+                                    backButton={
+                                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                                            Back
+                                        </Button>
+                                    }
+                                />
+                            </GridItem>
+                        </GridContainer>
+                    </div>
+                </div>
+            </div>
+            <Footer />
+        </div>
+        </ModuleContext.Provider>
+    );
+}
 
-                                        {
-                                            tabButton: module.slides[3].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[3].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[3].htmlElements} dynamic={dynamicHtml} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
-
-                                        {
-                                            tabButton: module.slides[4].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[4].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[4].htmlElements} dynamic={dynamicHtml} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
-
-                                        {
-                                            tabButton: module.slides[5].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[5].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[5].htmlElements} dynamic={dynamicHtml} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
-
-                                        {
-                                            tabButton: module.slides[6].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[6].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[6].htmlElements} dynamic={dynamicHtml} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
-
-                                        {
-                                            tabButton: module.slides[7].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[7].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <p>Even with a strong change announcement, it’s crucial to keep
-                                                                the change top of mind for staff in the following days and
-                                                                weeks. To help reinforce or clarify any information from
-                                                                your announcement, follow up with written resources and
-                                                                set ongoing communication channels for staff to discuss
-                                                                the change.</p>
-
-                                                                <p>Select one or two steps from the checklists below to follow up after the announcement.
-                                                                You can avoid these two pitfalls and win early support for the
-                                                                change by crafting just a few key talking points to address these
-                                                                concerns for your next change announcement.</p>
-                                                            <br />
-                                                            <h6 className={classes.tableTitle}>Next Steps to Continue Staff Engagement with the Change</h6>
-                                                            <h6>Provide written resources</h6>
-                                                            <div
+/*  <div
                                                                 className={
                                                                     classes.checkboxAndRadio +
                                                                     " " +
@@ -377,56 +294,6 @@ export default function ModulePage(props) {
                                                                                   classes={{ label: classes.label, root: classes.labelRoot }}
                                                                 />
                                                             </div>
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        },
 
-                                        {
-                                            tabButton: module.slides[8].shortTitle,
-                                            tabContent: (
-                                                <GridContainer justify="center">
-                                                    <h4>{module.slides[8].title}</h4>
-                                                    <GridItem xs={12}>
-                                                        <div className={classes.description}>
-                                                            <FormBuilder html={module.slides[8].htmlElements} dynamic={dynamicHtml} />
-                                                        </div>
-                                                    </GridItem>
-                                                </GridContainer>
-                                            )
-                                        }
-                                    ]}
-                                />
-                            </GridItem>
 
-                            <GridItem xs={12}>
-                                <MobileStepper
-                                    variant="progress"
-                                    steps={module.slides.length}
-                                    position="static"
-                                    activeStep={activeStep}
-                                    className={classes.root}
-                                    nextButton={
-                                        <Button size="small" onClick={handleNext} disabled={activeStep === module.slides.length - 1}>
-                                            Next
-                                            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                                        </Button>
-                                    }
-                                    backButton={
-                                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                                            Back
-                                        </Button>
-                                    }
-                                />
-                            </GridItem>
-                        </GridContainer>
-                    </div>
-                </div>
-            </div>
-            <Footer />
-        </div>
-        </ModuleContext.Provider>
-    );
-}
+ */

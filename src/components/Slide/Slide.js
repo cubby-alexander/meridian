@@ -41,7 +41,7 @@ export default function Slide(props) {
             htmlContent = <ContentTable type={"static"} content={staticTable} tableSlug={props.content} />
             break;
         case "input-table":
-            let inputTable = dynamicContent.tables.find(table => table.slug === props.content)
+            let inputTable = dynamicContent.tables.find(table => table.slug === props.content);
             htmlContent = <ContentTable type={"input"} content={inputTable} tableSlug={props.content} />
             break;
         case "rendered-table":

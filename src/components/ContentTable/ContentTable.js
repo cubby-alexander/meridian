@@ -15,26 +15,48 @@ const useStyles = makeStyles(styles);
 
 export default function ContentTable(props) {
     const [table, setTable] = useState(props.content.tableValues);
-    const [originalTableLength, setOriginalTableLength] = useState(props.content.tableValues.length);
     const context = useContext(ModuleContext);
     const tableSlug = props.tableSlug;
     const classes = useStyles();
 
-    console.log(ModuleContext, context.tables.find(table => table.slug === tableSlug), table, originalTableLength);
+    console.log(context.tables.find(table => table.slug === tableSlug), table);
+
+    function initializeInputs() {
+        let tableContext = context.tables.find(table => table.slug === tableSlug);
+        if ("inputsInitialized" in tableContext) {
+            return null
+        } else {
+            tableContext.tableValues.forEach((row) => {
+                row.forEach((cell) => {
+                    cell.current = cell.default;
+                })
+            })
+            tableContext.inputsInitialized = true;
+        }
+        console.log(tableContext)
+    }
 
     function addRow() {
+        let tableContext = context.tables.find(table => table.slug === tableSlug);
+        if ("addedRows" in tableContext) {
+            tableContext.addedRows = tableContext.addedRows + 1;
+        } else {
+            tableContext.addedRows = 1;
+        }
         let newTable = [];
         const newRowLength = table[0].length;
-        const newRow = new Array(newRowLength).fill({default: "", current: "Test"});
+        const newRow = new Array(newRowLength).fill({default: "", current: "", mutable: true});
         table.map((row) => {
             newTable.push(row)
         });
         newTable.push(newRow);
-        context.tables.find(table => table.slug === tableSlug).tableValues.push(newRow);
+        tableContext.tableValues.push(newRow);
         setTable(newTable);
     }
 
     function removeRow() {
+        let tableContext = context.tables.find(table => table.slug === tableSlug);
+        tableContext.addedRows = tableContext.addedRows - 1;
         let newTable = [];
         table.map((row) => {
             newTable.push(row)
@@ -47,6 +69,7 @@ export default function ContentTable(props) {
 
     return (
         <TableContainer>
+            {initializeInputs()}
             <h6 className={classes.tableTitle}>{props.content.tableTitle}</h6>
             <Table>
                 <TableHead>
@@ -63,8 +86,8 @@ export default function ContentTable(props) {
             {props.type === "input" ? (
                 <div>
                     <div onClick={e => addRow()}>Add a row</div>
-                    {table.length > originalTableLength ? (
-                        <div onClick={e => removeRow()}>Remove a row</div>
+                    {context.tables.find(table => table.slug === tableSlug).addedRows > 0 ? (
+                        <div onClick={e => removeRow()}>Remove last row</div>
                         ) : null
                     }
                 </div>

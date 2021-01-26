@@ -12,9 +12,9 @@ export default [
                   slug: "the-what-and-why-behind-the-change",
                   tableTitle: "The \"What\" and \"Why\" Behind the Change",
                   tableValues: [
-                      [{default: "Talking Points", current: ""}, {default: "What I'll Say", current: ""} ],
-                      [{default: "Describe what's going to change", current: ""}, {default: "\"I want to call everyone's attention to...\"", current: ""} ],
-                      [{default: "Explain why the change needs to happen", current: ""}, {default: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", current: ""}]
+                      [{default: "Talking Points", current: "", mutable: false}, {default: "What I'll Say", current: "", mutable: false} ],
+                      [{default: "Describe what's going to change", current: "", mutable: false}, {default: "\"I want to call everyone's attention to...\"", current: "", mutable: true} ],
+                      [{default: "Explain why the change needs to happen", current: "", mutable: false}, {default: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", current: "", mutable: true}]
                   ]
               },
 
