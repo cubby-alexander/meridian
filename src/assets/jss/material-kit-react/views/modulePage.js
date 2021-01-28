@@ -3,10 +3,12 @@ import sectionCardStyles from "assets/jss/material-kit-react/views/componentsSec
 
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 import customCheckboxRadioSwitch from "../customCheckboxRadioSwitch";
+import customSelectStyle from "assets/jss/material-kit-react/customSelectStyle.js";
 
 const modulePageStyle = {
     container,
     ...sectionCardStyles,
+    ...customSelectStyle,
     module: {
         textAlign: "center",
         "& img": {

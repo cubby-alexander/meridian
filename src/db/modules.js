@@ -1,7 +1,7 @@
 export default [
     {
         title: "Deliver a Compelling Change Announcement",
-        image: "",
+        image: "/meeting.jpg",
         slug: "deliver-a-compelling-change-announcement",
         domain: "management",
         categories: [],
@@ -416,5 +416,5 @@ export default [
                 ],
             }
         ],
-    }
+    },
 ]
