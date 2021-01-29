@@ -12,9 +12,9 @@ export default [
                   slug: "the-what-and-why-behind-the-change",
                   tableTitle: "The \"What\" and \"Why\" Behind the Change",
                   tableValues: [
-                      [{default: "Talking Points", current: "", mutable: false}, {default: "What I'll Say", current: "", mutable: false} ],
-                      [{default: "Describe what's going to change", current: "", mutable: false}, {default: "\"I want to call everyone's attention to...\"", current: "", mutable: true} ],
-                      [{default: "Explain why the change needs to happen", current: "", mutable: false}, {default: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", current: "", mutable: true}]
+                      [{default: "Talking Points", current: "Talking Points", mutable: false}, {default: "What I'll Say", current: "What I'll Say", mutable: false} ],
+                      [{default: "Describe what's going to change", current: "Describe what's going to change", mutable: false}, {default: "\"I want to call everyone's attention to...\"", current: "\"I want to call everyone's attention to...\"", mutable: true} ],
+                      [{default: "Explain why the change needs to happen", current: "Explain why the change needs to happen", mutable: false}, {default: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", current: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", mutable: true}]
                   ]
               },
 
@@ -22,13 +22,13 @@ export default [
                   slug: "how-the-change-will-benefit-staff",
                   tableTitle: "How the Change Will Benefit Staff",
                   tableValues: [
-                      [{default: "Mark an \"X\" by the benefit I'll share", current: ""}, {default: "Benefit", current: ""}, {default: "What I'll Say", current: ""} ],
-                      [{default: "", current: ""}, {default: "Improved patient care", current: ""}, {default: "\"Implementing a different call light system will help us get to patients faster when they’re in need.\"", current: ""}],
-                      [{default: "X", current: ""}, {default: "Long term financial health", current: ""}, {default: "\"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road.\"", current: ""}],
-                      [{default: "", current: ""}, {default: "Work-life balance", current: ""}, {default: "\"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs.\"", current: ""}],
-                      [{default: "", current: ""}, {default: "Opportunity to lead", current: ""}, {default: "\"As part of this change, there are a few different projects some of you may be interested in leading.\"", current: ""} ],
-                      [{default: "", current: ""}, {default: "Training for a new skill", current: ""}, {default: "\"There’s an opportunity for you to participate in additional training and gain new skills.\"", current: ""}],
-                      [{default: "", current: ""}, {default: "Improved workflow", current: ""}, {default: "\"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary.\"", current: ""}]
+                      [{default: "Mark an \"X\" by the benefit I'll share", current: "Mark an \"X\" by the benefit I'll share"}, {default: "Benefit", current: "Benefit"}, {default: "What I'll Say", current: "What I'll Say", mutable: false} ],
+                      [{default: "", current: "", mutable: true}, {default: "Improved patient care", current: "Improved patient care", mutable: true}, {default: "\"Implementing a different call light system will help us get to patients faster when they’re in need.\"", current: "\"Implementing a different call light system will help us get to patients faster when they’re in need.\"", mutable: true}],
+                      [{default: "X", current: "X", mutable: true}, {default: "Long term financial health", current: "Long term financial health", mutable: true}, {default: "\"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road.\"", current: "\"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road.\"", mutable: true}],
+                      [{default: "", current: "", mutable: true}, {default: "Work-life balance", current: "Work-life balance", mutable: true}, {default: "\"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs.\"", current: "\"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs.\"", mutable: true}],
+                      [{default: "", current: "", mutable: true}, {default: "Opportunity to lead", current: "Opportunity to lead", mutable: true}, {default: "\"As part of this change, there are a few different projects some of you may be interested in leading.\"", current: "\"As part of this change, there are a few different projects some of you may be interested in leading.\"", mutable: true} ],
+                      [{default: "", current: "", mutable: true}, {default: "Training for a new skill", current: "Training for a new skill", mutable: true}, {default: "\"There’s an opportunity for you to participate in additional training and gain new skills.\"", current: "\"There’s an opportunity for you to participate in additional training and gain new skills.\"", mutable: true}],
+                      [{default: "", current: "", mutable: true}, {default: "Improved workflow", current: "Improved workflow", mutable: true}, {default: "\"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary.\"", current: "\"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary.\"", mutable: true}]
                   ]
               },
 
@@ -36,10 +36,10 @@ export default [
                   slug: "how-the-change-will-impact-the-team",
                   tableTitle: "How the Change Will Impact the Team",
                   tableValues: [
-                      [{default: "Talking Points", current: ""}, {default: "What I'll Say", current: ""}],
-                      [{default: "Explain what they need to start doing", current: ""}, {default: "\"To make this change happen, we’re going to have to start…\"", current: ""}],
-                      [{default: "Tell them what to stop doing", current: ""}, {default: "\"This change also means stopping…\"", current: ""}],
-                      [{default: "Describe what to continue doing", current: ""}, {default: "\"We’re going to continue to…\"", current: ""}]
+                      [{default: "Talking Points", current: "Talking Points", mutable: false}, {default: "What I'll Say", current: "What I'll Say", mutable: false}],
+                      [{default: "Explain what they need to start doing", current: "Explain what they need to start doing", mutable: false}, {default: "\"To make this change happen, we’re going to have to start…\"", current: "\"To make this change happen, we’re going to have to start…\"", mutable: true}],
+                      [{default: "Tell them what to stop doing", current: "Tell them what to stop doing", mutable: false}, {default: "\"This change also means stopping…\"", current: "\"This change also means stopping…\"", mutable: true}],
+                      [{default: "Describe what to continue doing", current: "Describe what to continue doing", mutable: false}, {default: "\"We’re going to continue to…\"", current: "\"We’re going to continue to…\"", mutable: true}]
                   ]
               },
 
@@ -47,14 +47,14 @@ export default [
                   slug: "answers-to-additional-questions",
                   tableTitle: "Answers to Additional Questions",
                   tableValues: [
-                      [{default: "Potential Question or Concern", current: ""}, {default: "What I'll Say", current: ""}],
-                      [{default: "What is the timeline for the change?", current: ""}, {default: "\"You can expect to see things changing in the next…\"", current: ""}],
-                      [{default: "When can staff expect more information?", current: ""}, {default: "\"I’ll have more updates to come around…\"", current: ""}],
-                      [{default: "How will the change affect existing workloads?", current: ""}, {default: "\"In terms of your current workload, this change will…\"", current: ""}],
-                      [{default: "What kinds of training or knowledge will staff receive?", current: ""}, {default: "\"To make this change happen, we’ll offer training and resources on…\"", current: ""}],
-                      [{default: "Who should staff turn to if they need help?", current: ""}, {default: "\"If you need support as we implement this new change, you can contact…\"", current: ""}],
-                      [{default: "How can staff provide input or feedback on the change?", current: ""}, {default: "\"You can provide input or feedback on how things are going by reaching out to…\"", current: ""}],
-                      [{default: "How will adoption of the change be tracked?", current: ""}, {default: "\"We’ve identified the following metrics to track how adoption of the change is going…\"", current: ""}]
+                      [{default: "Potential Question or Concern", current: "Potential Question or Concern", mutable: false}, {default: "What I'll Say", current: "What I'll Say", mutable: false}],
+                      [{default: "What is the timeline for the change?", current: "What is the timeline for the change?", mutable: true}, {default: "\"You can expect to see things changing in the next…\"", current: "\"You can expect to see things changing in the next…\"", mutable: true}],
+                      [{default: "When can staff expect more information?", current: "When can staff expect more information?", mutable: true}, {default: "\"I’ll have more updates to come around…\"", current: "\"I’ll have more updates to come around…\"", mutable: true}],
+                      [{default: "How will the change affect existing workloads?", current: "How will the change affect existing workloads?", mutable: true}, {default: "\"In terms of your current workload, this change will…\"", current: "\"In terms of your current workload, this change will…\"", mutable: true}],
+                      [{default: "What kinds of training or knowledge will staff receive?", current: "What kinds of training or knowledge will staff receive?", mutable: true}, {default: "\"To make this change happen, we’ll offer training and resources on…\"", current: "\"To make this change happen, we’ll offer training and resources on…\"", mutable: true}],
+                      [{default: "Who should staff turn to if they need help?", current: "Who should staff turn to if they need help?", mutable: true}, {default: "\"If you need support as we implement this new change, you can contact…\"", current: "\"If you need support as we implement this new change, you can contact…\"", mutable: true}],
+                      [{default: "How can staff provide input or feedback on the change?", current: "How can staff provide input or feedback on the change?", mutable: true}, {default: "\"You can provide input or feedback on how things are going by reaching out to…\"", current: "\"You can provide input or feedback on how things are going by reaching out to…\"", mutable: true}],
+                      [{default: "How will adoption of the change be tracked?", current: "How will adoption of the change be tracked?", mutable: true}, {default: "\"We’ve identified the following metrics to track how adoption of the change is going…\"", current: "\"We’ve identified the following metrics to track how adoption of the change is going…\"", mutable: true}]
                   ]
               },
           ],
@@ -250,19 +250,8 @@ export default [
                     },
 
                     {
-                        typeOfElement: "table",
-                        content: {
-                            tableTitle: "How the Change Will Benefit Staff",
-                            table: [
-                                [`Mark an "X" by the benefit I'll share`, `Benefit`, `What I'll Say`],
-                                [``, `Improved patient care`, `"Implementing a different call light system will help us get to patients faster when they’re in need."`],
-                                [`X`, `Long term financial health`, `"I know this may be a painful reality but saving costs now will help us avoid worse situations down the road."`],
-                                [``, `Work-life balance`, `"Our hope is that the new scheduling system will make it easier for everyone to find the shifts that will compliment your individual needs."`],
-                                [``, `Opportunity to lead`, `"As part of this change, there are a few different projects some of you may be interested in leading."`],
-                                [``, `Training for a new skill`, `"There’s an opportunity for you to participate in additional training and gain new skills."`],
-                                [``, `Improved workflow`, `"The new scheduling system will make it easier and faster for you to sign up for shifts or swap shifts when necessary."`]
-                            ]
-                        }
+                        typeOfElement: "input-table",
+                        content: "how-the-change-will-benefit-staff"
                     },
 
                     {typeOfElement: "break"},
@@ -297,16 +286,8 @@ export default [
                     },
 
                     {
-                        typeOfElement: "table",
-                        content: {
-                            tableTitle: "How the Change Will Impact the Team",
-                            table: [
-                                [`Talking Points`, `What I'll Say`],
-                                [`Explain what they need to start doing`, `"To make this change happen, we’re going to have to start…"`],
-                                [`Tell them what to stop doing`, `"This change also means stopping…"`],
-                                [`Describe what to continue doing`, `"We’re going to continue to…"`]
-                            ]
-                        }
+                        typeOfElement: "input-table",
+                        content: "how-the-change-will-impact-the-team"
                     },
                 ]
             },
@@ -333,20 +314,8 @@ export default [
                     },
 
                     {
-                        typeOfElement: "table",
-                        content: {
-                            tableTitle: "Answers to Additional Questions",
-                            table: [
-                                [`Potential Question or Concern`, `What I'll Say`],
-                                [`What is the timeline for the change?`, `"You can expect to see things changing in the next…"`],
-                                [`When can staff expect more information?`, `"I’ll have more updates to come around…"`],
-                                [`How will the change affect existing workloads?`, `"In terms of your current workload, this change will…"`],
-                                [`What kinds of training or knowledge will staff receive?`, `"To make this change happen, we’ll offer training and resources on…"`],
-                                [`Who should staff turn to if they need help?`, `"If you need support as we implement this new change, you can contact…"`],
-                                [`How can staff provide input or feedback on the change?`, `"You can provide input or feedback on how things are going by reaching out to…"`],
-                                [`How will adoption of the change be tracked?`, `"We’ve identified the following metrics to track how adoption of the change is going…"`]
-                            ]
-                        }
+                        typeOfElement: "input-table",
+                        content: "answers-to-additional-questions"
                     },
 
                     {typeOfElement: "break"},
@@ -424,6 +393,21 @@ export default [
                     {
                         typeOfElement: "rendered-table",
                         content: "the-what-and-why-behind-the-change"
+                    },
+
+                    {
+                        typeOfElement: "rendered-table",
+                        content: "how-the-change-will-benefit-staff"
+                    },
+
+                    {
+                        typeOfElement: "rendered-table",
+                        content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "rendered-table",
+                        content: "answers-to-additional-questions"
                     },
                 ],
             }

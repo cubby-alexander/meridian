@@ -187,7 +187,7 @@ material-kit-react
         │   └── Sections
         │       ├── ProductSection.js
         │       ├── TeamSection.js
-        │       └── WorkSection.js
+        │       └── InquireSection.js
         ├── SignInPage
         │   └── SignInPage.js
         └── ProfilePage

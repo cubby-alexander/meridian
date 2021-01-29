@@ -72,9 +72,7 @@ const modulePageStyle = {
     tableRow: {
         fontWeight: "300",
         color: "#3c4858",
-    },
-    tableInputRow: {
-        padding: "0",
+        position: "relative",
     },
     ...customCheckboxRadioSwitch,
     disabledCheckboxAndRadio: {
@@ -83,11 +81,15 @@ const modulePageStyle = {
     },
     tableInput: {
         ...defaultFont,
-        height: "100%",
         width: "100%",
+        height: "auto",
+        top: "0",
+        bottom: "0",
+        position: "absolute",
+        padding: "8px",
         display: "inline-block",
-        position: "relative",
-        resize: "none"
+        resize: "none",
+        border: "none",
     }
 };
 

@@ -33,12 +33,10 @@ export default function ModulePage(props) {
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        console.log(activeStep);
     };
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
-        console.log(activeStep);
     };
 
     const handleToggle = value => {

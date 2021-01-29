@@ -1,9 +1,8 @@
 import React from "react";
-import {useContext} from "react";
+import {useEffect} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
-import ModuleContext from "../../views/Module/ModuleContext";
 import UnorderedList from "../UnorderedList/UnorderedList";
 import OrderedList from "../OrderedList/OrderedList";
 import ContentTable from "../ContentTable/ContentTable";
@@ -16,9 +15,12 @@ const useStyles = makeStyles(styles);
 
 
 export default function Slide(props) {
-    const dynamicContent = useContext(ModuleContext);
     const classes = useStyles();
     let htmlContent = null;
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    })
 
     switch (props.typeOfElement) {
         case "header":
@@ -37,16 +39,13 @@ export default function Slide(props) {
             htmlContent = <br />;
             break;
         case "static-table":
-            let staticTable = dynamicContent.tables.find(table => table.slug === props.content)
-            htmlContent = <ContentTable type={"static"} content={staticTable} tableSlug={props.content} />
+            htmlContent = <ContentTable type={"static"} tableSlug={props.content} />
             break;
         case "input-table":
-            let inputTable = dynamicContent.tables.find(table => table.slug === props.content);
-            htmlContent = <ContentTable type={"input"} content={inputTable} tableSlug={props.content} />
+            htmlContent = <ContentTable type={"input"} tableSlug={props.content} />
             break;
         case "rendered-table":
-            let renderedTable = dynamicContent.tables.find(table => table.slug === props.content)
-            htmlContent = <ContentTable type={"rendered"} content={renderedTable} tableSlug={props.content} />
+            htmlContent = <ContentTable type={"rendered"} tableSlug={props.content} />
             break;
         case "checklist section":
             htmlContent =
@@ -55,9 +54,10 @@ export default function Slide(props) {
                     {props.content.checklists.map((list, index) => (
                         <div key={index}>
                             <p>{list.listScope}</p>;
-                            {list.items.map((item) => (
+                            {list.items.map((item, index) => (
                                 <FormControlLabel
                                     disabled
+                                    key={index}
                                     control={
                                         <Checkbox
                                             tabIndex={-1}

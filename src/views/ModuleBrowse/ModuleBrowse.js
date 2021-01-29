@@ -35,8 +35,8 @@ const useStyles = makeStyles(styles);
 
 export default function ModuleBrowse(props) {
     const classes = useStyles();
-    const [simpleSelect, setSimpleSelect] = React.useState("");
-    const [multipleSelect, setMultipleSelect] = React.useState([]);
+    const [simpleSelect, setSimpleSelect] = useState("");
+    const [multipleSelect, setMultipleSelect] = useState([]);
     const { ...rest } = props;
 
     console.log(cardBlog1);
