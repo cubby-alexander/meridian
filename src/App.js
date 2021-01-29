@@ -25,7 +25,7 @@ function App() {
                 <Route path="/components" component={Components} />
                 <Route path="/profile-page" component={ProfilePage} />
                 <Route path="/login-page" component={SignInPage} />
-                <Route path="/module" component={ModulePage} />
+                <Route path="/module/:moduleSlug" component={ModulePage} />
                 <Route path="/module-browse" component={ModuleBrowse} />
                 <Route path="/" component={LandingPage} />
             </Switch>
