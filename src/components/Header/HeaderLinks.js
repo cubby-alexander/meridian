@@ -28,6 +28,7 @@ export default function HeaderLinks(props) {
         <CustomDropdown
           noLiPadding
           buttonText="About Us"
+          boverColor="primary"
           buttonProps={{
             className: classes.navLink,
             color: "transparent"

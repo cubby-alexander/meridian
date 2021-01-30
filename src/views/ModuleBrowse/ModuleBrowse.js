@@ -27,9 +27,7 @@ import Info from "../../components/Typography/Info";
 import CustomInput from "../../components/CustomInput/CustomInput";
 // data link
 import db from "../../db/modules";
-import styles from "assets/jss/material-kit-react/views/modulePage.js";
-
-import cardBlog1 from "assets/img/meeting.jpg";
+import styles from "assets/jss/material-kit-react/views/moduleBrowse.js";
 
 const useStyles = makeStyles(styles);
 
@@ -39,7 +37,7 @@ export default function ModuleBrowse(props) {
     const [multipleSelect, setMultipleSelect] = useState([]);
     const { ...rest } = props;
 
-    console.log(cardBlog1);
+    console.log(simpleSelect);
 
     const handleSimple = event => {
         setSimpleSelect(event.target.value);
@@ -65,8 +63,8 @@ export default function ModuleBrowse(props) {
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
-                        <h4 className={classes.title}>Browse for the right management tool</h4>
-                        <GridContainer justify="left">
+                        <h4 className={classes.title}>Find the right management tool</h4>
+                        <GridContainer justify="center">
                             <GridItem xs={12} sm={5} md={5}>
                                 <CustomInput
                                     labelText="Search for a tool"
@@ -83,7 +81,7 @@ export default function ModuleBrowse(props) {
                                     }}
                                 />
                             </GridItem>
-                            <GridItem xs={4} sm={3}>
+                            <GridItem xs={4} sm={3} md={2}>
                                 <FormControl fullWidth className={classes.selectFormControl}>
                                     <InputLabel
                                         htmlFor="simple-select"
@@ -118,7 +116,7 @@ export default function ModuleBrowse(props) {
                                                 root: classes.selectMenuItem,
                                                 selected: classes.selectMenuItemSelected
                                             }}
-                                            value="2"
+                                            value="recency"
                                         >
                                             Most Recent
                                         </MenuItem>
@@ -127,7 +125,7 @@ export default function ModuleBrowse(props) {
                                                 root: classes.selectMenuItem,
                                                 selected: classes.selectMenuItemSelected
                                             }}
-                                            value="3"
+                                            value="popularity"
                                         >
                                             Most Popular
                                         </MenuItem>
@@ -136,7 +134,7 @@ export default function ModuleBrowse(props) {
                                                 root: classes.selectMenuItem,
                                                 selected: classes.selectMenuItemSelected
                                             }}
-                                            value="4"
+                                            value="alphabetical"
                                         >
                                             Alphabetical
                                         </MenuItem>
@@ -178,7 +176,7 @@ export default function ModuleBrowse(props) {
                                                 root: classes.selectMenuItem,
                                                 selected: classes.selectMenuItemSelectedMultiple
                                             }}
-                                            value="2"
+                                            value="leadership"
                                         >
                                             Leadership
                                         </MenuItem>
@@ -186,7 +184,7 @@ export default function ModuleBrowse(props) {
                                 </FormControl>
                             </GridItem>
                         </GridContainer>
-                        <GridContainer justify="center">
+                        <GridContainer justify="left">
                             {db.map((result) => (
                                 <GridItem xs={12} sm={6} md={4} lg={4}>
                                 <Card blog>

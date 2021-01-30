@@ -65,7 +65,7 @@ export default function ModulePage(props) {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("assets/img/meeting.jpg")} />
+            <Parallax small filter image={require(`assets/img${module.image}`)} />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
