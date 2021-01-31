@@ -1,6 +1,79 @@
-type Note @model {
+type Module @model {
   id: ID!
+  title: String!
+  slug: String!
+  domain: String!
+  categories: [Category] @connection(keyName: "byModule", fields: ["id"])
+  duration: String!
+  dynamicHtmlID: ID!
+  dynamicHtml: DynamicHtml @connection(fields: ["dynamicHtmlID"])
+  slides: [Slide] @connection(keyName: "byModule", fields: ["id"])
+}
+
+type Category @model
+  @key(name: "byModule", fields: ["moduleID", "name"])
+{
+  id: ID!
+  moduleID: ID!
   name: String!
-  description: String
-  priority: String
+}
+
+type DynamicHtml @model {
+  id: ID!
+  moduleID: ID!
+  tables: [DynamicTable] @connection(keyName: "byDynamicHtml", fields: ["id"])
+  checklists: [DynamicChecklist] @connection(keyName: "byDynamicHtml", fields: ["id"])
+  module: Module @connection(fields: ["moduleID"])
+}
+
+type DynamicTable @model
+@key(name: "byDynamicHtml", fields: ["dynamicHtmlID", "slug", "tableTitle"])
+{
+  id: ID!
+  dynamicHtmlID: ID!
+  slug: String!
+  tableTitle: String!
+  tableValues: [TableRow] @connection(keyName: "byDynamicTable", fields: ["id"])
+  dynamicHtml: DynamicHtml @connection(fields: ["dynamicHtmlID"])
+}
+
+
+type TableRow @model
+@key(name: "byDynamicTable", fields: ["dynamicTableID", "default", "current"])
+{
+  id: ID!
+  dynamicTableID: ID!
+  default: String!
+  current: String!
+  mutable: Boolean!
+}
+
+type DynamicChecklist @model
+@key(name: "byDynamicHtml", fields: ["dynamicChecklistID", "dummy"])
+{
+  id: ID!
+  dynamicChecklistID: ID!
+  dummy: String!
+}
+
+type Slide @model
+@key(name: "byModule", fields: ["moduleID", "title", "shortTitle", "whatYouGet"])
+{
+  id: ID!
+  moduleID: ID!
+  title: String!
+  shortTitle: String!
+  whatYouGet: String!
+  htmlElements: [HtmlElement] @connection(keyName: "bySlide", fields: ["id"])
+  module: Module @connection(fields: ["moduleID"])
+}
+
+type HtmlElement @model
+@key(name: "bySlide", fields: ["slideID", "typeOfElement", "content"])
+{
+  id: ID!
+  slideID: ID!
+  typeOfElement: String!
+  content: String!
+  slide: Slide @connection(fields: ["slideID"])
 }

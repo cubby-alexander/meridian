@@ -31,8 +31,8 @@ export default function TeamSection() {
     <div className={classes.section}>
       <h2 className={classes.title}>Meridian Team</h2>
       <div>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
+        <GridContainer justify="center">
+          <GridItem xs={12} sm={8} md={4}>
             <Card plain>
               <GridItem xs={8} className={classes.itemGrid}>
                 <img src={team1} alt="..." className={imageClasses} />
@@ -52,7 +52,7 @@ export default function TeamSection() {
               </CardBody>
             </Card>
           </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
+          <GridItem xs={12} sm={8} md={4}>
             <Card plain>
               <GridItem xs={8} className={classes.itemGrid}>
                 <img src={team2} alt="..." className={imageClasses} />
@@ -71,7 +71,7 @@ export default function TeamSection() {
               </CardBody>
             </Card>
           </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
+          <GridItem xs={12} sm={8} md={4}>
             <Card plain>
               <GridItem xs={8} className={classes.itemGrid}>
                 <img src={team3} alt="..." className={imageClasses} />

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import Tooltip from "@material-ui/core/Tooltip";
 
 // @material-ui/icons
 import { Apps, AccountCircle } from "@material-ui/icons";
@@ -24,6 +23,24 @@ export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
     <List className={classes.list}>
+        <ListItem className={classes.listItem}>
+            <Button
+                href="/module-browse"
+                color="transparent"
+                className={classes.navLink}
+            >
+                Tool Finder
+            </Button>
+        </ListItem>
+        <ListItem className={classes.listItem}>
+            <Button
+                href="/module/deliver-a-compelling-change-announcement"
+                color="transparent"
+                className={classes.navLink}
+            >
+                Sample Module
+            </Button>
+        </ListItem>
       <ListItem className={classes.listItem}>
         <CustomDropdown
           noLiPadding

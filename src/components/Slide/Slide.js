@@ -18,10 +18,6 @@ export default function Slide(props) {
     const classes = useStyles();
     let htmlContent = null;
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    })
-
     switch (props.typeOfElement) {
         case "header":
             htmlContent = <h6>{props.content}</h6>;

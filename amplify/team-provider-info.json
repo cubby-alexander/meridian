@@ -1,4 +1,17 @@
 {
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-meridian-main-183800-authRole",
+      "UnauthRoleArn": "arn:aws:iam::559098897826:role/amplify-meridian-main-183800-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::559098897826:role/amplify-meridian-main-183800-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-meridian-main-183800-deployment",
+      "UnauthRoleName": "amplify-meridian-main-183800-unauthRole",
+      "StackName": "amplify-meridian-main-183800",
+      "StackId": "arn:aws:cloudformation:us-east-1:559098897826:stack/amplify-meridian-main-183800/754357f0-5a85-11eb-b482-1261ea05b3bf",
+      "AmplifyAppId": "d38z0ayo7g86m8"
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-amplify29aebe01c6f54-staging-41042-authRole",

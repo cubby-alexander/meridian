@@ -24,7 +24,7 @@ const useStyles = makeStyles(styles);
 
 export default function ModulePage(props) {
     const classes = useStyles();
-    const [activeStep, setActiveStep] = useState(3);
+    const [activeStep, setActiveStep] = useState(0);
     const [checked, setChecked] = useState([]);
     const theme = useTheme();
     const { ...rest } = props;
@@ -82,7 +82,7 @@ export default function ModulePage(props) {
                                     <h4>{module.slides[activeStep].title}</h4>
                                     <GridItem xs={12}>
                                         <div className={classes.description}>
-                                            <FormBuilder html={module.slides[activeStep].htmlElements} />
+                                            <FormBuilder html={module.slides[activeStep].htmlElements} slide={activeStep} />
                                         </div>
                                     </GridItem>
                                 </GridContainer>
