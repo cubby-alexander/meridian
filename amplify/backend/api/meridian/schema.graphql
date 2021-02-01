@@ -5,8 +5,7 @@ type Module @model {
   domain: String!
   categories: [Category] @connection(keyName: "byModule", fields: ["id"])
   duration: String!
-  dynamicHtmlID: ID!
-  dynamicHtml: DynamicHtml @connection(fields: ["dynamicHtmlID"])
+  dynamicHtml: DynamicHtml @connection(fields: ["id"])
   slides: [Slide] @connection(keyName: "byModule", fields: ["id"])
 }
 
@@ -18,7 +17,9 @@ type Category @model
   name: String!
 }
 
-type DynamicHtml @model {
+type DynamicHtml @model
+  @key(name: "byModule", fields: ["moduleID"])
+{
   id: ID!
   moduleID: ID!
   tables: [DynamicTable] @connection(keyName: "byDynamicHtml", fields: ["id"])

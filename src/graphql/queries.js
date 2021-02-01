@@ -24,7 +24,6 @@ export const syncModules = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -71,7 +70,6 @@ export const getModule = /* GraphQL */ `
         startedAt
       }
       duration
-      dynamicHtmlID
       dynamicHtml {
         id
         moduleID
@@ -89,7 +87,6 @@ export const getModule = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -143,7 +140,6 @@ export const listModules = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -262,7 +258,6 @@ export const syncDynamicHtmls = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -324,7 +319,6 @@ export const getDynamicHtml = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -376,7 +370,6 @@ export const listDynamicHtmls = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -476,7 +469,6 @@ export const getDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -700,7 +692,6 @@ export const syncSlides = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -751,7 +742,6 @@ export const getSlide = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -802,7 +792,6 @@ export const listSlides = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -884,7 +873,6 @@ export const getHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt

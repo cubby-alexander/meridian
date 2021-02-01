@@ -23,7 +23,6 @@ export const onCreateModule = /* GraphQL */ `
         startedAt
       }
       duration
-      dynamicHtmlID
       dynamicHtml {
         id
         moduleID
@@ -41,7 +40,6 @@ export const onCreateModule = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -100,7 +98,6 @@ export const onUpdateModule = /* GraphQL */ `
         startedAt
       }
       duration
-      dynamicHtmlID
       dynamicHtml {
         id
         moduleID
@@ -118,7 +115,6 @@ export const onUpdateModule = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -177,7 +173,6 @@ export const onDeleteModule = /* GraphQL */ `
         startedAt
       }
       duration
-      dynamicHtmlID
       dynamicHtml {
         id
         moduleID
@@ -195,7 +190,6 @@ export const onDeleteModule = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -318,7 +312,6 @@ export const onCreateDynamicHtml = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -390,7 +383,6 @@ export const onUpdateDynamicHtml = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -462,7 +454,6 @@ export const onDeleteDynamicHtml = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -530,7 +521,6 @@ export const onCreateDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -591,7 +581,6 @@ export const onUpdateDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -652,7 +641,6 @@ export const onDeleteDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -796,7 +784,6 @@ export const onCreateSlide = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -857,7 +844,6 @@ export const onUpdateSlide = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -918,7 +904,6 @@ export const onDeleteSlide = /* GraphQL */ `
           startedAt
         }
         duration
-        dynamicHtmlID
         dynamicHtml {
           id
           moduleID
@@ -969,7 +954,6 @@ export const onCreateHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -1013,7 +997,6 @@ export const onUpdateHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt
@@ -1057,7 +1040,6 @@ export const onDeleteHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
-          dynamicHtmlID
           _version
           _deleted
           _lastChangedAt

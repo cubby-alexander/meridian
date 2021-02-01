@@ -61,8 +61,8 @@ export default function HeaderLinks(props) {
             >
               Documentation
             </a>,
-              <Link to="/module/deliver-a-compelling-change-announcement" className={classes.dropdownLink}>
-                  Sample Module
+              <Link to="/module-creation" className={classes.dropdownLink}>
+                  Module Creation
               </Link>,
               <Link to="/module-browse" className={classes.dropdownLink}>
                   Sample Browse
