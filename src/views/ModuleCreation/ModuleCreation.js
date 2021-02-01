@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react";
 import Amplify, { API } from 'aws-amplify';
 import { listModules } from "../../graphql/queries";
-import { createModule as createModuleMutation, deleteModule as deleteModuleMutation} from "../../graphql/mutations";
+import { createModule as createModuleMutation, updateModule as updateModuleMutation, deleteModule as deleteModuleMutation} from "../../graphql/mutations";
+import { listNotes } from '../../graphql/queries';
+import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from '../../graphql/mutations';
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -9,7 +11,8 @@ import classNames from "classnames";
 // @material-ui/core components
 import {makeStyles} from "@material-ui/core/styles";
 import AddIcon from "@material-ui/icons/Add";
-import RemoveIcon from "@material-ui/icons/Remove"
+import RemoveIcon from "@material-ui/icons/Remove";
+import RefreshIcon from "@material-ui/icons/Refresh";
 
 // core components
 import Header from "components/Header/Header.js";
@@ -32,22 +35,58 @@ const initialModuleData = {
     duration: "9 minutes",
 }
 
+const initialFormState = { name: '', description: '' }
+
 export default function ModuleCreation(props) {
     const classes = useStyles();
     const [modules, setModules] = useState([]);
     const [moduleData, setModuleData] = useState(initialModuleData);
+    const [notes, setNotes] = useState([]);
+    const [formData, setFormData] = useState(initialFormState);
     const { ...rest } = props;
 
     useEffect(() => {
         fetchModules();
+        fetchNotes();
     }, []);
 
     console.log(modules, "modules", moduleData, "moduleData");
 
+    async function fetchNotes() {
+        const apiData = await API.graphql({ query: listNotes });
+        setNotes(apiData.data.listNotes.items);
+    }
+
+    async function createNote() {
+        if (!formData.name || !formData.description) return;
+        await API.graphql({ query: createNoteMutation, variables: { input: formData } });
+        setNotes([ ...notes, formData ]);
+        setFormData(initialFormState);
+    }
+
+    async function deleteNote({ id }) {
+        const newNotesArray = notes.filter(note => note.id !== id);
+        setNotes(newNotesArray);
+        await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+    }
+
     async function fetchModules() {
         const apiData = await API.graphql({ query: listModules });
-        console.log(apiData.data.listModules)
+        console.log(apiData.data.listModules, "api data")
         setModules(apiData.data.listModules.items)
+    }
+
+    async function updateModule() {
+        console.log(moduleData, modules[0].id)
+        const id = modules[0].id;
+        const title = moduleData.title;
+        const slug = moduleData.slug;
+        const domain = moduleData.domain;
+        const duration = moduleData.duration;
+        const response = await API.graphql({query: updateModuleMutation, variables: {
+            input: { id, title, domain, duration }
+            }})
+        console.log(response);
     }
 
     async function createModule() {
@@ -91,7 +130,10 @@ export default function ModuleCreation(props) {
                             <Button size="sm" round justIcon color="primary" onClick={createModule}>
                                 <AddIcon />
                             </Button>
-                            <Button size="sm" round justIcon color="rose" onClick={() => deleteModule(modules[0])}>
+                            <Button size="sm" round justIcon color="warning" onClick={updateModule}>
+                                <RefreshIcon />
+                            </Button>
+                            <Button size="sm" round justIcon color="danger" onClick={() => deleteModule(modules[0])}>
                                 <RemoveIcon />
                             </Button>
                         </GridItem>
@@ -131,6 +173,42 @@ export default function ModuleCreation(props) {
                                     return <li>{item.title}</li>
                                 })}
                             </ul>
+                        </GridItem>
+                        <br />
+                        <br />
+                        <GridItem xs={12}>
+                            <input
+                                onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+                                placeholder="Note name"
+                                value={formData.name}
+                            />
+                        </GridItem>
+                        <GridItem xs={12}>
+                            <input
+                                onChange={e => setFormData({ ...formData, 'description': e.target.value})}
+                                placeholder="Note description"
+                                value={formData.description}
+                            />
+                        </GridItem>
+                        <GridItem xs={12}>
+                            <div style={{marginBottom: 30}}>
+                                {
+                                    notes.map(note => (
+                                        <div key={note.id || note.name}>
+                                            <h2>{note.name}</h2>
+                                            <p>{note.description}</p>
+                                            <Button size="sm" round justIcon color="danger" onClick={() => deleteNote(note)}>
+                                                <RemoveIcon />
+                                            </Button>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </GridItem>
+                        <GridItem xs={12}>
+                            <Button size="sm" round justIcon color="primary" onClick={createNote}>
+                                <AddIcon />
+                            </Button>
                         </GridItem>
                     </GridContainer>
                     </div>
