@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from "react";
-import Amplify, { API } from 'aws-amplify';
+import { API } from 'aws-amplify';
 import { listModules } from "../../graphql/queries";
 import { createModule as createModuleMutation, updateModule as updateModuleMutation, deleteModule as deleteModuleMutation} from "../../graphql/mutations";
-import { listNotes } from '../../graphql/queries';
-import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from '../../graphql/mutations';
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -47,28 +45,9 @@ export default function ModuleCreation(props) {
 
     useEffect(() => {
         fetchModules();
-        fetchNotes();
     }, []);
 
     console.log(modules, "modules", moduleData, "moduleData");
-
-    async function fetchNotes() {
-        const apiData = await API.graphql({ query: listNotes });
-        setNotes(apiData.data.listNotes.items);
-    }
-
-    async function createNote() {
-        if (!formData.name || !formData.description) return;
-        await API.graphql({ query: createNoteMutation, variables: { input: formData } });
-        setNotes([ ...notes, formData ]);
-        setFormData(initialFormState);
-    }
-
-    async function deleteNote({ id }) {
-        const newNotesArray = notes.filter(note => note.id !== id);
-        setNotes(newNotesArray);
-        await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
-    }
 
     async function fetchModules() {
         const apiData = await API.graphql({ query: listModules });
@@ -173,42 +152,6 @@ export default function ModuleCreation(props) {
                                     return <li>{item.title}</li>
                                 })}
                             </ul>
-                        </GridItem>
-                        <br />
-                        <br />
-                        <GridItem xs={12}>
-                            <input
-                                onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-                                placeholder="Note name"
-                                value={formData.name}
-                            />
-                        </GridItem>
-                        <GridItem xs={12}>
-                            <input
-                                onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-                                placeholder="Note description"
-                                value={formData.description}
-                            />
-                        </GridItem>
-                        <GridItem xs={12}>
-                            <div style={{marginBottom: 30}}>
-                                {
-                                    notes.map(note => (
-                                        <div key={note.id || note.name}>
-                                            <h2>{note.name}</h2>
-                                            <p>{note.description}</p>
-                                            <Button size="sm" round justIcon color="danger" onClick={() => deleteNote(note)}>
-                                                <RemoveIcon />
-                                            </Button>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        </GridItem>
-                        <GridItem xs={12}>
-                            <Button size="sm" round justIcon color="primary" onClick={createNote}>
-                                <AddIcon />
-                            </Button>
                         </GridItem>
                     </GridContainer>
                     </div>
