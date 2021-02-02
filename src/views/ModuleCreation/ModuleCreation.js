@@ -31,6 +31,7 @@ const initialModuleData = {
     slug: "how-to-say-no-to-your-boss",
     domain: "management",
     duration: "9 minutes",
+    _version: 2,
 }
 
 const initialFormState = { name: '', description: '' }
@@ -51,8 +52,16 @@ export default function ModuleCreation(props) {
 
     async function fetchModules() {
         const apiData = await API.graphql({ query: listModules });
-        console.log(apiData.data.listModules, "api data")
+        const cleanData = apiData.data.listModules.items.filter(item => item._deleted = true);
+        console.log(cleanData)
+        console.log(apiData.data.listModules, apiData, "api data")
         setModules(apiData.data.listModules.items)
+        setModuleData(apiData.data.listModules.items[0])
+    }
+
+    async function filter(arr, callback) {
+        const fail = Symbol()
+        return (await Promise.all(arr.map(async item => (await callback(item)) ? item : fail))).filter(i=>i!==fail)
     }
 
     async function updateModule() {
@@ -62,8 +71,10 @@ export default function ModuleCreation(props) {
         const slug = moduleData.slug;
         const domain = moduleData.domain;
         const duration = moduleData.duration;
+        const _version = moduleData._version;
+        console.log("inputs", id, title, slug, domain, duration, _version);
         const response = await API.graphql({query: updateModuleMutation, variables: {
-            input: { id, title, domain, duration }
+            input: { id, title, domain, duration, _version }
             }})
         console.log(response);
     }
@@ -83,7 +94,7 @@ export default function ModuleCreation(props) {
     async function deleteModule({ id }) {
         const newModulesArray = modules.filter(module => module.id !== id);
         setModules(newModulesArray);
-        await API.graphql({ query: deleteModuleMutation, variables: { input: { id } }});
+        API.graphql({ query: deleteModuleMutation, variables: { input: { id, _version: 23 } }});
     }
 
     return (
@@ -144,12 +155,19 @@ export default function ModuleCreation(props) {
                             placeholder="Duration"
                         />
                     </GridItem>
+                        <GridItem xs={12}>
+                            {modules[0] && (<input
+                                onChange={e => setModuleData({...moduleData, 'duration': e.target.value})}
+                                value={moduleData._version}
+                                placeholder="Version"
+                            />)}
+                        </GridItem>
                         <br />
                         <GridItem xs={12}>
                             <div>This is my data return:</div>
                             <ul>
-                                {modules.map((item) => {
-                                    return <li>{item.title}</li>
+                                {modules.map((item, index) => {
+                                    return <li onClick={e => setModuleData(modules[index])}>{item.title}</li>
                                 })}
                             </ul>
                         </GridItem>
