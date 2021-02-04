@@ -1,6 +1,6 @@
 {
   "auth": {
-    "meridian32521d50": {
+    "meridian": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

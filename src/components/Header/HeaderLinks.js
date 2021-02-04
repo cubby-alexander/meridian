@@ -1,5 +1,7 @@
 /*eslint-disable*/
 import React from "react";
+
+import { Auth } from 'aws-amplify';
 // react components for routing our app without refresh
 import { Link } from "react-router-dom";
 
@@ -19,8 +21,22 @@ import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js
 
 const useStyles = makeStyles(styles);
 
+const user = Auth.currentAuthenticatedUser();
+if (user.status === "resolved") {
+    console.log(user.attributes.email)
+}
+
 export default function HeaderLinks(props) {
   const classes = useStyles();
+
+    async function signOut() {
+        try {
+            await Auth.signOut();
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
+
   return (
     <List className={classes.list}>
         <ListItem className={classes.listItem}>
@@ -70,16 +86,25 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
+
       <ListItem className={classes.listItem}>
         <Button
-          href="https://www.creative-tim.com/product/material-kit-react?ref=mkr-navbar"
+          href="signup"
           color="transparent"
-          target="_blank"
           className={classes.navLink}
         >
  Sign Up
         </Button>
       </ListItem>
+        {user !== null ? <ListItem className={classes.listItem}>
+            <Button
+                color="transparent"
+                className={classes.navLink}
+                onClick={signOut}
+            >
+                Sign Out
+            </Button>
+        </ListItem> : null}
         <ListItem className={classes.listItem}>
             <Button
                 href="/login-page"

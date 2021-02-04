@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "meridian32521d50_identitypool_32521d50",
+    "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "meridi32521d50",
-    "userPoolName": "meridian32521d50_userpool_32521d50",
+    "resourceNameTruncated": "meridi39c54ab2",
+    "userPoolName": "meridian",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "meridi32521d50_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "meridi39c54ab2_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "32521d50",
-    "resourceName": "meridian32521d50",
+    "sharedId": "39c54ab2",
+    "resourceName": "meridian",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -45,12 +45,16 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
+    "serviceName": "Cognito",
     "usernameAttributes": [
         "email"
     ],
+    "useDefault": "manual",
+    "userPoolGroups": false,
     "userPoolGroupList": [],
-    "serviceName": "Cognito",
+    "adminQueries": false,
+    "thirdPartyAuth": false,
     "usernameCaseSensitive": false,
-    "dependsOn": []
+    "dependsOn": [],
+    "hostedUI": false
 }

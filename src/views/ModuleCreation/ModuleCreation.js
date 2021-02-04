@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from "react";
-import { API } from 'aws-amplify';
+import { API, Auth } from 'aws-amplify';
 import { listModules } from "../../graphql/queries";
 import { createModule as createModuleMutation, updateModule as updateModuleMutation, deleteModule as deleteModuleMutation} from "../../graphql/mutations";
+
+
+import {AmplifyAuthenticator, AmplifySignOut} from "@aws-amplify/ui-react";
+import Amplify from "aws-amplify";
+import awsconfig from "../../aws-exports";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -26,6 +31,8 @@ import Button from "../../components/CustomButtons/Button";
 
 const useStyles = makeStyles(styles);
 
+Amplify.configure(awsconfig);
+
 const initialModuleData = {
     title: "How to Say \"No\" to Your Boss",
     slug: "how-to-say-no-to-your-boss",
@@ -34,14 +41,15 @@ const initialModuleData = {
     _version: 2,
 }
 
-const initialFormState = { name: '', description: '' }
+const user = Auth.currentAuthenticatedUser();
+
+console.log(user);
 
 export default function ModuleCreation(props) {
     const classes = useStyles();
     const [modules, setModules] = useState([]);
     const [moduleData, setModuleData] = useState(initialModuleData);
     const [notes, setNotes] = useState([]);
-    const [formData, setFormData] = useState(initialFormState);
     const { ...rest } = props;
 
     useEffect(() => {
@@ -98,6 +106,7 @@ export default function ModuleCreation(props) {
     }
 
     return (
+        <AmplifyAuthenticator>
         <div>
             <Header
                 color="transparent"
@@ -177,5 +186,6 @@ export default function ModuleCreation(props) {
             </div>
             <Footer />
         </div>
+        </AmplifyAuthenticator>
     );
 }

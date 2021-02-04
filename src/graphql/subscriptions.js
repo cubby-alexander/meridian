@@ -26,11 +26,11 @@ export const onCreateModule = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -101,11 +101,11 @@ export const onUpdateModule = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -176,11 +176,11 @@ export const onDeleteModule = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -273,7 +273,7 @@ export const onCreateDynamicHtml = /* GraphQL */ `
     onCreateDynamicHtml {
       id
       moduleID
-      tables {
+      dynamicTables {
         items {
           id
           dynamicHtmlID
@@ -288,7 +288,7 @@ export const onCreateDynamicHtml = /* GraphQL */ `
         nextToken
         startedAt
       }
-      checklists {
+      dynamicChecklists {
         items {
           id
           dynamicChecklistID
@@ -344,7 +344,7 @@ export const onUpdateDynamicHtml = /* GraphQL */ `
     onUpdateDynamicHtml {
       id
       moduleID
-      tables {
+      dynamicTables {
         items {
           id
           dynamicHtmlID
@@ -359,7 +359,7 @@ export const onUpdateDynamicHtml = /* GraphQL */ `
         nextToken
         startedAt
       }
-      checklists {
+      dynamicChecklists {
         items {
           id
           dynamicChecklistID
@@ -415,7 +415,7 @@ export const onDeleteDynamicHtml = /* GraphQL */ `
     onDeleteDynamicHtml {
       id
       moduleID
-      tables {
+      dynamicTables {
         items {
           id
           dynamicHtmlID
@@ -430,7 +430,7 @@ export const onDeleteDynamicHtml = /* GraphQL */ `
         nextToken
         startedAt
       }
-      checklists {
+      dynamicChecklists {
         items {
           id
           dynamicChecklistID
@@ -488,7 +488,7 @@ export const onCreateDynamicTable = /* GraphQL */ `
       dynamicHtmlID
       slug
       tableTitle
-      tableValues {
+      tableRows {
         items {
           id
           dynamicTableID
@@ -507,11 +507,11 @@ export const onCreateDynamicTable = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -548,7 +548,7 @@ export const onUpdateDynamicTable = /* GraphQL */ `
       dynamicHtmlID
       slug
       tableTitle
-      tableValues {
+      tableRows {
         items {
           id
           dynamicTableID
@@ -567,11 +567,11 @@ export const onUpdateDynamicTable = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -608,7 +608,7 @@ export const onDeleteDynamicTable = /* GraphQL */ `
       dynamicHtmlID
       slug
       tableTitle
-      tableValues {
+      tableRows {
         items {
           id
           dynamicTableID
@@ -627,11 +627,11 @@ export const onDeleteDynamicTable = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }

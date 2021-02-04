@@ -22,8 +22,8 @@ type DynamicHtml @model
 {
   id: ID!
   moduleID: ID!
-  tables: [DynamicTable] @connection(keyName: "byDynamicHtml", fields: ["id"])
-  checklists: [DynamicChecklist] @connection(keyName: "byDynamicHtml", fields: ["id"])
+  dynamicTables: [DynamicTable] @connection(keyName: "byDynamicHtml", fields: ["id"])
+  dynamicChecklists: [DynamicChecklist] @connection(keyName: "byDynamicHtml", fields: ["id"])
   module: Module @connection(fields: ["moduleID"])
 }
 
@@ -34,7 +34,7 @@ type DynamicTable @model
   dynamicHtmlID: ID!
   slug: String!
   tableTitle: String!
-  tableValues: [TableRow] @connection(keyName: "byDynamicTable", fields: ["id"])
+  tableRows: [TableRow] @connection(keyName: "byDynamicTable", fields: ["id"])
   dynamicHtml: DynamicHtml @connection(fields: ["dynamicHtmlID"])
 }
 

@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+// aws-amplify components
+import { Auth } from 'aws-amplify';
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -28,14 +30,34 @@ const useStyles = makeStyles(styles);
 
 export default function SignInPage(props) {
   const [cardAnimaton, setCardAnimation] = useState("cardHidden");
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
+  const [code, setCode] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   setTimeout(function() {
     setCardAnimation("");
   }, 300);
   const classes = useStyles();
   const { ...rest } = props;
+
+  async function confirmSignUp() {
+    try {
+      await Auth.confirmSignUp(username, code);
+    } catch (error) {
+      console.log('error confirming sign up', error);
+    }
+  }
+
+  async function signIn() {
+    console.log(username, password);
+    confirmSignUp(username, code);
+    try {
+      const user = await Auth.signIn(username, password);
+      console.log(user)
+    } catch (error) {
+      console.log('error signing in', error);
+    }
+  }
+
   return (
     <div>
       <Header
@@ -105,7 +127,7 @@ export default function SignInPage(props) {
                             <People className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
-                        onChange: e => (setFirstName(e.target.value)),
+                        onChange: e => (setCode(e.target.value)),
                       }}
                     />
                     <CustomInput
@@ -121,7 +143,7 @@ export default function SignInPage(props) {
                             <Email className={classes.inputIconsColor} />
                           </InputAdornment>
                         ),
-                        onChange: e => (setEmail(e.target.value)),
+                        onChange: e => (setUsername(e.target.value)),
                       }}
                     />
                     <CustomInput
@@ -145,7 +167,7 @@ export default function SignInPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg" onClick={e => console.log(firstName, email, password)}>
+                    <Button simple color="primary" size="lg" onClick={signIn}>
                       Get started
                     </Button>
                   </CardFooter>

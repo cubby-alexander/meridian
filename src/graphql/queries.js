@@ -73,11 +73,11 @@ export const getModule = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -244,11 +244,11 @@ export const syncDynamicHtmls = /* GraphQL */ `
       items {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -280,7 +280,7 @@ export const getDynamicHtml = /* GraphQL */ `
     getDynamicHtml(id: $id) {
       id
       moduleID
-      tables {
+      dynamicTables {
         items {
           id
           dynamicHtmlID
@@ -295,7 +295,7 @@ export const getDynamicHtml = /* GraphQL */ `
         nextToken
         startedAt
       }
-      checklists {
+      dynamicChecklists {
         items {
           id
           dynamicChecklistID
@@ -356,11 +356,11 @@ export const listDynamicHtmls = /* GraphQL */ `
       items {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -405,7 +405,7 @@ export const syncDynamicTables = /* GraphQL */ `
         dynamicHtmlID
         slug
         tableTitle
-        tableValues {
+        tableRows {
           nextToken
           startedAt
         }
@@ -436,7 +436,7 @@ export const getDynamicTable = /* GraphQL */ `
       dynamicHtmlID
       slug
       tableTitle
-      tableValues {
+      tableRows {
         items {
           id
           dynamicTableID
@@ -455,11 +455,11 @@ export const getDynamicTable = /* GraphQL */ `
       dynamicHtml {
         id
         moduleID
-        tables {
+        dynamicTables {
           nextToken
           startedAt
         }
-        checklists {
+        dynamicChecklists {
           nextToken
           startedAt
         }
@@ -501,7 +501,7 @@ export const listDynamicTables = /* GraphQL */ `
         dynamicHtmlID
         slug
         tableTitle
-        tableValues {
+        tableRows {
           nextToken
           startedAt
         }
