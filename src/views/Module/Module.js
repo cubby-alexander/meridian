@@ -7,11 +7,12 @@ import {makeStyles, useTheme} from "@material-ui/core/styles";
 import ModuleContext from "./ModuleContext";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-import FormBuilder from "./FormBuilder/FormBuilder.js";
+import Slide from "./Slide/Slide.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
+import Hidden from "@material-ui/core/Hidden";
 // data link
 import db from "../../db/modules";
 
@@ -68,36 +69,44 @@ export default function Module(props) {
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
-                        <GridContainer>
+                        <GridContainer justify="center">
                             <GridItem xs={12} sm={4} md={4}>
                                 <div className={classes.module}>
                                     <h3 className={classes.title}>{module.title}</h3>
                                 </div>
-                                <ol>
-                                    {module.slides.map((slide, index) => (
-                                        <li onClick={e => (setActiveStep(index))}>{slide.shortTitle}</li>
-                                    ))}
-                                </ol>
+                                <Hidden xsDown>
+                                    <ol>
+                                        {module.slides.map((slide, index) => (
+                                            <li
+                                                onClick={e => (setActiveStep(index))}
+                                                className={(index === activeStep) ? classNames(classes.contentsListItem, classes.contentsListItemActive) : classes.contentsListItem}
+                                            >
+                                                {slide.shortTitle}
+                                            </li>
+                                        ))}
+                                    </ol>
+                                </Hidden>
                             </GridItem>
-                            <GridItem xs={12} sm={8} md={8} className={classes.navWrapper}>
+                            <GridItem xs={12} sm={8} md={8} className={classes.slideWrapper}>
                                 <GridContainer justify="center">
                                     <GridItem>
-                                        <h4>{module.slides[activeStep].title}</h4>
+                                        <h4 className={classes.slideTitle}>{module.slides[activeStep].title}</h4>
                                     </GridItem>
                                     <GridItem xs={12}>
                                         <div className={classes.description}>
-                                            <FormBuilder html={module.slides[activeStep].htmlElements} slide={activeStep} />
+                                            <Slide html={module.slides[activeStep].htmlElements} slide={activeStep} />
                                         </div>
                                     </GridItem>
-                                    <GridItem xs={12}>
-                                        <ProgressBar
-                                            length={module.slides.length}
-                                            step={activeStep}
-                                            handleNext={e => (handleNext())}
-                                            handleBack={e => (handleBack())}
-                                        />
-                                    </GridItem>
                                 </GridContainer>
+                            </GridItem>
+                            <GridItem xs={0} sm={4} />
+                            <GridItem xs={12} sm={8}>
+                                <ProgressBar
+                                    length={module.slides.length}
+                                    step={activeStep}
+                                    handleNext={e => (handleNext())}
+                                    handleBack={e => (handleBack())}
+                                />
                             </GridItem>
                         </GridContainer>
                         <GridContainer>

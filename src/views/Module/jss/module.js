@@ -1,4 +1,8 @@
-import { container, title } from "assets/jss/material-kit-react.js";
+import {
+    container,
+    title,
+    primaryColor,
+} from "assets/jss/material-kit-react.js";
 import sectionCardStyles from "assets/jss/material-kit-react/views/componentsSections/sectionCards"
 
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
@@ -42,14 +46,36 @@ const modulePageStyle = {
         minHeight: "32px",
         textDecoration: "none"
     },
-    navWrapper: {
-        margin: "20px auto 50px auto",
-        textAlign: "center"
+    slideTitle: {
+    },
+    slideWrapper: {
+        textAlign: "center",
+        "@media (min-width: 576px)": {
+            margin: "5px auto 50px auto",
+        },
+        "@media (min-width: 768px)": {
+            margin: "20px auto 50px auto",
+        },
+        "@media (min-width: 960px)": {
+            margin: "40px auto 50px auto",
+        },
+        "@media (min-width: 1200px)": {
+            margin: "40px auto 50px auto",
+        }
     },
     ...customCheckboxRadioSwitch,
     disabledCheckboxAndRadio: {
         color: "#3c4858",
         opacity: "1"
+    },
+    contentsListItem: {
+        cursor: "pointer",
+        fontSize: "12px"
+    },
+    contentsListItemActive: {
+        fontWeight: "700",
+        color: primaryColor,
+        cursor: "auto",
     },
 };
 
