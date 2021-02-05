@@ -387,7 +387,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {
@@ -815,7 +815,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {
@@ -1243,7 +1243,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {
@@ -1671,7 +1671,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {
@@ -2099,7 +2099,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {
@@ -2527,7 +2527,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {
@@ -2955,7 +2955,7 @@ export default [
                 htmlElements: [
                     {
                         typeOfElement: "paragraph",
-                        content: "",
+                        content: "Prepare focused talking points with the “what,” “why,” and “how” behind the change to deliver a change announcement that will get your team’s buy-in early on.",
                     },
 
                     {

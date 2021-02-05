@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useRef, useState} from "react";
+import {useReactToPrint} from "react-to-print";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -13,12 +14,15 @@ import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Hidden from "@material-ui/core/Hidden";
+import Print from "@material-ui/icons/Print";
+import Email from "@material-ui/icons/Email";
+import Button from "../../components/CustomButtons/Button";
+
 // data link
 import db from "../../db/modules";
 
 import styles from "views/Module/jss/module.js";
 import ProgressBar from "./ProgressBar/ProgressBar";
-import Pagination from "../../components/Pagination/Pagination";
 
 const useStyles = makeStyles(styles);
 
@@ -27,9 +31,14 @@ export default function Module(props) {
     const [activeStep, setActiveStep] = useState(0);
     const [checked, setChecked] = useState([]);
     const theme = useTheme();
+    const printComponentRef = useRef();
     const { ...rest } = props;
     const module = db.find(modulePage => modulePage.slug === props.match.params.moduleSlug);
     const dynamicHtml = module.dynamicHtml;
+
+    const handlePrint = useReactToPrint({
+        content: () => printComponentRef.current,
+    });
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -89,12 +98,27 @@ export default function Module(props) {
                             </GridItem>
                             <GridItem xs={12} sm={8} md={8} className={classes.slideWrapper}>
                                 <GridContainer justify="center">
-                                    <GridItem>
-                                        <h4 className={classes.slideTitle}>{module.slides[activeStep].title}</h4>
-                                    </GridItem>
                                     <GridItem xs={12}>
                                         <div className={classes.description}>
-                                            <Slide html={module.slides[activeStep].htmlElements} slide={activeStep} />
+                                            <Slide
+                                                title={module.slides[activeStep].title}
+                                                html={module.slides[activeStep].htmlElements}
+                                                slide={activeStep}
+                                                ref={printComponentRef}
+                                            />
+                                            {(activeStep === module.slides.length - 1) ? (<div>
+                                                <Button
+                                                    size="sm"
+                                                    color="primary"
+                                                    onClick={handlePrint}
+                                                >
+                                                    <Print/>
+                                                </Button>
+
+                                                <Button size="sm" color="primary">
+                                                    <Email/>
+                                                </Button>
+                                            </div>): null}
                                         </div>
                                     </GridItem>
                                 </GridContainer>
