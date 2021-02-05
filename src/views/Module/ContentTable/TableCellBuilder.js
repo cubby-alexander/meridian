@@ -1,8 +1,11 @@
 import React from "react";
 import {useContext, useState} from "react";
+
+import classNames from "classnames";
+
 import {makeStyles} from "@material-ui/core/styles";
-import ModuleContext from "../../../views/Module/ModuleContext";
-import styles from "assets/jss/material-kit-react/views/modulePage.js";
+import ModuleContext from "../ModuleContext";
+import styles from "views/Module/jss/contentTable.js";
 import TableCell from "@material-ui/core/TableCell";
 
 const useStyles = makeStyles(styles);
@@ -12,10 +15,7 @@ export default function TableCellBuilder(props) {
     const [cellValue, setCellValue] = useState(props.value);
     const classes = useStyles();
 
-    console.log(cellValue);
-
     function userSetValue(tableSlug, rowId, cellId, updatedValue) {
-        console.log(tableSlug, rowId, cellId, updatedValue)
         context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId].current = updatedValue;
         let newCurrent = {
             ...context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId],
@@ -49,7 +49,7 @@ export default function TableCellBuilder(props) {
                     <textarea
                         value={props.value.current}
                         onChange={e => userSetValue(props.tableSlug, props.rowId, props.cellId, e.target.value)}
-                        className={classes.tableInput}
+                        className={props.isLast ? classNames(classes.tableInput, classes.lastInput) : classes.tableInput}
                     />
                 </TableCell>
             } else {

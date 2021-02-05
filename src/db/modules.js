@@ -396,13 +396,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -812,13 +824,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -1228,13 +1252,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -1644,13 +1680,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -2060,13 +2108,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -2476,13 +2536,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -2892,13 +2964,25 @@ export default [
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-benefit-staff"
                     },
 
                     {
+                        typeOfElement: "break"
+                    },
+
+                    {
                         typeOfElement: "rendered-table",
                         content: "how-the-change-will-impact-the-team"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {

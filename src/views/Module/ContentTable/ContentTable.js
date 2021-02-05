@@ -3,16 +3,16 @@ import {useContext} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
-import ModuleContext from "../../views/Module/ModuleContext";
+import ModuleContext from "../ModuleContext";
 
 import TableContainer from "@material-ui/core/TableContainer";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
-import TableRowBuilder from "./TableRowBuilder/TableRowBuilder";
+import TableRowBuilder from "./TableRowBuilder";
 import TableBody from "@material-ui/core/TableBody";
-import RowAddition from "./RowAddition/RowAddition";
+import RowAddition from "./RowAddition";
 
-import styles from "assets/jss/material-kit-react/views/modulePage.js";
+import styles from "views/Module/jss/contentTable.js";
 
 const useStyles = makeStyles(styles);
 

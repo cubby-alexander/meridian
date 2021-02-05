@@ -7,7 +7,7 @@ $bmd-readonly-underline: $input-border-color !default;
 
 //---
 //-- unverified below here
-$bmd-brand-inverse: $indigo !default;
+$bmd-brand-inverse: #003d33 !default;
 // Typography elements FIXME: review to see if we actually need these
 $icon-color: rgba($black, 0.5) !default;
 
@@ -69,7 +69,7 @@ $pale-bg: #f9f7f3 !default;
 $font-color: #66615b !default;
 
 $brand-default: #cecece !default;
-$brand-primary: $purple !default;
+$brand-primary: #003d33 !default;
 $brand-success: $green !default;
 $brand-danger: $red !default;
 $brand-warning: $orange !default;

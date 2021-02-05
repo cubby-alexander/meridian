@@ -3,13 +3,13 @@ import {useEffect} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
-import UnorderedList from "../UnorderedList/UnorderedList";
-import OrderedList from "../OrderedList/OrderedList";
+import UnorderedList from "../../../components/UnorderedList/UnorderedList";
+import OrderedList from "../../../components/OrderedList/OrderedList";
 import ContentTable from "../ContentTable/ContentTable";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Check from "@material-ui/icons/Check";
-import styles from "assets/jss/material-kit-react/views/modulePage.js";
+import styles from "views/Module/jss/module.js";
 
 const useStyles = makeStyles(styles);
 
@@ -49,7 +49,7 @@ export default function Slide(props) {
                     <h6>{props.content.sectionTitle}</h6>
                     {props.content.checklists.map((list, index) => (
                         <div key={index}>
-                            <p>{list.listScope}</p>;
+                            <p>{list.listScope}</p>
                             {list.items.map((item, index) => (
                                 <FormControlLabel
                                     disabled

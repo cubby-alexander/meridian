@@ -7,22 +7,21 @@ import {makeStyles, useTheme} from "@material-ui/core/styles";
 import ModuleContext from "./ModuleContext";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
-import FormBuilder from "../../components/FormBuilder/FormBuilder.js";
+import FormBuilder from "./FormBuilder/FormBuilder.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
-import MobileStepper from "@material-ui/core/MobileStepper";
-import Button from '@material-ui/core/Button';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 // data link
 import db from "../../db/modules";
-import styles from "assets/jss/material-kit-react/views/modulePage.js";
+
+import styles from "views/Module/jss/module.js";
+import ProgressBar from "./ProgressBar/ProgressBar";
+import Pagination from "../../components/Pagination/Pagination";
 
 const useStyles = makeStyles(styles);
 
-export default function ModulePage(props) {
+export default function Module(props) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = useState(0);
     const [checked, setChecked] = useState([]);
@@ -69,47 +68,40 @@ export default function ModulePage(props) {
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
-                        <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={6}>
+                        <GridContainer>
+                            <GridItem xs={12} sm={4} md={4}>
                                 <div className={classes.module}>
                                     <h3 className={classes.title}>{module.title}</h3>
                                 </div>
+                                <ol>
+                                    {module.slides.map((slide, index) => (
+                                        <li onClick={e => (setActiveStep(index))}>{slide.shortTitle}</li>
+                                    ))}
+                                </ol>
                             </GridItem>
-                        </GridContainer>
-                        <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={12} className={classes.navWrapper}>
+                            <GridItem xs={12} sm={8} md={8} className={classes.navWrapper}>
                                 <GridContainer justify="center">
-                                    <h4>{module.slides[activeStep].title}</h4>
+                                    <GridItem>
+                                        <h4>{module.slides[activeStep].title}</h4>
+                                    </GridItem>
                                     <GridItem xs={12}>
                                         <div className={classes.description}>
                                             <FormBuilder html={module.slides[activeStep].htmlElements} slide={activeStep} />
                                         </div>
                                     </GridItem>
+                                    <GridItem xs={12}>
+                                        <ProgressBar
+                                            length={module.slides.length}
+                                            step={activeStep}
+                                            handleNext={e => (handleNext())}
+                                            handleBack={e => (handleBack())}
+                                        />
+                                    </GridItem>
                                 </GridContainer>
                             </GridItem>
                         </GridContainer>
-                        <GridContainer justify="center">
-                            <GridItem xs={12} sm={12} md={8}>
-                                <MobileStepper
-                                    variant="progress"
-                                    steps={module.slides.length}
-                                    position="static"
-                                    activeStep={activeStep}
-                                    className={classes.root}
-                                    nextButton={
-                                        <Button size="small" onClick={handleNext} disabled={activeStep === module.slides.length - 1}>
-                                            Next
-                                            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                                        </Button>
-                                    }
-                                    backButton={
-                                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                                            Back
-                                        </Button>
-                                    }
-                                />
-                            </GridItem>
+                        <GridContainer>
+
                         </GridContainer>
                     </div>
                 </div>

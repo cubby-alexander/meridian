@@ -1,11 +1,19 @@
 import React from "react";
 import {useContext} from "react";
-import ModuleContext from "../../../views/Module/ModuleContext";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import ModuleContext from "../ModuleContext";
+import AddIcon from "@material-ui/icons/Add";
+import Button from "../../../components/CustomButtons/Button";
+import RemoveIcon from "@material-ui/icons/Remove";
+import styles from "../jss/contentTable";
+
+const useStyles = makeStyles(styles);
 
 export default function RowAddition(props) {
     const context = useContext(ModuleContext);
     const tableSlug = props.tableSlug;
     const contextTable = context.tables.find(table => table.slug === tableSlug);
+    const classes = useStyles();
 
     function addRow() {
         if ("addedRows" in contextTable) {
@@ -20,15 +28,19 @@ export default function RowAddition(props) {
 
     function removeRow() {
         contextTable.addedRows = contextTable.addedRows - 1;
-        contextTable.pop();
+        contextTable.tableValues.pop();
         console.log(context.tables.find(table => table.slug === tableSlug).tableValues)
     }
 
     return (
-        <div>
-            <div onClick={e => addRow()}>Add a row</div>
+        <div className={classes.rowButtons}>
+            <Button size="sm" round justIcon color="primary" onClick={addRow}>
+                <AddIcon />
+            </Button>
             {contextTable.addedRows > 0 ? (
-                <div onClick={e => removeRow()}>Remove last row</div>
+                <Button size="sm" round justIcon color="danger" onClick={removeRow}>
+                    <RemoveIcon />
+                </Button>
             ) : null
             }
         </div>

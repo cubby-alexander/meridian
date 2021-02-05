@@ -1,18 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef} from "react";
 import Slide from "../Slide/Slide.js";
 
 export default function FormBuilder(props) {
 
     useEffect(() => {
-        if (props.slide !== 0) {
-            console.log("scrolling")
-            window.scrollTo({
-                top: 230,
-                left: 0,
-                behavior: 'smooth'})
-        } else {
-            window.scrollTo(0, 0)
-        }
+        window.scrollTo(0, 0)
     })
 
     return (
