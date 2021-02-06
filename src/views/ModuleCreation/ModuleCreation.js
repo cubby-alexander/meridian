@@ -1,12 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { API, Auth } from 'aws-amplify';
+import { API } from 'aws-amplify';
 import { listModules } from "../../graphql/queries";
 import { createModule as createModuleMutation, updateModule as updateModuleMutation, deleteModule as deleteModuleMutation} from "../../graphql/mutations";
-
-
-import {AmplifyAuthenticator, AmplifySignOut} from "@aws-amplify/ui-react";
-import Amplify from "aws-amplify";
-import awsconfig from "../../aws-exports";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
@@ -31,17 +26,16 @@ import Button from "../../components/CustomButtons/Button";
 
 const useStyles = makeStyles(styles);
 
-Amplify.configure(awsconfig);
-
-const user = Auth.currentAuthenticatedUser();
-
-console.log(user);
-
 export default function ModuleCreation(props) {
     const classes = useStyles();
     const [modules, setModules] = useState([]);
-    const [moduleData, setModuleData] = useState({});
-    const [notes, setNotes] = useState([]);
+    const [moduleData, setModuleData] = useState({
+        title: "",
+        slug: "",
+        duration: "",
+        domain: "",
+        _version: null
+    });
     const { ...rest } = props;
 
     useEffect(() => {
@@ -52,10 +46,13 @@ export default function ModuleCreation(props) {
 
     async function fetchModules() {
         API.graphql({ query: listModules }).then((result) => {
-            console.log(result)
-            result.data.listModules.items.filter(item => item._deleted = true)
-            setModules(result.data.listModules.items);
-            setModuleData(result.data.listModules.items[0])
+            console.log(result, "fetchModules call")
+            const cleanData = result.data.listModules.items.filter(item => item._deleted !== true);
+            console.log(cleanData);
+            setModules(cleanData);
+            if (cleanData.length !== 0) {
+                setModuleData(cleanData[0])
+            }
         }).catch((error) => {
             console.log(error)
         })
@@ -64,7 +61,6 @@ export default function ModuleCreation(props) {
     }
 
     async function updateModule() {
-        console.log(moduleData, modules[0].id)
         const id = modules[0].id;
         const title = moduleData.title;
         const slug = moduleData.slug;
@@ -72,32 +68,55 @@ export default function ModuleCreation(props) {
         const duration = moduleData.duration;
         const _version = moduleData._version;
         console.log("inputs", id, title, slug, domain, duration, _version);
-        const response = await API.graphql({query: updateModuleMutation, variables: {
+        API.graphql({query: updateModuleMutation, variables: {
             input: { id, title, domain, duration, _version }
-            }})
-        console.log(response);
+            }}).then((result) => {
+                console.log(result, "update log")
+                const newModules = [];
+                modules.map((module) => {
+                    newModules.push(module);
+                });
+                newModules[0] = result.data.updateModule;
+                setModules(newModules);
+        }).catch((error) => {
+            console.log(error, "update log")
+        })
     }
 
     async function createModule() {
-        console.log("Creating...")
-        const outcome = await API.graphql(
-            {
+        console.log("Creating...");
+        const newModule = {
+            title: "",
+            slug: "",
+            duration: "",
+            domain: "",
+            _version: null
+        };
+        API.graphql({
                 query: createModuleMutation,
-                variables: {
-                    input: moduleData } });
-        console.log(outcome);
-        setModules([ ...modules, moduleData ]);
+                variables: { input: newModule }}).then((result) => {
+                    console.log(result, "creationLog")
+        }).catch((error) => {
+            console.log(error, "creationLog")
+        });
+        setModules([ ...modules, newModule ]);
         setModuleData({});
     }
 
-    async function deleteModule({ id }) {
-        const newModulesArray = modules.filter(module => module.id !== id);
+    async function deleteModule(module) {
+        console.log(module, "delete module pre-fire");
+        const newModulesArray = modules.filter(existingModule => existingModule !== module);
         setModules(newModulesArray);
-        API.graphql({ query: deleteModuleMutation, variables: { input: { id, _version: 23 } }});
+        const id = module.id;
+        const _version = module._version;
+        API.graphql({ query: deleteModuleMutation, variables: { input: { id, _version } }}).then((result) => {
+            console.log(result, "delete log");
+        }).catch((error) => {
+            console.log(error, "delete log");
+        });
     }
 
     return (
-        <AmplifyAuthenticator>
         <div>
             <Header
                 color="transparent"
@@ -177,6 +196,5 @@ export default function ModuleCreation(props) {
             </div>
             <Footer />
         </div>
-        </AmplifyAuthenticator>
     );
 }

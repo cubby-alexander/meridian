@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import React from "react";
+import {useContext} from "react";
 
 import { Auth } from 'aws-amplify';
 // react components for routing our app without refresh
@@ -16,25 +17,25 @@ import { Apps, AccountCircle } from "@material-ui/icons";
 // core components
 import CustomDropdown from "components/CustomDropdown/CustomDropdown.js";
 import Button from "components/CustomButtons/Button.js";
+import ApplicationContext from "../../ApplicationContext";
 
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
 const useStyles = makeStyles(styles);
 
-const user = Auth.currentAuthenticatedUser();
-if (user.status === "resolved") {
-    console.log(user.attributes.email)
-}
-
 export default function HeaderLinks(props) {
   const classes = useStyles();
+  const context = useContext(ApplicationContext);
+
+  console.log(context.authenticated, "Header log of authentication context");
 
     async function signOut() {
-        try {
-            await Auth.signOut();
-        } catch (error) {
-            console.log('error signing out: ', error);
-        }
+        Auth.signOut.then((result) => {
+            console.log(result);
+            context.authenticated = false;
+        }).catch((error) => {
+            console.log(error);
+        })
     }
 
   return (
@@ -86,17 +87,7 @@ export default function HeaderLinks(props) {
           ]}
         />
       </ListItem>
-
-      <ListItem className={classes.listItem}>
-        <Button
-          href="signup"
-          color="transparent"
-          className={classes.navLink}
-        >
- Sign Up
-        </Button>
-      </ListItem>
-        {user !== null ? <ListItem className={classes.listItem}>
+        {context.authenticated === true ? <ListItem className={classes.listItem}>
             <Button
                 color="transparent"
                 className={classes.navLink}
@@ -104,7 +95,18 @@ export default function HeaderLinks(props) {
             >
                 Sign Out
             </Button>
-        </ListItem> : null}
+        </ListItem> :
+            <ListItem className={classes.listItem}>
+                <Button
+                    href="signup"
+                    color="transparent"
+                    className={classes.navLink}
+                >
+                    Sign Up
+                </Button>
+            </ListItem>
+        }
+        {context.authenticated === true ? null :
         <ListItem className={classes.listItem}>
             <Button
                 href="/login-page"
@@ -114,6 +116,7 @@ export default function HeaderLinks(props) {
                 <AccountCircle className={classes.icons} /> Sign In
             </Button>
         </ListItem>
+        }
     </List>
   );
 }
