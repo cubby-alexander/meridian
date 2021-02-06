@@ -4,6 +4,7 @@ import {
     Router,
     Switch,
     Route,
+    Redirect
 } from "react-router-dom";
 import Components from "./views/Components/Components";
 import ProfilePage from "./views/ProfilePage/ProfilePage";
@@ -27,6 +28,8 @@ const theme = createMuiTheme({
     }
 });
 
+const authenticated = false;
+
 function App() {
     var hist = createBrowserHistory();
     return (
@@ -39,7 +42,12 @@ function App() {
                     <Route path="/signup" component={SignUpPage} />
                     <Route path="/module/:moduleSlug" component={Module} />
                     <Route path="/module-browse" component={ModuleBrowse} />
-                    <Route path="/module-creation" component={ModuleCreation} />
+                    <Route
+                        path="/module-creation"
+                        render={({location}) =>
+                            authenticated ? (<ModuleCreation />) :
+                            <Redirect
+                                to={{pathname: "/login-page"}}/>} />
                     <Route path="/" component={LandingPage} />
                 </Switch>
             </Router>
