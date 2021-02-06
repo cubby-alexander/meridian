@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import {useHistory} from "react-router-dom";
 // aws-amplify components
 import { Auth } from 'aws-amplify';
 // @material-ui/core components
@@ -21,6 +22,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
+import ApplicationContext from "../../ApplicationContext";
 
 import styles from "assets/jss/material-kit-react/views/signinPage.js";
 
@@ -33,29 +35,31 @@ export default function SignInPage(props) {
   const [code, setCode] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const context = useContext(ApplicationContext);
   setTimeout(function() {
     setCardAnimation("");
   }, 300);
   const classes = useStyles();
+  const history = useHistory();
   const { ...rest } = props;
 
   async function confirmSignUp() {
-    try {
-      await Auth.confirmSignUp(username, code);
-    } catch (error) {
+    Auth.confirmSignUp(username, code).then((result) => {
+      console.log(result);
+    }).catch((error) => {
       console.log('error confirming sign up', error);
-    }
+    })
   }
 
-  async function signIn() {
-    console.log(username, password);
+  async function newSignIn() {
     confirmSignUp(username, code);
-    try {
-      const user = await Auth.signIn(username, password);
-      console.log(user)
-    } catch (error) {
-      console.log('error signing in', error);
-    }
+    Auth.signIn(username, password).then((result) => {
+      console.log(result);
+      context.authenticated = true;
+      history.push('/module-browse');
+    }).catch((error) => {
+      console.log(error);
+    })
   }
 
   return (
@@ -167,7 +171,7 @@ export default function SignInPage(props) {
                     />
                   </CardBody>
                   <CardFooter className={classes.cardFooter}>
-                    <Button simple color="primary" size="lg" onClick={signIn}>
+                    <Button simple color="primary" size="lg" onClick={newSignIn}>
                       Get started
                     </Button>
                   </CardFooter>

@@ -78,6 +78,20 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "module"
                     }
+                },
+                "dynamicTest": {
+                    "name": "dynamicTest",
+                    "isArray": false,
+                    "type": "AWSJSON",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "lookingAround": {
+                    "name": "lookingAround",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -519,5 +533,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "7b742cfdf519b053f80c7226039cefd8"
+    "version": "a71cccfe9184ffb9b60af10a461c3ddb"
 };

@@ -63,19 +63,12 @@ export default function SignUpPage({ ...rest }) {
 
   async function signUp() {
     console.log(email, password, username);
-    try {
-      const { user } = await Auth.signUp({
-        password,
-        username,
-        attributes: {
-          // optional
-        }
-      });
-      console.log(user);
-    } catch (error) {
+    Auth.signUp({password, username}).then((result) => {
+      console.log(result);
+      history.push('/module-browse');
+    }).catch((error) => {
       console.log('error signing up:', error);
-    }
-    history.push('/module-browse')
+    })
   }
 
   const classes = useStyles();

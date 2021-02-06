@@ -33,14 +33,6 @@ const useStyles = makeStyles(styles);
 
 Amplify.configure(awsconfig);
 
-const initialModuleData = {
-    title: "How to Say \"No\" to Your Boss",
-    slug: "how-to-say-no-to-your-boss",
-    domain: "management",
-    duration: "9 minutes",
-    _version: 2,
-}
-
 const user = Auth.currentAuthenticatedUser();
 
 console.log(user);
@@ -48,7 +40,7 @@ console.log(user);
 export default function ModuleCreation(props) {
     const classes = useStyles();
     const [modules, setModules] = useState([]);
-    const [moduleData, setModuleData] = useState(initialModuleData);
+    const [moduleData, setModuleData] = useState({});
     const [notes, setNotes] = useState([]);
     const { ...rest } = props;
 
@@ -59,17 +51,16 @@ export default function ModuleCreation(props) {
     console.log(modules, "modules", moduleData, "moduleData");
 
     async function fetchModules() {
-        const apiData = await API.graphql({ query: listModules });
-        const cleanData = apiData.data.listModules.items.filter(item => item._deleted = true);
-        console.log(cleanData)
-        console.log(apiData.data.listModules, apiData, "api data")
-        setModules(apiData.data.listModules.items)
-        setModuleData(apiData.data.listModules.items[0])
-    }
+        API.graphql({ query: listModules }).then((result) => {
+            console.log(result)
+            result.data.listModules.items.filter(item => item._deleted = true)
+            setModules(result.data.listModules.items);
+            setModuleData(result.data.listModules.items[0])
+        }).catch((error) => {
+            console.log(error)
+        })
+        console.log(modules, moduleData, "api data")
 
-    async function filter(arr, callback) {
-        const fail = Symbol()
-        return (await Promise.all(arr.map(async item => (await callback(item)) ? item : fail))).filter(i=>i!==fail)
     }
 
     async function updateModule() {
@@ -96,7 +87,7 @@ export default function ModuleCreation(props) {
                     input: moduleData } });
         console.log(outcome);
         setModules([ ...modules, moduleData ]);
-        setModuleData(initialModuleData);
+        setModuleData({});
     }
 
     async function deleteModule({ id }) {
