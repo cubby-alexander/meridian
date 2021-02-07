@@ -21,8 +21,6 @@ export default function ContentTable(props) {
     const tableSlug = props.tableSlug;
     const classes = useStyles();
 
-    console.log(context.tables.find(table => table.slug === tableSlug), tableSlug, "context table");
-
     return (
         <TableContainer>
             <h6 className={classes.tableTitle}>{context.tables.find(table => table.slug === tableSlug).tableTitle}</h6>

@@ -10,6 +10,10 @@ export default function TableRowBuilder(props) {
         return cell.default === "";
     })) {
         return null
+    } else if ((props.type === "rendered") && props.row.every((cell) => {
+        return cell.current === "";
+    })) {
+        return null
     } else {
         return (
             <TableRow>
