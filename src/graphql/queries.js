@@ -37,6 +37,7 @@ export const syncModules = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -87,6 +88,7 @@ export const getModule = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -115,6 +117,7 @@ export const getModule = /* GraphQL */ `
         nextToken
         startedAt
       }
+      dynamicTest
       _version
       _deleted
       _lastChangedAt
@@ -153,6 +156,7 @@ export const listModules = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -258,6 +262,7 @@ export const syncDynamicHtmls = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -332,6 +337,7 @@ export const getDynamicHtml = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -370,6 +376,7 @@ export const listDynamicHtmls = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -469,6 +476,7 @@ export const getDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -692,6 +700,7 @@ export const syncSlides = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -755,6 +764,7 @@ export const getSlide = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -792,6 +802,7 @@ export const listSlides = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -873,6 +884,7 @@ export const getHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt

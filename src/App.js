@@ -4,18 +4,18 @@ import ApplicationContext from "./ApplicationContext";
 import Routing from "routing";
 import muiTheme from "./muiTheme";
 
-const context = {
-    authenticated: true
-};
-
 function App() {
+    const context = {
+        authenticated: true,
+    }
+
     return (
         <ApplicationContext.Provider value={context}>
             <ThemeProvider theme={muiTheme}>
                 <Routing />
             </ThemeProvider>
         </ApplicationContext.Provider>
-)
+    )
 }
 
 export default (App);

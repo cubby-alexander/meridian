@@ -48,6 +48,9 @@ export default function ModuleCreation(props) {
         API.graphql({ query: listModules }).then((result) => {
             console.log(result, "fetchModules call")
             const cleanData = result.data.listModules.items.filter(item => item._deleted !== true);
+            cleanData.forEach((module) => {
+                module.dynamicTest = JSON.parse(module.dynamicTest);
+            });
             console.log(cleanData);
             setModules(cleanData);
             if (cleanData.length !== 0) {
@@ -90,7 +93,16 @@ export default function ModuleCreation(props) {
             slug: "",
             duration: "",
             domain: "",
-            _version: null
+            _version: null,
+            dynamicTest: JSON.stringify({tables: [{
+                    slug: "the-what-and-why-behind-the-change",
+                    tableTitle: "The \"What\" and \"Why\" Behind the Change",
+                    tableValues: [
+                        [{default: "Talking Points", current: "Talking Points", mutable: false}, {default: "What I'll Say", current: "What I'll Say", mutable: false} ],
+                        [{default: "Describe what's going to change", current: "Describe what's going to change", mutable: false}, {default: "\"I want to call everyone's attention to...\"", current: "\"I want to call everyone's attention to...\"", mutable: true} ],
+                        [{default: "Explain why the change needs to happen", current: "Explain why the change needs to happen", mutable: false}, {default: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", current: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", mutable: true}]
+                    ]
+                }], checklists: []}),
         };
         API.graphql({
                 query: createModuleMutation,

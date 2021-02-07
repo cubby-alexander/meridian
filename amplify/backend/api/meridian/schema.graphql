@@ -8,7 +8,6 @@ type Module @model {
   dynamicHtml: DynamicHtml @connection(fields: ["id"])
   slides: [Slide] @connection(keyName: "byModule", fields: ["id"])
   dynamicTest: AWSJSON
-  lookingAround: String
 }
 
 type Category @model @key(name: "byModule", fields: ["moduleID", "name"]) {

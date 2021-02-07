@@ -29,34 +29,37 @@ export default function HeaderLinks(props) {
 
   console.log(context.authenticated, "Header log of authentication context");
 
-    async function signOut() {
-        Auth.signOut.then((result) => {
-            console.log(result);
-            context.authenticated = false;
-        }).catch((error) => {
-            console.log(error);
-        })
+  async function signOut() {
+      Auth.signOut().then((result) => {
+          console.log(result, "sign out");
+          context.authenticated = false;
+          console.log(context.authenticated);
+      }).catch((error) => {
+          console.log(error);
+      })
     }
 
   return (
     <List className={classes.list}>
         <ListItem className={classes.listItem}>
             <Button
-                href="/module-browse"
                 color="transparent"
                 className={classes.navLink}
             >
-                Tool Finder
+                <Link to="/module-browse" className={classes.linkOverride}>
+                    Tool Finder
+                </Link>
             </Button>
         </ListItem>
         <ListItem className={classes.listItem}>
-            <Button
-                href="/module/deliver-a-compelling-change-announcement"
-                color="transparent"
-                className={classes.navLink}
-            >
-                Sample Module
-            </Button>
+            <Link to="/module/deliver-a-compelling-change-announcement" className={classes.linkOverride}>
+                <Button
+                    color="transparent"
+                    className={classes.navLink}
+                >
+                    Sample Module
+                </Button>
+            </Link>
         </ListItem>
       <ListItem className={classes.listItem}>
         <CustomDropdown
@@ -91,7 +94,7 @@ export default function HeaderLinks(props) {
             <Button
                 color="transparent"
                 className={classes.navLink}
-                onClick={signOut}
+                onClick={e => signOut()}
             >
                 Sign Out
             </Button>

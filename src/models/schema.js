@@ -85,13 +85,6 @@ export const schema = {
                     "type": "AWSJSON",
                     "isRequired": false,
                     "attributes": []
-                },
-                "lookingAround": {
-                    "name": "lookingAround",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
                 }
             },
             "syncable": true,
@@ -533,5 +526,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "a71cccfe9184ffb9b60af10a461c3ddb"
+    "version": "2f9be7455c52faef0e8f9fff7b1fb7e3"
 };

@@ -14,7 +14,6 @@ export declare class Module {
   readonly dynamicHtml?: DynamicHtml;
   readonly slides?: (Slide | null)[];
   readonly dynamicTest?: string;
-  readonly lookingAround?: string;
   constructor(init: ModelInit<Module>);
   static copyOf(source: Module, mutator: (draft: MutableModel<Module>) => MutableModel<Module> | void): Module;
 }

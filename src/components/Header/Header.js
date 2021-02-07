@@ -63,10 +63,6 @@ export default function Header(props) {
   });
   const brandComponent = (
     <Button className={classes.title} href="/">
-      <IconButton color="inherit">
-        {" "}
-        <LanguageIcon />{" "}
-      </IconButton>
       {brand}
     </Button>
   );

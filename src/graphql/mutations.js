@@ -43,6 +43,7 @@ export const createModule = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -71,6 +72,7 @@ export const createModule = /* GraphQL */ `
         nextToken
         startedAt
       }
+      dynamicTest
       _version
       _deleted
       _lastChangedAt
@@ -121,6 +123,7 @@ export const updateModule = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -149,6 +152,7 @@ export const updateModule = /* GraphQL */ `
         nextToken
         startedAt
       }
+      dynamicTest
       _version
       _deleted
       _lastChangedAt
@@ -199,6 +203,7 @@ export const deleteModule = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -227,6 +232,7 @@ export const deleteModule = /* GraphQL */ `
         nextToken
         startedAt
       }
+      dynamicTest
       _version
       _deleted
       _lastChangedAt
@@ -346,6 +352,7 @@ export const createDynamicHtml = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -420,6 +427,7 @@ export const updateDynamicHtml = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -494,6 +502,7 @@ export const deleteDynamicHtml = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -551,6 +560,7 @@ export const createDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -614,6 +624,7 @@ export const updateDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -677,6 +688,7 @@ export const deleteDynamicTable = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -854,6 +866,7 @@ export const createSlide = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -917,6 +930,7 @@ export const updateSlide = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -980,6 +994,7 @@ export const deleteSlide = /* GraphQL */ `
           nextToken
           startedAt
         }
+        dynamicTest
         _version
         _deleted
         _lastChangedAt
@@ -1020,6 +1035,7 @@ export const createHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -1066,6 +1082,7 @@ export const updateHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
@@ -1112,6 +1129,7 @@ export const deleteHtmlElement = /* GraphQL */ `
           slug
           domain
           duration
+          dynamicTest
           _version
           _deleted
           _lastChangedAt
