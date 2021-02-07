@@ -49,7 +49,9 @@ export default function ModuleCreation(props) {
             console.log(result, "fetchModules call")
             const cleanData = result.data.listModules.items.filter(item => item._deleted !== true);
             cleanData.forEach((module) => {
-                module.dynamicTest = JSON.parse(module.dynamicTest);
+                module.dynamicHtml = JSON.parse(module.dynamicHtml);
+                module.categories = JSON.parse(module.categories);
+                module.slides = JSON.parse(module.slides);
             });
             console.log(cleanData);
             setModules(cleanData);
@@ -72,7 +74,7 @@ export default function ModuleCreation(props) {
         const _version = moduleData._version;
         console.log("inputs", id, title, slug, domain, duration, _version);
         API.graphql({query: updateModuleMutation, variables: {
-            input: { id, title, domain, duration, _version }
+            input: { id, slug, title, domain, duration, _version }
             }}).then((result) => {
                 console.log(result, "update log")
                 const newModules = [];
@@ -93,8 +95,63 @@ export default function ModuleCreation(props) {
             slug: "",
             duration: "",
             domain: "",
-            _version: null,
-            dynamicTest: JSON.stringify({tables: [{
+            categories: JSON.stringify([]),
+            slides: JSON.stringify([
+                {
+                    title: "Overview",
+                    shortTitle: "Overview",
+                    whatYouGet: "Refusing a staff request or a proposal can leave a team member frustrated. This tool will help " +
+                        "you say \"no\" while still being receptive to your staff's needs.",
+                    htmlElements: [
+                        {
+                            typeOfElement: "header",
+                            content: "What does this training tool help you do?"
+                        },
+
+                        {
+                            typeOfElement: "paragraph",
+                            content: "Announce a change to your team in a way that gets their buy-in from the start."
+                        },
+
+                        {typeOfElement: "break"},
+
+                        {
+                            typeOfElement: "header",
+                            content: "Important Notes"
+                        },
+
+                        {
+                            typeOfElement: "paragraph",
+                            content: "Before announcing the change, use the Introduce an Unpopular Change to Key People tool builder to pre-wire key team members about the change."
+                        },
+
+                        {typeOfElement: "break"},
+
+                        {
+                            typeOfElement: "header",
+                            content: "What do you get?"
+                        },
+
+                        {
+                            typeOfElement: "paragraph",
+                            content: "Change Announcement Plan"
+                        },
+
+                        {typeOfElement: "break"},
+
+                        {
+                            typeOfElement: "header",
+                            content: "Time to complete"
+                        },
+
+                        {
+                            typeOfElement: "paragraph",
+                            content: "9 minutes"
+                        },
+                    ]
+                },
+            ]),
+            dynamicHtml: JSON.stringify({tables: [{
                     slug: "the-what-and-why-behind-the-change",
                     tableTitle: "The \"What\" and \"Why\" Behind the Change",
                     tableValues: [
@@ -103,6 +160,7 @@ export default function ModuleCreation(props) {
                         [{default: "Explain why the change needs to happen", current: "Explain why the change needs to happen", mutable: false}, {default: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", current: "\"This is happening because we need a more efficient system that can give us a better overview of who can work where.\"", mutable: true}]
                     ]
                 }], checklists: []}),
+            _version: null,
         };
         API.graphql({
                 query: createModuleMutation,

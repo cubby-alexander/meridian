@@ -4,15 +4,8 @@ import { schema } from './schema';
 
 
 
-const { Module, Category, DynamicHtml, DynamicTable, TableRow, DynamicChecklist, Slide, HtmlElement } = initSchema(schema);
+const { Module } = initSchema(schema);
 
 export {
-  Module,
-  Category,
-  DynamicHtml,
-  DynamicTable,
-  TableRow,
-  DynamicChecklist,
-  Slide,
-  HtmlElement
+  Module
 };
