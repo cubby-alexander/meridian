@@ -4,7 +4,7 @@ export default [
         image: "/meeting.jpg",
         slug: "deliver-a-compelling-change-announcement",
         domain: "management",
-        categories: [],
+        categories: ["Change Management", "Team Leadership", "Engagement"],
         duration: "9 minutes",
         dynamicHtml: {
           tables: [
@@ -431,7 +431,7 @@ export default [
         image: "/feedback.jpg",
         slug: "give-memorable-positive-feedback",
         domain: "management",
-        categories: [],
+        categories: ["Team Leadership", "Coaching"],
         duration: "7 minutes",
         dynamicHtml: {
             tables: [
@@ -859,7 +859,7 @@ export default [
         image: "/digitalmeeting.jpg",
         slug: "conduct-a-meaningful-virtual-one-on-one",
         domain: "management",
-        categories: [],
+        categories: ["Engagement", "Virtual Management"],
         duration: "9 minutes",
         dynamicHtml: {
             tables: [
@@ -1287,7 +1287,7 @@ export default [
         image: "/theno.jpg",
         slug: "how-to-say-no-to-your-boss",
         domain: "management",
-        categories: [],
+        categories: ["Difficult Conversations"],
         duration: "9 minutes",
         dynamicHtml: {
             tables: [
@@ -1715,7 +1715,7 @@ export default [
         image: "/meeting.jpg",
         slug: "make-progress-on-your-strategic-priorities-in-the-next-two-weeks",
         domain: "management",
-        categories: [],
+        categories: ["Team Leadership"],
         duration: "9 minutes",
         dynamicHtml: {
             tables: [
@@ -2143,7 +2143,7 @@ export default [
         image: "/feedback.jpg",
         slug: "say-no-to-your-staff",
         domain: "management",
-        categories: [],
+        categories: ["Team Leadership", "Difficult Conversations", "Engagement"],
         duration: "9 minutes",
         dynamicHtml: {
             tables: [
@@ -2571,7 +2571,7 @@ export default [
         image: "/digitalmeeting.jpg",
         slug: "improving-staff-engagement-with-a-new-management-habit",
         domain: "management",
-        categories: [],
+        categories: ["Team Leadership", "Engagement", "Change Management"],
         duration: "9 minutes",
         dynamicHtml: {
             tables: [

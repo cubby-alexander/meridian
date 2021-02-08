@@ -29,14 +29,40 @@ const useStyles = makeStyles(styles);
 
 export default function ModuleBrowse(props) {
     const classes = useStyles();
-    const [simpleSelect, setSimpleSelect] = useState("");
+    const [moduleSimpleSelect, setModuleSimpleSelect] = useState("");
     const [multipleSelect, setMultipleSelect] = useState([]);
+    const [workbookSimpleSelect, setWorkbookSimpleSelect] = useState("")
     const { ...rest } = props;
+    const categories = [];
+    const modules = db;
 
-    console.log(simpleSelect);
+    db.map((module) => {
+        module.categories.forEach((category) => {
+            if (categories.includes(category)) {
+               return null
+            } else {
+                categories.push(category)
+            }
+        })
+    })
+    function dataOrdering(data) {
+        let filteredData;
+        if (moduleSimpleSelect === "alphabetical") {
+            data.sort((a, b) => a.title.localeCompare(b.title));
+        }
+        if (multipleSelect.length > 0) {
+            filteredData = data.filter((module) => module.categories.some(category => multipleSelect.includes(category)))
+            return filteredData;
+        } else {
+            return data
+        }
+    }
 
-    const handleSimple = event => {
-        setSimpleSelect(event.target.value);
+    const handleModSimple = event => {
+        setModuleSimpleSelect(event.target.value);
+    };
+    const handleWoSimple = event => {
+        setWorkbookSimpleSelect(event.target.value);
     };
     const handleMultiple = event => {
         setMultipleSelect(event.target.value);
@@ -92,10 +118,10 @@ export default function ModuleBrowse(props) {
                                         classes={{
                                             select: classes.select
                                         }}
-                                        value={simpleSelect}
-                                        onChange={handleSimple}
+                                        value={moduleSimpleSelect}
+                                        onChange={handleModSimple}
                                         inputProps={{
-                                            name: "simpleSelect",
+                                            name: "moduleSimpleSelect",
                                             id: "simple-select"
                                         }}
                                     >
@@ -167,20 +193,22 @@ export default function ModuleBrowse(props) {
                                         >
                                             Categories to display
                                         </MenuItem>
-                                        <MenuItem
-                                            classes={{
-                                                root: classes.selectMenuItem,
-                                                selected: classes.selectMenuItemSelectedMultiple
-                                            }}
-                                            value="leadership"
-                                        >
-                                            Leadership
-                                        </MenuItem>
+                                        {categories.map((category) => (
+                                            <MenuItem
+                                                classes={{
+                                                    root: classes.selectMenuItem,
+                                                    selected: classes.selectMenuItemSelectedMultiple
+                                                }}
+                                                value={category}
+                                            >
+                                                {category}
+                                            </MenuItem>))
+                                        }
                                     </Select>
                                 </FormControl>
                             </GridItem>
                         </GridContainer>
-                        <ModuleGallery modules={db} />
+                        <ModuleGallery modules={dataOrdering(modules)} />
                     </div>
                 </div>
 
@@ -188,7 +216,7 @@ export default function ModuleBrowse(props) {
                     <div className={classes.container}>
                         <h4 className={classes.title}>Find one of your saved management workbooks</h4>
                         <GridContainer justify="center">
-                            <GridItem xs={12} sm={5} md={5}>
+                            <GridItem xs={8} sm={8} md={5}>
                                 <CustomInput
                                     labelText="Search for a tool"
                                     id="material"
@@ -204,7 +232,7 @@ export default function ModuleBrowse(props) {
                                     }}
                                 />
                             </GridItem>
-                            <GridItem xs={4} sm={3} md={2}>
+                            <GridItem xs={4} sm={4} md={2}>
                                 <FormControl fullWidth className={classes.selectFormControl}>
                                     <InputLabel
                                         htmlFor="simple-select"
@@ -219,10 +247,10 @@ export default function ModuleBrowse(props) {
                                         classes={{
                                             select: classes.select
                                         }}
-                                        value={simpleSelect}
-                                        onChange={handleSimple}
+                                        value={workbookSimpleSelect}
+                                        onChange={handleWoSimple}
                                         inputProps={{
-                                            name: "simpleSelect",
+                                            name: "workbookSimpleSelect",
                                             id: "simple-select"
                                         }}
                                     >
@@ -260,48 +288,6 @@ export default function ModuleBrowse(props) {
                                             value="alphabetical"
                                         >
                                             Alphabetical
-                                        </MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </GridItem>
-                            <GridItem xs={8} sm={4}>
-                                <FormControl fullWidth className={classes.selectFormControl}>
-                                    <InputLabel
-                                        htmlFor="multiple-select"
-                                        className={classes.selectLabel}
-                                    >
-                                        Filter List
-                                    </InputLabel>
-                                    <Select
-                                        multiple
-                                        value={multipleSelect}
-                                        onChange={handleMultiple}
-                                        MenuProps={{
-                                            className: classes.selectMenu,
-                                            classes: { paper: classes.selectPaper }
-                                        }}
-                                        classes={{ select: classes.select }}
-                                        inputProps={{
-                                            name: "multipleSelect",
-                                            id: "multiple-select"
-                                        }}
-                                    >
-                                        <MenuItem
-                                            disabled
-                                            classes={{
-                                                root: classes.selectMenuItem
-                                            }}
-                                        >
-                                            Categories to display
-                                        </MenuItem>
-                                        <MenuItem
-                                            classes={{
-                                                root: classes.selectMenuItem,
-                                                selected: classes.selectMenuItemSelectedMultiple
-                                            }}
-                                            value="leadership"
-                                        >
-                                            Leadership
                                         </MenuItem>
                                     </Select>
                                 </FormControl>

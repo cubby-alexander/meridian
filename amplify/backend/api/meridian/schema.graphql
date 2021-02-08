@@ -16,3 +16,11 @@ type User @model {
   company: String!
   workbooks: AWSJSON
 }
+
+type Client @model {
+  id: ID!
+  name: String!
+  adminUser: String!
+  allottedSeats: Int!
+  invitedUsers: AWSJSON
+}
