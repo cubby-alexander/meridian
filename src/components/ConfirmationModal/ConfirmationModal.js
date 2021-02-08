@@ -21,6 +21,11 @@ Transition.displayName = "Transition";
 export default function ConfirmationModal(props) {
     const classes = useStyles()
 
+    function Confirmation() {
+        props.closeModal()
+        props.onConfirmation()
+    }
+
     return (
         <Dialog
             classes={{
@@ -69,7 +74,7 @@ export default function ConfirmationModal(props) {
                     Never Mind
                 </Button>
                 <Button
-                    onClick={() => props.closeModal}
+                    onClick={() => Confirmation()}
                     color="success"
                     simple
                     className={

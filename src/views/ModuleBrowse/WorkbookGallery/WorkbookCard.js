@@ -46,7 +46,7 @@ export default function Workbook(props) {
                         modalOpen={modalOpen}
                         closeModal={() => modalClosed()}
                         message={"Are you sure you want to delete this workbook?"}
-                        onConfirmation={console.log("The workbook was deleted.")}
+                        onConfirmation={() => console.log("The workbook was deleted.")}
                     />
                 </div>
             </CardFooter>
