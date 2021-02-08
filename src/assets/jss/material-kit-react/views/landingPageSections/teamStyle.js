@@ -1,46 +1,87 @@
-import { cardTitle, title } from "assets/jss/material-kit-react.js";
-import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
+import {
+  container,
+  title,
+  cardTitle,
+  description,
+  mlAuto,
+  mrAuto,
+  section,
+  sectionDark,
+  coloredShadow,
+  blackColor,
+  whiteColor,
+  hexToRgb
+} from "assets/jss/material-kit-react.js";
 
 const teamStyle = {
-  section: {
-    padding: "70px 0",
+  container,
+  title,
+  mlAuto,
+  mrAuto,
+  coloredShadow,
+  description,
+  textCenter: {
     textAlign: "center"
   },
-  title: {
-    ...title,
-    marginBottom: "1rem",
-    marginTop: "30px",
-    minHeight: "32px",
-    textDecoration: "none"
+  team: {
+    padding: "0 0",
+    "& h5$description,& h5$descriptionWhite": {
+      marginBottom: "10px"
+    }
   },
-  ...imagesStyle,
-  itemGrid: {
-    marginLeft: "auto",
-    marginRight: "auto"
+  section: {
+    ...sectionDark,
+    ...section,
+    position: "relative",
+    "& $title": {
+      color: whiteColor
+    },
+    "& $descriptionWhite": {
+      color: "rgba(" + hexToRgb(whiteColor) + ", 0.76)"
+    },
+    "& $container": {
+      zIndex: "2",
+      position: "relative"
+    },
+    "&:after": {
+      position: "absolute",
+      zIndex: "1",
+      width: "100%",
+      height: "100%",
+      display: "block",
+      left: "0",
+      top: "0",
+      content: "''",
+      backgroundColor: "rgba(" + hexToRgb(blackColor) + ", 0.7)"
+    }
   },
-  cardTitle,
-  smallTitle: {
-    color: "#6c757d"
-  },
-  description: {
-    color: "#999"
-  },
-  justifyCenter: {
+  justifyContent: {
+    WebkitBoxPack: "center !important",
+    MsFlexPack: "center !important",
     justifyContent: "center !important"
   },
-  socials: {
-    marginTop: "0",
-    width: "100%",
-    transform: "none",
-    left: "0",
-    top: "0",
-    height: "100%",
-    lineHeight: "41px",
-    fontSize: "20px",
-    color: "#999"
+  cardCategory: {
+    marginTop: "10px",
+    textAlign: "center"
   },
-  margin5: {
-    margin: "5px"
+  cardTitle: {
+    ...cardTitle,
+    textAlign: "center"
+  },
+  btn: {
+    marginTop: "0 !important"
+  },
+  card3: {
+    textAlign: "left"
+  },
+  card5: {
+    textAlign: "left",
+    "& $cardTitle": {
+      color: whiteColor
+    },
+    "& $description": {
+      color: whiteColor
+    }
   }
 };
 

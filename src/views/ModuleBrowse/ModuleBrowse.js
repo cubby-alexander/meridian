@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -22,7 +21,9 @@ import CustomInput from "../../components/CustomInput/CustomInput";
 import ModuleGallery from "./ModuleGallery/ModuleGallery";
 // data link
 import db from "../../db/modules";
+import users from "../../db/users";
 import styles from "assets/jss/material-kit-react/views/moduleBrowse.js";
+import WorkbookGallery from "./WorkbookGallery/WorkbookGallery";
 
 const useStyles = makeStyles(styles);
 
@@ -54,11 +55,11 @@ export default function ModuleBrowse(props) {
                 }}
                 {...rest}
             />
-            <Parallax small filter image={require("assets/img/buildings.jpg")} />
+            <Parallax small filter image={require("assets/img/examples/city.jpg")} />
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
-                        <h4 className={classes.title}>Find the right management tool</h4>
+                        <h4 className={classes.title}>Find the right management guide</h4>
                         <GridContainer justify="center">
                             <GridItem xs={12} sm={5} md={5}>
                                 <CustomInput
@@ -185,7 +186,7 @@ export default function ModuleBrowse(props) {
 
                 <div>
                     <div className={classes.container}>
-                        <h4 className={classes.title}>Find the right management tool</h4>
+                        <h4 className={classes.title}>Find one of your saved management workbooks</h4>
                         <GridContainer justify="center">
                             <GridItem xs={12} sm={5} md={5}>
                                 <CustomInput
@@ -306,7 +307,7 @@ export default function ModuleBrowse(props) {
                                 </FormControl>
                             </GridItem>
                         </GridContainer>
-
+                        <WorkbookGallery workbooks={users[0].workbooks} />
                     </div>
                 </div>
             </div>

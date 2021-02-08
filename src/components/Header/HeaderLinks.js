@@ -47,7 +47,7 @@ export default function HeaderLinks(props) {
                 className={classes.navLink}
             >
                 <Link to="/module-browse" className={classes.linkOverride}>
-                    Tool Finder
+                    Guide Finder
                 </Link>
             </Button>
         </ListItem>
@@ -57,7 +57,7 @@ export default function HeaderLinks(props) {
                     color="transparent"
                     className={classes.navLink}
                 >
-                    Sample Module
+                    Sample Guide
                 </Button>
             </Link>
         </ListItem>

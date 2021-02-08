@@ -8,3 +8,11 @@ type Module @model {
   dynamicHtml: AWSJSON
   slides: AWSJSON
 }
+
+type User @model {
+  id: ID!
+  name: String!
+  email: String!
+  company: String!
+  workbooks: AWSJSON
+}

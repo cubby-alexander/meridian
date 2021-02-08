@@ -22,7 +22,7 @@ export default function Routing(props) {
                 <Route path="/profile-page" component={ProfilePage} />
                 <Route path="/login-page" component={SignInPage} />
                 <Route path="/signup" component={SignUpPage} />
-                <Route path="/module/:moduleSlug" component={Module} />
+                <Route path="/module/:moduleSlug/:workbook?" component={Module} />
                 <Route path="/module-browse" component={ModuleBrowse} />
                 <Route
                     path="/module-creation"

@@ -13,7 +13,6 @@ import {
 } from "assets/jss/material-kit-react.js";
 
 import imageStyles from "assets/jss/material-kit-react/imagesStyles.js";
-
 import rotatingCards from "assets/jss/material-kit-react/rotatingCards.js";
 
 const styles = {
@@ -49,6 +48,7 @@ const styles = {
     }
   },
   cardCategory: {
+    color: grayColor[1],
     marginTop: "10px",
     "& svg": {
       position: "relative",
@@ -94,6 +94,12 @@ const styles = {
   },
   cardDescription: {
     ...description
+  },
+  workbookDescription: {
+    ...description,
+    fontSize: "12px",
+    lineHeight: "1em",
+    color: grayColor[1]
   },
   cardDescriptionWhite: {
     color: "rgba(" + hexToRgb(whiteColor) + ", 0.8)"
@@ -199,6 +205,11 @@ const styles = {
   },
   marginBottom20: {
     marginBottom: "20px"
+  },
+  galleryCard: {
+    marginTop: "15px",
+    marginBottom: "15px",
+    cursor: "pointer",
   }
 };
 

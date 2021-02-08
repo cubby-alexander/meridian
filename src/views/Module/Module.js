@@ -20,6 +20,7 @@ import Button from "../../components/CustomButtons/Button";
 
 // data link
 import db from "../../db/modules";
+import users from "../../db/users";
 
 import styles from "views/Module/jss/module.js";
 import ProgressBar from "./ProgressBar/ProgressBar";
@@ -33,8 +34,19 @@ export default function Module(props) {
     const theme = useTheme();
     const printComponentRef = useRef();
     const { ...rest } = props;
+    const user = users[0];
     const module = db.find(modulePage => modulePage.slug === props.match.params.moduleSlug);
-    const dynamicHtml = module.dynamicHtml;
+    let dynamicHtml;
+    let match;
+
+    if (props.match.params.workbook !== undefined) {
+        match = user.workbooks.find(workbook => workbook.workbookSlug === props.match.params.workbook);
+        dynamicHtml = match.dynamicHtml;
+    } else {
+        dynamicHtml = module.dynamicHtml;
+    }
+
+    console.log(match, "workbook");
 
     const handlePrint = useReactToPrint({
         content: () => printComponentRef.current,
