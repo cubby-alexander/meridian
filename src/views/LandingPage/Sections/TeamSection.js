@@ -1,10 +1,8 @@
 import React from "react";
 // nodejs library that concatenates classes
-import classNames from "classnames";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-
-// @material-ui/icons
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -24,11 +22,6 @@ const useStyles = makeStyles(styles);
 
 export default function TeamSection() {
   const classes = useStyles();
-  const imageClasses = classNames(
-    classes.imgRaised,
-    classes.imgRoundedCircle,
-    classes.imgFluid
-  );
   return (
       <div className={classes.team}>
         <div className={classes.container}>
@@ -49,7 +42,7 @@ export default function TeamSection() {
           </GridContainer>
           <GridContainer>
             <GridItem xs={12} sm={4} md={4}>
-              <Card profile plain>
+              <Card plain>
                 <CardAvatar profile plain>
                     <img src={team1} alt="..." className={classes.img} />
                 </CardAvatar>
@@ -68,7 +61,7 @@ export default function TeamSection() {
               </Card>
             </GridItem>
             <GridItem xs={12} sm={4} md={4}>
-              <Card profile plain>
+              <Card plain>
                 <CardAvatar profile plain>
                     <img src={team2} alt="..." className={classes.img} />
                 </CardAvatar>
@@ -86,7 +79,7 @@ export default function TeamSection() {
               </Card>
             </GridItem>
             <GridItem xs={12} sm={4} md={4}>
-              <Card profile plain>
+              <Card plain>
                 <CardAvatar profile plain>
                     <img src={team3} alt="..." className={classes.img} />
                 </CardAvatar>

@@ -9,6 +9,7 @@ export const onCreateModule = /* GraphQL */ `
       slug
       domain
       duration
+      test
       categories
       dynamicHtml
       slides
@@ -28,6 +29,7 @@ export const onUpdateModule = /* GraphQL */ `
       slug
       domain
       duration
+      test
       categories
       dynamicHtml
       slides
@@ -47,9 +49,106 @@ export const onDeleteModule = /* GraphQL */ `
       slug
       domain
       duration
+      test
       categories
       dynamicHtml
       slides
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser {
+    onCreateUser {
+      id
+      name
+      email
+      company
+      workbooks
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser {
+    onUpdateUser {
+      id
+      name
+      email
+      company
+      workbooks
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser {
+    onDeleteUser {
+      id
+      name
+      email
+      company
+      workbooks
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateClient = /* GraphQL */ `
+  subscription OnCreateClient {
+    onCreateClient {
+      id
+      name
+      adminUser
+      allottedSeats
+      invitedUsers
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateClient = /* GraphQL */ `
+  subscription OnUpdateClient {
+    onUpdateClient {
+      id
+      name
+      adminUser
+      allottedSeats
+      invitedUsers
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteClient = /* GraphQL */ `
+  subscription OnDeleteClient {
+    onDeleteClient {
+      id
+      name
+      adminUser
+      allottedSeats
+      invitedUsers
       _version
       _deleted
       _lastChangedAt

@@ -60,18 +60,6 @@ export default function Module(props) {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleToggle = value => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-        setChecked(newChecked);
-    };
-
     return (
         <ModuleContext.Provider value={dynamicHtml}>
         <div>
@@ -157,7 +145,24 @@ export default function Module(props) {
     );
 }
 
-/*  <div
+/*
+
+    const handleToggle = value => {
+        const currentIndex = checked.indexOf(value);
+        const newChecked = [...checked];
+
+        if (currentIndex === -1) {
+            newChecked.push(value);
+        } else {
+            newChecked.splice(currentIndex, 1);
+        }
+        setChecked(newChecked);
+    };
+
+
+
+
+<div
                                                                 className={
                                                                     classes.checkboxAndRadio +
                                                                     " " +

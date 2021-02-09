@@ -4,6 +4,7 @@ type Module @model {
   slug: String!
   domain: String!
   duration: String!
+  test: String!
   categories: AWSJSON
   dynamicHtml: AWSJSON
   slides: AWSJSON

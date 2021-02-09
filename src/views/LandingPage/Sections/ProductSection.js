@@ -3,7 +3,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
-import Chat from "@material-ui/icons/Chat";
 import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import PriorityHighIcon from '@material-ui/icons/PriorityHigh';
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
