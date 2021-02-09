@@ -9,7 +9,7 @@ export default [
                 moduleTitle: "Deliver a Compelling Change Announcement",
                 workbookTitle: "New Inventory Tracking",
                 workbookSlug: "new-inventory-tracking",
-                dateCreated: "09/11/1987",
+                dateCreated: "2021-02-08T17:53:24.292Z",
                 dynamicHtml: {
                     tables: [
                         {
@@ -71,7 +71,7 @@ export default [
                 moduleTitle: "Deliver a Compelling Change Announcement",
                 workbookTitle: "New Reservation System",
                 workbookSlug: "new-reservation-system",
-                dateCreated: "09/11/1987",
+                dateCreated: "2021-02-08T17:53:24.292Z",
                 dynamicHtml: {
                     tables: [
                         {
@@ -133,7 +133,7 @@ export default [
                 moduleTitle: "Give Memorable Positive Feedback",
                 workbookTitle: "Conversation With Jerry",
                 workbookSlug: "conversation-with-jerry",
-                dateCreated: "09/11/1987",
+                dateCreated: "2021-02-08T17:53:24.292Z",
                 dynamicHtml: {
                     tables: [
                         {
@@ -195,7 +195,7 @@ export default [
                 moduleTitle: "Conduct A Meaningful Virtual One-on-One",
                 workbookTitle: "Check In With Mollie",
                 workbookSlug: "check-in-with-mollie",
-                dateCreated: "09/11/1987",
+                dateCreated: "2021-02-08T17:53:24.292Z",
                 dynamicHtml: {
                     tables: [
                         {
@@ -257,7 +257,7 @@ export default [
                 moduleTitle: "Deliver a Compelling Change Announcement",
                 workbookTitle: "New Reservation System",
                 workbookSlug: "new-reservation-system",
-                dateCreated: "09/11/1987",
+                dateCreated: "2021-02-09T17:53:24.292Z",
                 dynamicHtml: {
                     tables: [
                         {
@@ -319,7 +319,7 @@ export default [
                 moduleTitle: "Deliver a Compelling Change Announcement",
                 workbookTitle: "New Reservation System",
                 workbookSlug: "new-reservation-system",
-                dateCreated: "09/11/1987",
+                dateCreated: "2019-02-09T17:53:24.292Z",
                 dynamicHtml: {
                     tables: [
                         {

@@ -7,7 +7,7 @@ export default function WorkbookGallery(props) {
     const {workbooks} = props;
 
     return (
-        <GridContainer justify="left">
+        <GridContainer>
             {workbooks.map((workbook, key) => (
                 <GridItem xs={12} sm={6} md={3} lg={3} key={key}>
                     <WorkbookCard workbook={workbook} />

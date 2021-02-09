@@ -1,6 +1,6 @@
 import React, {useState, /* useEffect */} from "react";
-import { API } from 'aws-amplify';
-import { listModules } from "../../graphql/queries";
+/* import { API } from 'aws-amplify';
+import { listModules } from "../../graphql/queries"; */
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -77,12 +77,22 @@ export default function SearchGallery(props) {
                 categories.push(category)
             }
         })
+        return null
     })
 
     function moduleSearch(data) {
         let filteredModuleResults = data;
-        if (moduleSimpleSelect === "alphabetical") {
-            filteredModuleResults.sort((a, b) => a.title.localeCompare(b.title));
+        switch (moduleSimpleSelect) {
+            case "alphabetical":
+                filteredModuleResults.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+            case "recency":
+                filteredModuleResults.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt))
+                break;
+            case "popularity":
+                break;
+            default:
+                break;
         }
         if (multipleSelect.length > 0) {
             filteredModuleResults = filteredModuleResults.filter((module) => module.categories.some(category => multipleSelect.includes(category)))
@@ -95,8 +105,17 @@ export default function SearchGallery(props) {
 
     function workbookSearch(data) {
         let filteredWorkbookResults = data;
-        if (moduleSimpleSelect === "alphabetical") {
-            filteredWorkbookResults.sort((a, b) => a.workbookTitle.localeCompare(b.workbookTitle));
+        switch (workbookSimpleSelect) {
+            case "alphabetical":
+                filteredWorkbookResults.sort((a, b) => a.workbookTitle.localeCompare(b.workbookTitle));
+                break;
+            case "recency":
+                filteredWorkbookResults.sort((a, b) => Date.parse(b.dateCreated) - Date.parse(a.dateCreated))
+                break;
+            case "popularity":
+                break;
+            default:
+                break;
         }
         if (workbookSearchField.length > 0) {
             filteredWorkbookResults = filteredWorkbookResults.filter(workbook => workbook.workbookTitle.toLowerCase().includes(workbookSearchField.toLowerCase()))
@@ -322,15 +341,6 @@ export default function SearchGallery(props) {
                                             value="recency"
                                         >
                                             Most Recent
-                                        </MenuItem>
-                                        <MenuItem
-                                            classes={{
-                                                root: classes.selectMenuItem,
-                                                selected: classes.selectMenuItemSelected
-                                            }}
-                                            value="popularity"
-                                        >
-                                            Most Popular
                                         </MenuItem>
                                         <MenuItem
                                             classes={{

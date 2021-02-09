@@ -22,6 +22,11 @@ export default function Workbook(props) {
        setModalOpen(false);
     }
 
+    function formatDate(date) {
+        const dateObj = new Date(date);
+        return new Intl.DateTimeFormat('en-US').format(dateObj);
+    }
+
     return (
         <Card className={classes.galleryCard}>
             <CardBody className={classes.galleryBody}>
@@ -37,7 +42,7 @@ export default function Workbook(props) {
             </CardBody>
             <CardFooter className={classes.galleryFooter}>
                 <div className={classes.workbookDescription}>
-                    <span>Created {props.workbook.dateCreated}</span>
+                    <span>Created {formatDate(props.workbook.dateCreated)}</span>
                 </div>
                 <div className={classes.stats + " " + classes.mlAuto}>
                     <Edit onClick={() => history.push(`/module/${props.workbook.moduleSlug}/${props.workbook.workbookSlug}`)} />

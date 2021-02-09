@@ -4,6 +4,7 @@ export default [
         image: "/meeting.jpg",
         slug: "deliver-a-compelling-change-announcement",
         domain: "management",
+        createdAt: "2021-02-06T21:53:24.292Z",
         categories: ["Change Management", "Team Leadership", "Engagement"],
         duration: "9 minutes",
         dynamicHtml: {
@@ -431,6 +432,7 @@ export default [
         image: "/feedback.jpg",
         slug: "give-memorable-positive-feedback",
         domain: "management",
+        createdAt: "2021-02-04T21:53:24.292Z",
         categories: ["Team Leadership", "Coaching"],
         duration: "7 minutes",
         dynamicHtml: {
@@ -859,6 +861,7 @@ export default [
         image: "/digitalmeeting.jpg",
         slug: "conduct-a-meaningful-virtual-one-on-one",
         domain: "management",
+        createdAt: "2021-02-09T21:53:24.292Z",
         categories: ["Engagement", "Virtual Management"],
         duration: "9 minutes",
         dynamicHtml: {
@@ -1287,6 +1290,7 @@ export default [
         image: "/theno.jpg",
         slug: "how-to-say-no-to-your-boss",
         domain: "management",
+        createdAt: "2021-01-09T21:53:24.292Z",
         categories: ["Difficult Conversations"],
         duration: "9 minutes",
         dynamicHtml: {
@@ -1715,6 +1719,7 @@ export default [
         image: "/meeting.jpg",
         slug: "make-progress-on-your-strategic-priorities-in-the-next-two-weeks",
         domain: "management",
+        createdAt: "2020-02-09T21:53:24.292Z",
         categories: ["Team Leadership"],
         duration: "9 minutes",
         dynamicHtml: {
@@ -2143,6 +2148,7 @@ export default [
         image: "/feedback.jpg",
         slug: "say-no-to-your-staff",
         domain: "management",
+        createdAt: "2021-02-09T14:53:24.292Z",
         categories: ["Team Leadership", "Difficult Conversations", "Engagement"],
         duration: "9 minutes",
         dynamicHtml: {
@@ -2571,6 +2577,7 @@ export default [
         image: "/digitalmeeting.jpg",
         slug: "improving-staff-engagement-with-a-new-management-habit",
         domain: "management",
+        createdAt: "2021-02-09T17:53:24.292Z",
         categories: ["Team Leadership", "Engagement", "Change Management"],
         duration: "9 minutes",
         dynamicHtml: {

@@ -1,5 +1,4 @@
 import React from "react";
-import {useState} from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
 import Close from "@material-ui/icons/Close";

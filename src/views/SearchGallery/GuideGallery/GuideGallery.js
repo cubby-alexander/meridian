@@ -23,7 +23,7 @@ export default function GuideGallery(props) {
     }
 
     return (
-        <GridContainer justify="left">
+        <GridContainer>
             {modules.map((module, key) => (
                 <GridItem xs={12} sm={6} md={4} lg={4} key={key}>
                     <GuideCard module={module} workbooks={checkTools(module.slug)} />
