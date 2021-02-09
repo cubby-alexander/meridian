@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {useState} from "react";
+import {Link, useHistory} from "react-router-dom";
 
 import {makeStyles} from "@material-ui/core/styles";
 import Schedule from "@material-ui/icons/Schedule";
-
 import CardHeader from "../../../components/Card/CardHeader";
 import CardBody from "../../../components/Card/CardBody";
 import Info from "../../../components/Typography/Info";
@@ -11,12 +11,25 @@ import CardFooter from "../../../components/Card/CardFooter";
 import Card from "../../../components/Card/Card";
 
 import styles from "../../../assets/jss/material-kit-react/views/moduleBrowse";
+import Popover from "@material-ui/core/Popover";
 
 const useStyles = makeStyles(styles);
 
 export default function ModuleCard(props) {
+    const [anchorElBottom, setAnchorElBottom] = useState(null);
+    const history = useHistory();
     const classes = useStyles();
     const {module} = props;
+
+    function workbookCount(workbooks) {
+        if (workbooks.length === 0) {
+            return null
+        } else if (workbooks.length === 1) {
+            return "1 workbook"
+        } else {
+            return `${workbooks.length} workbooks`
+        }
+    }
 
     return (
         <Card blog>
@@ -44,8 +57,36 @@ export default function ModuleCard(props) {
                 </div>
             </CardBody>
             <CardFooter plain>
-                <div className={classes.author}>
-                    <span>2 tools saved</span>
+                <div className={classes.workbookCount}>
+                    <span onClick={event => setAnchorElBottom(event.currentTarget)}>{workbookCount(props.workbooks)}</span>
+                    <Popover
+                        classes={{
+                            paper: classes.popover
+                        }}
+                        open={Boolean(anchorElBottom)}
+                        anchorEl={anchorElBottom}
+                        onClose={() => setAnchorElBottom(null)}
+                        anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "center"
+                        }}
+                        transformOrigin={{
+                            vertical: "top",
+                            horizontal: "center"
+                        }}
+                    >
+                        <h3 className={classes.popoverHeader}>Saved workbooks for this guide:</h3>
+                        <ul className={classes.popoverBody}>
+                            {props.workbooks.map((workbook) => (
+                                <li
+                                    className={classes.workbookPop}
+                                    onClick={() => history.push(`/module/${module.slug}/${workbook.workbookSlug}`)}
+                                >
+                                    {workbook.workbookTitle}
+                                </li>
+                            ))}
+                        </ul>
+                    </Popover>
                 </div>
                 <div className={classes.stats + " " + classes.mlAuto}>
                     <Schedule/>{module.duration}

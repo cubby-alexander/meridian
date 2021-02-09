@@ -210,6 +210,13 @@ const styles = {
     marginTop: "15px",
     marginBottom: "15px",
     cursor: "pointer",
+  },
+  galleryBody: {
+    padding: "10px 20px"
+  },
+  galleryFooter: {
+    paddingLeft: "20px",
+    paddingRight: "20px"
   }
 };
 

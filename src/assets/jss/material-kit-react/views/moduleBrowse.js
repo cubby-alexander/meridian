@@ -4,11 +4,21 @@ import sectionCardStyles from "assets/jss/material-kit-react/views/componentsSec
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
 import customCheckboxRadioSwitch from "../customCheckboxRadioSwitch";
 import customSelectStyle from "assets/jss/material-kit-react/customSelectStyle.js";
+import popoverStyles from "assets/jss/material-kit-react/popoverStyles.js";
 
 const moduleBrowseStyle = {
-    container,
+    ...container,
     ...sectionCardStyles,
     ...customSelectStyle,
+    ...popoverStyles,
+    popoverHeader: {
+        fontSize: "14px",
+        padding: "0 10px",
+    },
+    popoverBody: {
+        fontSize: "12px",
+        marginLeft: "5px",
+    },
     module: {
         textAlign: "center",
         "& img": {
@@ -37,13 +47,18 @@ const moduleBrowseStyle = {
     },
     title: {
         ...title,
+        fontSize: "24px",
         display: "inline-block",
         textAlign: "center",
         position: "relative",
         width: "100%",
         marginTop: "30px",
         minHeight: "32px",
+        marginBottom: "0px",
         textDecoration: "none"
+    },
+    moduleFilters: {
+        paddingBottom: "15px",
     },
     socials: {
         marginTop: "0",
@@ -92,6 +107,15 @@ const moduleBrowseStyle = {
         display: "inline-block",
         resize: "none",
         border: "none",
+    },
+    test: {
+        paddingBottom: "60px",
+    },
+    workbookCount: {
+        cursor: "pointer"
+    },
+    workbookPop: {
+        cursor: "pointer"
     }
 };
 

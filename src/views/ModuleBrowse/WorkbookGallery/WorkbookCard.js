@@ -24,7 +24,7 @@ export default function Workbook(props) {
 
     return (
         <Card className={classes.galleryCard}>
-            <CardBody>
+            <CardBody className={classes.galleryBody}>
                 <h6
                     onClick={e => history.push(`/module/${props.workbook.moduleSlug}/${props.workbook.workbookSlug}`)}
                     className={classes.cardCategory}
@@ -35,7 +35,7 @@ export default function Workbook(props) {
                         {props.workbook.moduleTitle}
                     </div>
             </CardBody>
-            <CardFooter>
+            <CardFooter className={classes.galleryFooter}>
                 <div className={classes.workbookDescription}>
                     <span>Created {props.workbook.dateCreated}</span>
                 </div>
