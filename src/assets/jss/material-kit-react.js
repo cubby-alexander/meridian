@@ -292,7 +292,7 @@ const mrAuto = {
 };
 
 const coloredShadow = {
-  // some jss/css to make the cards look a bit better on Internet Explorer
+  // some styles/css to make the cards look a bit better on Internet Explorer
   "@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)": {
     display: "none !important"
   },

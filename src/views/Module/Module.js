@@ -22,7 +22,7 @@ import Button from "../../components/CustomButtons/Button";
 import db from "../../db/modules";
 import users from "../../db/users";
 
-import styles from "views/Module/jss/module.js";
+import styles from "views/Module/styles/module.js";
 import ProgressBar from "./ProgressBar/ProgressBar";
 
 const useStyles = makeStyles(styles);

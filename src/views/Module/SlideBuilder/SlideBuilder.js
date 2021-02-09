@@ -8,7 +8,7 @@ import ContentTable from "../ContentTable/ContentTable";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Check from "@material-ui/icons/Check";
-import styles from "views/Module/jss/module.js";
+import styles from "views/Module/styles/module.js";
 
 const useStyles = makeStyles(styles);
 

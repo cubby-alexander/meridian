@@ -10,12 +10,12 @@ import Info from "../../../components/Typography/Info";
 import CardFooter from "../../../components/Card/CardFooter";
 import Card from "../../../components/Card/Card";
 
-import styles from "../../../assets/jss/material-kit-react/views/moduleBrowse";
+import styles from "../styles/guideCard";
 import Popover from "@material-ui/core/Popover";
 
 const useStyles = makeStyles(styles);
 
-export default function ModuleCard(props) {
+export default function GuideCard(props) {
     const [anchorElBottom, setAnchorElBottom] = useState(null);
     const history = useHistory();
     const classes = useStyles();
@@ -32,7 +32,7 @@ export default function ModuleCard(props) {
     }
 
     return (
-        <Card blog>
+        <Card>
             <CardHeader image>
                 <Link to={`module/${module.slug}`}>
                     <img src={require(`../../../assets/img${module.image}`)} alt={"Business Meeting"}/>
@@ -56,7 +56,7 @@ export default function ModuleCard(props) {
                     {module.slides[0].whatYouGet}
                 </div>
             </CardBody>
-            <CardFooter plain>
+            <CardFooter>
                 <div className={classes.workbookCount}>
                     <span onClick={event => setAnchorElBottom(event.currentTarget)}>{workbookCount(props.workbooks)}</span>
                     <Popover
@@ -77,10 +77,11 @@ export default function ModuleCard(props) {
                     >
                         <h3 className={classes.popoverHeader}>Saved workbooks for this guide:</h3>
                         <ul className={classes.popoverBody}>
-                            {props.workbooks.map((workbook) => (
+                            {props.workbooks.map((workbook, key) => (
                                 <li
                                     className={classes.workbookPop}
                                     onClick={() => history.push(`/module/${module.slug}/${workbook.workbookSlug}`)}
+                                    key={key}
                                 >
                                     {workbook.workbookTitle}
                                 </li>

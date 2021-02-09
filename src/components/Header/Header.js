@@ -13,7 +13,6 @@ import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
-import LanguageIcon from "@material-ui/icons/Language";
 // core components
 import styles from "assets/jss/material-kit-react/components/headerStyle.js";
 

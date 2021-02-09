@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import GridContainer from "../../../components/Grid/GridContainer";
-import styles from "../jss/progressBar";
+import styles from "../styles/progressBar";
 
 const useStyles = makeStyles(styles)
 

@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, /* useEffect */} from "react";
+import { API } from 'aws-amplify';
+import { listModules } from "../../graphql/queries";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -18,16 +20,16 @@ import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 import CustomInput from "../../components/CustomInput/CustomInput";
-import ModuleGallery from "./ModuleGallery/ModuleGallery";
+import GuideGallery from "./GuideGallery/GuideGallery";
 import WorkbookGallery from "./WorkbookGallery/WorkbookGallery";
 // data link
 import db from "../../db/modules";
 import users from "../../db/users";
-import styles from "assets/jss/material-kit-react/views/moduleBrowse.js";
+import styles from "views/SearchGallery/styles/searchDisplay.js";
 
 const useStyles = makeStyles(styles);
 
-export default function ModuleBrowse(props) {
+export default function SearchGallery(props) {
     const classes = useStyles();
     const [moduleSearchField, setModuleSearchField] = useState("");
     const [moduleSimpleSelect, setModuleSimpleSelect] = useState("");
@@ -38,6 +40,34 @@ export default function ModuleBrowse(props) {
     const categories = [];
     const modules = db;
     const workbooks = users[0].workbooks;
+
+    /*
+
+    useEffect(() => {
+        fetchModules();
+    }, []);
+
+        async function fetchModules() {
+        API.graphql({ query: listModules }).then((result) => {
+            console.log(result, "fetchModules call")
+            const cleanData = result.data.listModules.items.filter(item => item._deleted !== true);
+            cleanData.forEach((module) => {
+                module.dynamicHtml = JSON.parse(module.dynamicHtml);
+                module.categories = JSON.parse(module.categories);
+                module.slides = JSON.parse(module.slides);
+            });
+            console.log(cleanData);
+            setModules(cleanData);
+            if (cleanData.length !== 0) {
+                setModuleData(cleanData[0])
+            }
+        }).catch((error) => {
+            console.log(error)
+        })
+        console.log(modules, moduleData, "api data")
+    }
+
+    */
 
     db.map((module) => {
         module.categories.forEach((category) => {
@@ -216,13 +246,14 @@ export default function ModuleBrowse(props) {
                                         >
                                             Categories to display
                                         </MenuItem>
-                                        {categories.map((category) => (
+                                        {categories.map((category, key) => (
                                             <MenuItem
                                                 classes={{
                                                     root: classes.selectMenuItem,
                                                     selected: classes.selectMenuItemSelectedMultiple
                                                 }}
                                                 value={category}
+                                                key={key}
                                             >
                                                 {category}
                                             </MenuItem>))
@@ -231,7 +262,7 @@ export default function ModuleBrowse(props) {
                                 </FormControl>
                             </GridItem>
                         </GridContainer>
-                        <ModuleGallery modules={moduleSearch(modules)} />
+                        <GuideGallery modules={moduleSearch(modules)} />
                     </div>
                     <div className={classNames(classes.container, classes.test)}>
                         <h4 className={classes.title}>Find one of your saved management workbooks</h4>

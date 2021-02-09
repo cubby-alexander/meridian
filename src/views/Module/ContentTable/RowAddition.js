@@ -5,7 +5,7 @@ import ModuleContext from "../ModuleContext";
 import AddIcon from "@material-ui/icons/Add";
 import Button from "../../../components/CustomButtons/Button";
 import RemoveIcon from "@material-ui/icons/Remove";
-import styles from "../jss/contentTable";
+import styles from "../styles/contentTable";
 
 const useStyles = makeStyles(styles);
 

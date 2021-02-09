@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import SlideBuilder from "../SlideBuilder/SlideBuilder.js";
-import styles from "../jss/module";
+import styles from "../styles/module";
 
 class Slide extends Component {
     constructor(props){

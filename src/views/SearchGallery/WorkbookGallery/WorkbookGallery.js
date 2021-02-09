@@ -8,8 +8,8 @@ export default function WorkbookGallery(props) {
 
     return (
         <GridContainer justify="left">
-            {workbooks.map((workbook) => (
-                <GridItem xs={12} sm={6} md={3} lg={3}>
+            {workbooks.map((workbook, key) => (
+                <GridItem xs={12} sm={6} md={3} lg={3} key={key}>
                     <WorkbookCard workbook={workbook} />
                 </GridItem>))}
         </GridContainer>

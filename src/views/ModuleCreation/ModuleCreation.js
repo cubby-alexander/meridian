@@ -21,7 +21,7 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 
 import db from "../../db/modules";
-import styles from "assets/jss/material-kit-react/views/moduleBrowse.js";
+import styles from "views/SearchGallery/styles/searchDisplay.js";
 import Button from "../../components/CustomButtons/Button";
 
 const useStyles = makeStyles(styles);
@@ -62,7 +62,6 @@ export default function ModuleCreation(props) {
             console.log(error)
         })
         console.log(modules, moduleData, "api data")
-
     }
 
     async function updateModule() {

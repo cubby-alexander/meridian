@@ -42,12 +42,12 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
         <ListItem className={classes.listItem}>
-            <Link to="/module-browse" className={classes.linkOverride}>
+            <Link to="/search" className={classes.linkOverride}>
                 <Button
                     color="transparent"
                     className={classes.navLink}
                 >
-                        Guide Finder
+                        Search
                 </Button>
             </Link>
         </ListItem>
@@ -84,7 +84,7 @@ export default function HeaderLinks(props) {
               <Link to="/module-creation" className={classes.dropdownLink}>
                   Module Creation
               </Link>,
-              <Link to="/module-browse" className={classes.dropdownLink}>
+              <Link to="/search" className={classes.dropdownLink}>
                   Sample Browse
               </Link>
           ]}

@@ -8,8 +8,8 @@ import CardBody from "../../../components/Card/CardBody";
 import CardFooter from "../../../components/Card/CardFooter";
 import Edit from "@material-ui/icons/Edit";
 import Delete from "@material-ui/icons/Delete";
-import styles from "assets/jss/material-kit-react/views/componentsSections/sectionCards.js";
 import ConfirmationModal from "../../../components/ConfirmationModal/ConfirmationModal";
+import styles from "../styles/workbookCard.js";
 
 const useStyles = makeStyles(styles);
 

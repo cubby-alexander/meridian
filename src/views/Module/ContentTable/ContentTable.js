@@ -12,7 +12,7 @@ import TableRowBuilder from "./TableRowBuilder";
 import TableBody from "@material-ui/core/TableBody";
 import RowAddition from "./RowAddition";
 
-import styles from "views/Module/jss/contentTable.js";
+import styles from "views/Module/styles/contentTable.js";
 
 const useStyles = makeStyles(styles);
 

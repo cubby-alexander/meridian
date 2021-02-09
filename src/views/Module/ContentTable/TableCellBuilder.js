@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 import {makeStyles} from "@material-ui/core/styles";
 import ModuleContext from "../ModuleContext";
-import styles from "views/Module/jss/contentTable.js";
+import styles from "views/Module/styles/contentTable.js";
 import TableCell from "@material-ui/core/TableCell";
 
 const useStyles = makeStyles(styles);

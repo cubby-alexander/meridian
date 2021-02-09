@@ -4,7 +4,7 @@ import ProfilePage from "./views/ProfilePage/ProfilePage";
 import SignInPage from "./views/SignInPage/SignInPage";
 import SignUpPage from "./views/SignupPage/SignupPage";
 import Module from "./views/Module/Module";
-import ModuleBrowse from "./views/ModuleBrowse/ModuleBrowse";
+import SearchGallery from "./views/SearchGallery/SearchGallery";
 import ModuleCreation from "./views/ModuleCreation/ModuleCreation";
 import LandingPage from "./views/LandingPage/LandingPage";
 import React, {useContext} from "react";
@@ -23,7 +23,7 @@ export default function Routing(props) {
                 <Route path="/login-page" component={SignInPage} />
                 <Route path="/signup" component={SignUpPage} />
                 <Route path="/module/:moduleSlug/:workbook?" component={Module} />
-                <Route path="/module-browse" component={ModuleBrowse} />
+                <Route path="/search" component={SearchGallery} />
                 <Route
                     path="/module-creation"
                     render={({location}) =>
