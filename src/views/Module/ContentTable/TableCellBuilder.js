@@ -59,7 +59,7 @@ export default function TableCellBuilder(props) {
                      classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                      component="td"
                      scope={props.class === "body" ? ("row") : null}>
-                    {cellValue}
+                    {cellValue.default}
                  </TableCell>
             }
 

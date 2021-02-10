@@ -1,5 +1,5 @@
 import React from "react";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 
 import {makeStyles} from "@material-ui/core/styles";
 
@@ -18,6 +18,7 @@ const useStyles = makeStyles(styles);
 
 export default function ContentTable(props) {
     const context = useContext(ModuleContext);
+    const [state, setState] = useState(0);
     const tableSlug = props.tableSlug;
     const classes = useStyles();
 
@@ -34,12 +35,13 @@ export default function ContentTable(props) {
                         class={"head"} />
                 </TableHead>
                 <TableBody>
-                    {context.tables.find(table => table.slug === tableSlug).tableValues.map((row, index) => (
-                        index !== 0 ?
+                    {context.tables.find(table => table.slug === tableSlug).tableValues.map((row, key) => (
+                        key !== 0 ?
                             (<TableRowBuilder
+                                key={key}
                                 tableSlug={tableSlug}
                                 row={row}
-                                rowId={index}
+                                rowId={key}
                                 type={props.type}
                                 class={"body"}
                             />)
@@ -50,6 +52,7 @@ export default function ContentTable(props) {
             {props.type === "input" ? (
                 <RowAddition
                     tableSlug={tableSlug}
+                    changeParentState={() => setState(prevState => prevState + 1)}
                 />
                 ) : null
             }

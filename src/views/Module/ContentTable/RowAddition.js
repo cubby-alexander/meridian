@@ -11,7 +11,7 @@ const useStyles = makeStyles(styles);
 
 export default function RowAddition(props) {
     const context = useContext(ModuleContext);
-    const tableSlug = props.tableSlug;
+    const {tableSlug} = props;
     const contextTable = context.tables.find(table => table.slug === tableSlug);
     const classes = useStyles();
 
@@ -24,12 +24,14 @@ export default function RowAddition(props) {
         const newRowLength = contextTable.tableValues[0].length;
         const newRow = new Array(newRowLength).fill({default: "", current: "", mutable: true});
         contextTable.tableValues.push(newRow);
+        props.changeParentState()
     }
 
     function removeRow() {
         contextTable.addedRows = contextTable.addedRows - 1;
         contextTable.tableValues.pop();
         console.log(context.tables.find(table => table.slug === tableSlug).tableValues)
+        props.changeParentState()
     }
 
     return (

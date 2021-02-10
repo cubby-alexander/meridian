@@ -12,10 +12,9 @@ import styles from "views/Module/styles/module.js";
 
 const useStyles = makeStyles(styles);
 
-
 export default function SlideBuilder(props) {
     const classes = useStyles();
-    let htmlContent = null;
+    let htmlContent;
 
     switch (props.typeOfElement) {
         case "header":

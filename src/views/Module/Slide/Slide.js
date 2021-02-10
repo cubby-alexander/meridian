@@ -9,10 +9,6 @@ class Slide extends Component {
         this.state = {}
     }
 
-    componentDidUpdate() {
-        window.scrollTo(0, 0)
-    }
-
     render() {
         const classes = this.props;
         return (

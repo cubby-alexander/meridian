@@ -1,11 +1,8 @@
 import React from "react";
-import {useState} from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCellBuilder from "./TableCellBuilder";
 
 export default function TableRowBuilder(props) {
-    const [tableSlug, setTableSlug] = useState(props.tableSlug);
-
     if ((props.type === "static" || props.type === "rendered") && props.row.every((cell) => {
         return cell.default === "";
     })) {
@@ -17,17 +14,18 @@ export default function TableRowBuilder(props) {
     } else {
         return (
             <TableRow>
-                {props.row.map((cell, index) => (
+                {props.row.map((cell, key) => (
                     <TableCellBuilder
+                        key={key}
                         component="th"
                         scope={props.class === "body" ? ("row") : null}
                         class={props.class}
                         cellType={props.type}
                         tableSlug={props.tableSlug}
                         rowId={props.rowId}
-                        cellId={index}
+                        cellId={key}
                         value={cell}
-                        isLast={props.row.length === (index + 1)}
+                        isLast={props.row.length === (key + 1)}
                     />
                 ))}
             </TableRow>

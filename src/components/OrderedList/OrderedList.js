@@ -1,10 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import ListItem from "../ListItem/ListItem";
 
 
 export default function OrderedList(props) {
-    var inputId = props.inputId;
-    const [value, setInputId] = useState(0);
     return (<ol>
         {props.content.map((listItem, index) => {
             return <ListItem value={listItem} key={index}/>

@@ -19,10 +19,9 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
-
-import db from "../../db/modules";
-import styles from "views/SearchGallery/styles/searchDisplay.js";
 import Button from "../../components/CustomButtons/Button";
+
+import styles from "views/SearchGallery/styles/searchDisplay.js";
 
 const useStyles = makeStyles(styles);
 
@@ -40,7 +39,7 @@ export default function ModuleCreation(props) {
 
     useEffect(() => {
         fetchModules();
-    }, []);
+    });
 
     console.log(modules, "modules", moduleData, "moduleData");
 
@@ -79,6 +78,7 @@ export default function ModuleCreation(props) {
                 const newModules = [];
                 modules.map((module) => {
                     newModules.push(module);
+                    return null;
                 });
                 newModules[0] = result.data.updateModule;
                 setModules(newModules);

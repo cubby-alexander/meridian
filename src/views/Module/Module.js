@@ -1,10 +1,13 @@
-import React, {useRef, useState} from "react";
+import React, {useRef, useState, useContext, useEffect} from "react";
 import {useReactToPrint} from "react-to-print";
+import {API} from "aws-amplify";
+import {getModule} from "graphql/queries";
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
-import {makeStyles, useTheme} from "@material-ui/core/styles";
+import {makeStyles} from "@material-ui/core/styles";
 // core components
+import ApplicationContext from "../../ApplicationContext";
 import ModuleContext from "./ModuleContext";
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -20,33 +23,46 @@ import Button from "../../components/CustomButtons/Button";
 
 // data link
 import db from "../../db/modules";
-import users from "../../db/users";
 
 import styles from "views/Module/styles/module.js";
 import ProgressBar from "./ProgressBar/ProgressBar";
 
 const useStyles = makeStyles(styles);
 
+async function matchModule(id) {
+    API.graphql({query: getModule, variables: {id: id}}).then((result) => {
+        console.log(result);
+    }).catch((error) => {
+        console.log(error);
+    })
+}
+
 export default function Module(props) {
-    const classes = useStyles();
+    const context = useContext(ApplicationContext);
     const [activeStep, setActiveStep] = useState(0);
-    const [checked, setChecked] = useState([]);
-    const theme = useTheme();
     const printComponentRef = useRef();
     const { ...rest } = props;
-    const user = users[0];
+    const classes = useStyles();
     const module = db.find(modulePage => modulePage.slug === props.match.params.moduleSlug);
     let dynamicHtml;
-    let match;
+    let currentWorkbook;
+
+    useEffect(() => {
+        if (activeStep === 0) {
+            window.scrollTo(0, 0)
+        } else {
+            window.scrollTo(0, 200)
+        }
+    })
 
     if (props.match.params.workbook !== undefined) {
-        match = user.workbooks.find(workbook => workbook.workbookSlug === props.match.params.workbook);
-        dynamicHtml = match.dynamicHtml;
+        currentWorkbook = context.user.workbooks.find(workbook => workbook.workbookSlug === props.match.params.workbook);
+        dynamicHtml = currentWorkbook.dynamicHtml;
     } else {
         dynamicHtml = module.dynamicHtml;
     }
 
-    console.log(match, "workbook");
+    console.log("workbook", context);
 
     const handlePrint = useReactToPrint({
         content: () => printComponentRef.current,
@@ -85,10 +101,11 @@ export default function Module(props) {
                                 </div>
                                 <Hidden xsDown>
                                     <ol>
-                                        {module.slides.map((slide, index) => (
+                                        {module.slides.map((slide, key) => (
                                             <li
-                                                onClick={e => (setActiveStep(index))}
-                                                className={(index === activeStep) ? classNames(classes.contentsListItem, classes.contentsListItemActive) : classes.contentsListItem}
+                                                onClick={e => (setActiveStep(key))}
+                                                key={key}
+                                                className={(key === activeStep) ? classNames(classes.contentsListItem, classes.contentsListItemActive) : classes.contentsListItem}
                                             >
                                                 {slide.shortTitle}
                                             </li>
@@ -123,7 +140,6 @@ export default function Module(props) {
                                     </GridItem>
                                 </GridContainer>
                             </GridItem>
-                            <GridItem xs={0} sm={4} />
                             <GridItem xs={12} sm={8}>
                                 <ProgressBar
                                     length={module.slides.length}
@@ -146,6 +162,8 @@ export default function Module(props) {
 }
 
 /*
+
+    const [checked, setChecked] = useState([]);
 
     const handleToggle = value => {
         const currentIndex = checked.indexOf(value);
