@@ -3,13 +3,9 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCellBuilder from "./TableCellBuilder";
 
 export default function TableRowBuilder(props) {
-    if ((props.type === "static" || props.type === "rendered") && props.row.every((cell) => {
-        return cell.default === "";
-    })) {
+    if ((props.type === "static" || props.type === "rendered") && props.row.every((cell) =>  cell.default === "")) {
         return null
-    } else if ((props.type === "rendered") && props.row.every((cell) => {
-        return cell.current === "";
-    })) {
+    } else if ((props.type === "rendered") && props.row.every((cell) => cell.current === "")) {
         return null
     } else {
         return (

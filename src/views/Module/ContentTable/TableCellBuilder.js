@@ -16,6 +16,7 @@ export default function TableCellBuilder(props) {
     const classes = useStyles();
 
     function userSetValue(tableSlug, rowId, cellId, updatedValue) {
+        console.log(context.tables, tableSlug, rowId, cellId, updatedValue);
         context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId].current = updatedValue;
         let newCurrent = {
             ...context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId],
@@ -47,7 +48,7 @@ export default function TableCellBuilder(props) {
                     padding="none"
                     scope={props.class === "body" ? ("row") : null}>
                     <textarea
-                        value={props.value.current}
+                        value={cellValue.current}
                         onChange={e => userSetValue(props.tableSlug, props.rowId, props.cellId, e.target.value)}
                         className={props.isLast ? classNames(classes.tableInput, classes.lastInput) : classes.tableInput}
                     />

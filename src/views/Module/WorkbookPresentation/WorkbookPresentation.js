@@ -30,6 +30,8 @@ export default function WorkbookPresentation(props) {
         documentTitle: props.content.title,
     });
 
+    console.log("modal", props.content)
+
     return (
         <Dialog
             classes={{
@@ -40,7 +42,7 @@ export default function WorkbookPresentation(props) {
             TransitionComponent={Transition}
             keepMounted
             scroll="body"
-            maxWidth="false"
+            maxWidth={false}
             onClose={() => props.close()}
             aria-labelledby="classic-modal-slide-title"
             aria-describedby="classic-modal-slide-description"

@@ -139,7 +139,7 @@ export default function Module(props) {
                             </Hidden>
                             <GridItem xs={12} sm={8}>
                                 <ProgressBar
-                                    length={module.slides.length - 1}
+                                    length={module.slides.length}
                                     step={activeStep}
                                     handleNext={e => (handleNext())}
                                     handleBack={e => (handleBack())}
