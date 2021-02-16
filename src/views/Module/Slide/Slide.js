@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import SlideBuilder from "../SlideBuilder/SlideBuilder.js";
-import styles from "../styles/module";
+import jss from "../styles/module";
+
+const styles = (theme) => ({
+    ...jss
+});
 
 class Slide extends Component {
     constructor(props){
@@ -10,7 +14,7 @@ class Slide extends Component {
     }
 
     render() {
-        const classes = this.props;
+        const { classes } = this.props;
         return (
             <div>
                 <h4 className={classes.slideTitle}>{this.props.title}</h4>
@@ -27,4 +31,4 @@ class Slide extends Component {
     }
 }
 
-export default withStyles(styles) (Slide);
+export default withStyles(styles)(Slide);

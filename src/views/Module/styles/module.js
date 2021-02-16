@@ -47,7 +47,7 @@ const modulePageStyle = {
         textDecoration: "none"
     },
     slideTitle: {
-        textAlign: "center",
+        textAlign: "center !important",
     },
     slideWrapper: {
         textAlign: "center",

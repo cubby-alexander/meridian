@@ -1,5 +1,4 @@
 import React, {useRef, useState, useContext, useEffect} from "react";
-import {useReactToPrint} from "react-to-print";
 import {API} from "aws-amplify";
 import {getModule} from "graphql/queries";
 // nodejs library that concatenates classes
@@ -17,8 +16,6 @@ import GridItem from "components/Grid/GridItem.js";
 import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Hidden from "@material-ui/core/Hidden";
-import Print from "@material-ui/icons/Print";
-import Email from "@material-ui/icons/Email";
 import Button from "../../components/CustomButtons/Button";
 
 // data link
@@ -26,6 +23,7 @@ import db from "../../db/modules";
 
 import styles from "views/Module/styles/module.js";
 import ProgressBar from "./ProgressBar/ProgressBar";
+import WorkbookPresentation from "./WorkbookPresentation/WorkbookPresentation";
 
 const useStyles = makeStyles(styles);
 
@@ -40,6 +38,7 @@ async function matchModule(id) {
 export default function Module(props) {
     const context = useContext(ApplicationContext);
     const [activeStep, setActiveStep] = useState(0);
+    const [presentation, setPresentation] = useState(false);
     const printComponentRef = useRef();
     const { ...rest } = props;
     const classes = useStyles();
@@ -63,10 +62,6 @@ export default function Module(props) {
     }
 
     console.log("workbook", context);
-
-    const handlePrint = useReactToPrint({
-        content: () => printComponentRef.current,
-    });
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -94,6 +89,12 @@ export default function Module(props) {
             <div className={classNames(classes.main, classes.mainRaised)}>
                 <div>
                     <div className={classes.container}>
+                        <WorkbookPresentation
+                            presentation={presentation}
+                            close={() => setPresentation(false)}
+                            content={module.slides[module.slides.length - 1]}
+                            dynamicValues={dynamicHtml}
+                        />
                         <GridContainer justify="center">
                             <GridItem xs={12} sm={4} md={4}>
                                 <div className={classes.module}>
@@ -101,16 +102,23 @@ export default function Module(props) {
                                 </div>
                                 <Hidden xsDown>
                                     <ol>
-                                        {module.slides.map((slide, key) => (
-                                            <li
-                                                onClick={e => (setActiveStep(key))}
-                                                key={key}
-                                                className={(key === activeStep) ? classNames(classes.contentsListItem, classes.contentsListItemActive) : classes.contentsListItem}
-                                            >
-                                                {slide.shortTitle}
-                                            </li>
-                                        ))}
+                                        {module.slides.map((slide, key) => {
+                                            if (key !== module.slides.length - 1) {
+                                                return <li
+                                                    onClick={e => (setActiveStep(key))}
+                                                    key={key}
+                                                    className={(key === activeStep) ? classNames(classes.contentsListItem, classes.contentsListItemActive) : classes.contentsListItem}
+                                                >
+                                                    {slide.shortTitle}
+                                                </li>
+                                            }
+                                        })}
                                     </ol>
+                                    <Button
+                                        onClick={() => setPresentation(true)}
+                                        size="sm"
+                                        color="primary"
+                                    >Open Workbook</Button>
                                 </Hidden>
                             </GridItem>
                             <GridItem xs={12} sm={8} md={8} className={classes.slideWrapper}>
@@ -121,28 +129,17 @@ export default function Module(props) {
                                                 title={module.slides[activeStep].title}
                                                 html={module.slides[activeStep].htmlElements}
                                                 slide={activeStep}
-                                                ref={printComponentRef}
                                             />
-                                            {(activeStep === module.slides.length - 1) ? (<div>
-                                                <Button
-                                                    size="sm"
-                                                    color="primary"
-                                                    onClick={handlePrint}
-                                                >
-                                                    <Print/>
-                                                </Button>
-
-                                                <Button size="sm" color="primary">
-                                                    <Email/>
-                                                </Button>
-                                            </div>): null}
                                         </div>
                                     </GridItem>
                                 </GridContainer>
                             </GridItem>
+                            <Hidden xsDown>
+                                <GridItem xs={12} sm={4} />
+                            </Hidden>
                             <GridItem xs={12} sm={8}>
                                 <ProgressBar
-                                    length={module.slides.length}
+                                    length={module.slides.length - 1}
                                     step={activeStep}
                                     handleNext={e => (handleNext())}
                                     handleBack={e => (handleBack())}
