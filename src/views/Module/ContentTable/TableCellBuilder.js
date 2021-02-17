@@ -16,7 +16,8 @@ export default function TableCellBuilder(props) {
     const classes = useStyles();
 
     function userSetValue(tableSlug, rowId, cellId, updatedValue) {
-        console.log(context.tables, tableSlug, rowId, cellId, updatedValue);
+        console.log(context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId], tableSlug, rowId, cellId, updatedValue);
+        console.log(context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId-1], tableSlug, rowId, cellId, updatedValue);
         context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId].current = updatedValue;
         let newCurrent = {
             ...context.tables.find(table => table.slug === tableSlug).tableValues[rowId][cellId],

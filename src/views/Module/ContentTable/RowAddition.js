@@ -21,8 +21,10 @@ export default function RowAddition(props) {
         } else {
             contextTable.addedRows = 1;
         }
-        const newRowLength = contextTable.tableValues[0].length;
-        const newRow = new Array(newRowLength).fill({default: "", current: "", mutable: true});
+        const newRow = [];
+        contextTable.tableValues[0].forEach(() => {
+            newRow.push({default: "", current: "", mutable: true})
+        })
         contextTable.tableValues.push(newRow);
         props.changeParentState()
     }
