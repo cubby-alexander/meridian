@@ -59,7 +59,22 @@ export default [
                   ]
               },
           ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -177,21 +192,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -363,21 +365,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -422,6 +411,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],
@@ -487,7 +481,22 @@ export default [
                     ]
                 },
             ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -606,21 +615,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -792,21 +788,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -851,6 +834,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],
@@ -916,7 +904,22 @@ export default [
                     ]
                 },
             ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -1035,21 +1038,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -1221,21 +1211,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -1280,6 +1257,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],
@@ -1345,7 +1327,22 @@ export default [
                     ]
                 },
             ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -1464,22 +1461,9 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
-                    }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    },
                 ],
             },
 
@@ -1650,21 +1634,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -1709,6 +1680,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],
@@ -1774,7 +1750,22 @@ export default [
                     ]
                 },
             ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -1893,21 +1884,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -2079,21 +2057,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -2138,6 +2103,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],
@@ -2203,7 +2173,22 @@ export default [
                     ]
                 },
             ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -2322,21 +2307,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -2508,21 +2480,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -2567,6 +2526,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],
@@ -2632,7 +2596,22 @@ export default [
                     ]
                 },
             ],
-            checklists: [],
+            checklists: [
+                {
+                    slug: "next-steps-to-continue-engagement",
+                    sectionTitle: "Next steps to continue engagement with staff",
+                    lists: [
+                        {
+                            scope: "Provide written resources",
+                            items: ["E-Mail Summary"]
+                        },
+                        {
+                            scope: "Set ongoing channels to discuss the change",
+                            items: ["Dedicated time during team meetings"]
+                        }
+                    ]
+                }
+            ],
         },
         slides: [
             {
@@ -2751,21 +2730,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "static-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -2937,21 +2903,8 @@ export default [
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "checklist section",
-                        content: {
-                            sectionTitle: "Next steps to continue staff engagement with the change",
-                            checklists: [
-                                {
-                                    listScope: "Provide written resources",
-                                    items: ["E-Mail Summary"]
-                                },
-
-                                {
-                                    listScope: "Set ongoing channels to discuss the change",
-                                    items: ["Dedicated time during team meetings"]
-                                },
-                            ]
-                        }
+                        typeOfElement: "input-checklist",
+                        content: "next-steps-to-continue-engagement"
                     }
                 ],
             },
@@ -2996,6 +2949,11 @@ export default [
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
                     },
+
+                    {
+                        typeOfElement: "rendered-checklist",
+                        content: "next-steps-to-continue-engagement"
+                    }
                 ],
             }
         ],

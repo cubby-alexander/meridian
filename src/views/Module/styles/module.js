@@ -6,7 +6,6 @@ import {
 import sectionCardStyles from "assets/jss/material-kit-react/views/componentsSections/sectionCards"
 
 import imagesStyle from "assets/jss/material-kit-react/imagesStyles.js";
-import customCheckboxRadioSwitch from "../../../assets/jss/material-kit-react/customCheckboxRadioSwitch";
 import customSelectStyle from "assets/jss/material-kit-react/customSelectStyle.js";
 
 const modulePageStyle = {
@@ -42,20 +41,25 @@ const modulePageStyle = {
         ...title,
         display: "inline-block",
         position: "relative",
-        marginTop: "30px",
+        marginTop: "40px",
         minHeight: "32px",
-        textDecoration: "none"
+        textDecoration: "none",
+        fontSize: "22px"
     },
     slideTitle: {
         textAlign: "center !important",
+        fontWeight: "400",
+        fontSize: "20px",
+        marginTop: "10px",
+        marginBottom: "20px"
     },
     slideWrapper: {
         textAlign: "center",
         "@media (min-width: 576px)": {
-            margin: "5px auto 50px auto",
+            margin: "45px auto 50px auto",
         },
         "@media (min-width: 768px)": {
-            margin: "20px auto 50px auto",
+            margin: "40px auto 50px auto",
         },
         "@media (min-width: 960px)": {
             margin: "40px auto 50px auto",
@@ -63,11 +67,6 @@ const modulePageStyle = {
         "@media (min-width: 1200px)": {
             margin: "40px auto 50px auto",
         }
-    },
-    ...customCheckboxRadioSwitch,
-    disabledCheckboxAndRadio: {
-        color: "#3c4858",
-        opacity: "1"
     },
     contentsListItem: {
         cursor: "pointer",
