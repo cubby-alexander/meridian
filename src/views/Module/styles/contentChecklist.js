@@ -4,10 +4,24 @@ import customSelectStyle from "../../../assets/jss/material-kit-react/customSele
 const contentCheckboxStyle = {
     ...customSelectStyle,
     ...customCheckboxRadioSwitch,
+    sectionTitle: {
+        fontSize: "14px"
+    },
     disabledCheckboxAndRadio: {
         color: "#3c4858",
         opacity: "1"
     },
+    list: {
+      marginBottom: "14px",
+    },
+    scope: {
+        fontSize: "14px",
+        fontWeight: "400",
+        marginBottom: "0"
+    },
+    addButtons: {
+        marginLeft: "40px"
+    }
 };
 
 export default contentCheckboxStyle;

@@ -1,62 +1,49 @@
 import React from "react";
-import {useState, useContext} from "react";
+import {useContext} from "react";
 import ModuleContext from "../ModuleContext";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Check from "@material-ui/icons/Check";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import styles from "../styles/contentCheckbox";
+import DynamicItem from "./DynamicItem";
+import styles from "../styles/contentChecklist";
+import FormControl from "@material-ui/core/FormControl";
+import Button from "../../../components/CustomButtons/Button";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 
 const useStyles = makeStyles(styles);
 
 export default function ContentChecklist(props) {
-    const [checked, setChecked] = useState([]);
     const context = useContext(ModuleContext);
-    const checkbox = context.checklists.find(list => list.slug === props.content)
+    const checklist = context.checklists.find(list => list.slug === props.content)
     const classes = useStyles();
-
-    const handleToggle = value => {
-        const currentIndex = checked.indexOf(value);
-        const newChecked = [...checked];
-
-        if (currentIndex === -1) {
-            newChecked.push(value);
-        } else {
-            newChecked.splice(currentIndex, 1);
-        }
-        setChecked(newChecked);
-    };
 
     return (
         <div>
-            <h6>{checkbox.sectionTitle}</h6>
-            {checkbox.lists.map((list, index) => (
-                <div key={index}>
-                    <p>{list.scope}</p>
-                    {list.items.map((item, index) => (
-                        <FormControlLabel
-                            disabled={props.type === "static" || "rendered"}
-                            key={index}
-                            control={
-                                <Checkbox
-                                    tabIndex={-1}
-                                    checked={true}
-                                    checkedIcon={<Check className={classes.checkedIcon} />}
-                                    icon={<Check className={classes.uncheckedIcon} />}
-                                    classes={{
-                                        checked: classes.checked,
-                                        root: classes.checkRoot
-                                    }}
-                                />
-                            }
-                            classes={{
-                                label: classes.label,
-                                root: classes.labelRoot,
-                                disabled: classes.disabledCheckboxAndRadio
-                            }}
-                            label={item}
-                        />
-                    ))}
+            <h6 className={classes.sectionTitle}>{checklist.sectionTitle}</h6>
+            {checklist.lists.map((list, listIndex) => (
+                <div key={listIndex} className={classes.list}>
+                    <p className={classes.scope}>{list.scope}</p>
+                    <FormControl>
+                        {list.items.map((item, itemIndex) => {
+                            return (
+                            <DynamicItem
+                                key={itemIndex}
+                                listIndex={listIndex}
+                                itemIndex={itemIndex}
+                                type={props.type}
+                                list={props.content}
+                                item={item}
+                            />
+                        )
+                        })}
+                        {props.type === "input" ? <div className={classes.addButtons}>
+                            <Button size="sm" round justIcon color="primary">
+                                <AddIcon/>
+                            </Button>
+                            <Button size="sm" round justIcon color="danger">
+                                <RemoveIcon/>
+                            </Button>
+                        </div> : null}
+                    </FormControl>
                 </div>
             ))}
         </div>

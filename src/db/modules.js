@@ -66,12 +66,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
-                        }
+items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]                        }
                     ]
                 }
             ],
@@ -488,12 +487,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
-                        }
+items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]                        }
                     ]
                 }
             ],
@@ -911,12 +909,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
-                        }
+items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]                        }
                     ]
                 }
             ],
@@ -1334,12 +1331,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
-                        }
+items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]                        }
                     ]
                 }
             ],
@@ -1757,12 +1753,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
-                        }
+items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]                        }
                     ]
                 }
             ],
@@ -2180,12 +2175,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
-                        }
+items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]                        }
                     ]
                 }
             ],
@@ -2603,11 +2597,11 @@ export default [
                     lists: [
                         {
                             scope: "Provide written resources",
-                            items: ["E-Mail Summary"]
+                            items: [{name: "E-Mail Summary", default: true, current: false}, {name: "FAQ documents", default: false, current: false}, {name: "Action Checklists", default: false, current: false}]
                         },
                         {
                             scope: "Set ongoing channels to discuss the change",
-                            items: ["Dedicated time during team meetings"]
+                            items: [{name: "Dedicated time during team meetings", default: true, current: false}, {name: "Open office hours", default: false, current: false}, {name: "Individual check-ins", default: false, current: false}, {name: "Set up specific channels using your organization's virtual chat platform", default: false, current: false}]
                         }
                     ]
                 }

@@ -10,7 +10,7 @@ import {
 
 const customCheckboxRadioSwitch = {
   checkRoot: {
-    padding: "14px",
+    padding: "8px",
     "&:hover": {
       backgroundColor:
           "rgba(" + hexToRgb(primaryColor) + ", 0.14) !important"
@@ -24,7 +24,8 @@ const customCheckboxRadioSwitch = {
     }
   },
   labelRoot: {
-    marginLeft: "-14px"
+    //removed marginLeft: "-14px"
+    marginLeft: "0",
   },
   checkboxAndRadio: {
     position: "relative",
@@ -37,7 +38,7 @@ const customCheckboxRadioSwitch = {
     position: "relative",
     display: "block",
     "&:first-child": {
-      marginTop: "10px"
+      marginTop: "2px"
     },
     "&:not(:first-child)": {
       marginTop: "-14px"
@@ -49,15 +50,15 @@ const customCheckboxRadioSwitch = {
     color: primaryColor + "!important"
   },
   checkedIcon: {
-    width: "20px",
-    height: "20px",
+    width: "16px",
+    height: "16px",
     border: "1px solid rgba(" + hexToRgb(blackColor) + ", 0.84)",
     borderRadius: "3px"
   },
   uncheckedIcon: {
     width: "0px",
     height: "0px",
-    padding: "9px",
+    padding: "7px",
     border: "1px solid rgba(" + hexToRgb(blackColor) + ", .54)",
     borderRadius: "3px"
   },
@@ -65,19 +66,23 @@ const customCheckboxRadioSwitch = {
     "& $checkedIcon,& $uncheckedIcon,& $radioChecked,& $radioUnchecked": {
       borderColor: blackColor,
       opacity: "0.26",
-      color: blackColor
+      color: blackColor,
     }
   },
   label: {
     cursor: "pointer",
     paddingLeft: "0",
-    color: grayColor[12],
+    color: grayColor[1],
     fontSize: "14px",
     lineHeight: "1.428571429",
-    fontWeight: "400",
+    fontWeight: "300",
     display: "inline-flex",
     transition: "0.3s ease all",
-    letterSpacing: "unset"
+    letterSpacing: "unset",
+    "&:disabled": {
+      color: grayColor[1],
+      cursor: "default"
+    }
   },
   labelHorizontal: {
     color: "rgba(" + hexToRgb(blackColor) + ", 0.26)",

@@ -46,11 +46,13 @@ export default function TableCellBuilder(props) {
                     component="td"
                     padding="none"
                     scope={props.class === "body" ? ("row") : null}>
-                    <textarea
-                        value={props.value.current}
-                        onChange={e => userSetValue(props.tableSlug, props.rowId, props.cellId, e.target.value)}
-                        className={props.isLast ? classNames(classes.tableInput, classes.lastInput) : classes.tableInput}
-                    />
+                    <div className={props.isLast ? classNames(classes.tableInput, classes.lastInput) : classes.tableInput}>
+                        <textarea
+                            value={props.value.current}
+                            onChange={e => userSetValue(props.tableSlug, props.rowId, props.cellId, e.target.value)}
+                            className={classes.inputArea}
+                        />
+                    </div>
                 </TableCell>
             } else {
                 return <TableCell
@@ -59,7 +61,7 @@ export default function TableCellBuilder(props) {
                      classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                      component="td"
                      scope={props.class === "body" ? ("row") : null}>
-                    {cellValue.default}
+                    {props.value.default}
                  </TableCell>
             }
 
