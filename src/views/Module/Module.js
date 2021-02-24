@@ -98,7 +98,7 @@ export default function Module(props) {
                         <GridContainer justify="center">
                             <GridItem xs={12} sm={4} md={4}>
                                 <div className={classes.module}>
-                                    <h3 className={classes.title}>{module.title}</h3>
+                                    <h3 className={classes.moduleTitle}>{module.title}</h3>
                                 </div>
                                 <Hidden xsDown>
                                     <ol>

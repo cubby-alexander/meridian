@@ -5,7 +5,8 @@ const contentCheckboxStyle = {
     ...customSelectStyle,
     ...customCheckboxRadioSwitch,
     sectionTitle: {
-        fontSize: "14px"
+        fontSize: "16px",
+        fontWeight: "500",
     },
     disabledCheckboxAndRadio: {
         color: "#3c4858",

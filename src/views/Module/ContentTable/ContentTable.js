@@ -24,7 +24,7 @@ export default function ContentTable(props) {
 
     return (
         <TableContainer>
-            <h6 className={classes.tableTitle}>{context.tables.find(table => table.slug === tableSlug).tableTitle}</h6>
+            <h3 className={classes.tableTitle}>{context.tables.find(table => table.slug === tableSlug).tableTitle}</h3>
             <Table>
                 <TableHead>
                     <TableRowBuilder

@@ -3,6 +3,7 @@ import UnorderedList from "../../../components/UnorderedList/UnorderedList";
 import OrderedList from "../../../components/OrderedList/OrderedList";
 import ContentTable from "../ContentTable/ContentTable";
 import ContentChecklist from "../ContentChecklist/ContentChecklist";
+import Tip from "../ModuleComponents/Tip";
 
 export default function SlideBuilder(props) {
     let htmlContent;
@@ -32,9 +33,6 @@ export default function SlideBuilder(props) {
         case "rendered-table":
             htmlContent = <ContentTable type={"rendered"} tableSlug={props.content} />
             break;
-        case "checklist section":
-            htmlContent = <ContentChecklist content={props.content} />
-            break;
         case "static-checklist":
             htmlContent = <ContentChecklist content={props.content} type={"static"} />
             break;
@@ -43,6 +41,12 @@ export default function SlideBuilder(props) {
             break;
         case "rendered-checklist":
             htmlContent = <ContentChecklist content={props.content} type={"rendered"} />
+            break;
+        case "tip":
+            htmlContent = <Tip content={props.content} type={"paragraph"} />
+            break;
+        case "tip-list-ordered":
+            htmlContent = <Tip content={props.content} type={"ordered"} />
             break;
         default:
             htmlContent = null;

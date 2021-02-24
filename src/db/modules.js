@@ -224,8 +224,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -259,8 +259,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -323,7 +323,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -409,6 +409,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -646,8 +650,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -681,8 +685,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -745,7 +749,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -831,6 +835,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -1068,8 +1076,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -1103,8 +1111,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -1167,7 +1175,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -1253,6 +1261,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -1490,8 +1502,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -1525,8 +1537,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -1589,7 +1601,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -1675,6 +1687,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -1912,8 +1928,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -1947,8 +1963,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -2011,7 +2027,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -2097,6 +2113,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -2334,8 +2354,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -2369,8 +2389,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -2433,7 +2453,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -2519,6 +2539,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {
@@ -2757,8 +2781,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Before you announce the change to your staff, make sure\n" +
+                        typeOfElement: "tip",
+                        content: "Before you announce the change to your staff, make sure\n" +
                             "you fully understand the change yourself. As you’re going\n" +
                             "through the tool builder, pause if you frequently find\n" +
                             "yourself unable to answer the prompts. This means you may\n" +
@@ -2792,8 +2816,8 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "paragraph",
-                        content: "Tip: Consider bringing additional evidence or data to back\n" +
+                        typeOfElement: "tip",
+                        content: "Consider bringing additional evidence or data to back\n" +
                             "up your benefit, if possible. Examples include data from\n" +
                             "your department or the organization, or anecdotes from\n" +
                             "past changes."
@@ -2856,7 +2880,7 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {typeOfElement: "break"},
 
                     {
-                        typeOfElement: "ordered list",
+                        typeOfElement: "tip-list-ordered",
                         content: [
                             "If possible, source questions directly from key members\n" +
                             "of your team as you’re planning your announcement.",
@@ -2942,6 +2966,10 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     {
                         typeOfElement: "rendered-table",
                         content: "answers-to-additional-questions"
+                    },
+
+                    {
+                        typeOfElement: "break"
                     },
 
                     {

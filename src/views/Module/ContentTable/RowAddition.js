@@ -32,7 +32,6 @@ export default function RowAddition(props) {
     function removeRow() {
         contextTable.addedRows = contextTable.addedRows - 1;
         contextTable.tableValues.pop();
-        console.log(context.tables.find(table => table.slug === tableSlug).tableValues)
         props.changeParentState()
     }
 

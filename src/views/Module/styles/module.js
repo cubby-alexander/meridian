@@ -37,21 +37,21 @@ const modulePageStyle = {
         boxShadow:
             "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
     },
-    title: {
+    moduleTitle: {
         ...title,
         display: "inline-block",
         position: "relative",
         marginTop: "40px",
         minHeight: "32px",
         textDecoration: "none",
-        fontSize: "22px"
+        fontSize: "22px",
     },
     slideTitle: {
         textAlign: "center !important",
-        fontWeight: "400",
+        fontWeight: "500",
         fontSize: "20px",
         marginTop: "10px",
-        marginBottom: "20px"
+        marginBottom: "20px",
     },
     slideWrapper: {
         textAlign: "center",
@@ -76,6 +76,19 @@ const modulePageStyle = {
         fontWeight: "700",
         color: primaryColor,
         cursor: "auto",
+    },
+    tipDisclaim: {
+        fontWeight: "600",
+        marginBottom: "0"
+    },
+    tipParagraph: {
+        marginBottom: "0px"
+    },
+    tipList: {
+        paddingLeft: "15px"
+    },
+    tipImage: {
+        width: "100%",
     },
 };
 

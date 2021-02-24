@@ -7,13 +7,17 @@ const contentTableStyle = {
     tableTitle: {
         marginTop: "25px",
         marginBottom: "0",
-        fontSize: "14px"
+        fontSize: "16px",
+        fontWeight: "500"
     },
     table: {
         maxWidth: "640px"
     },
     tableHeader: {
         color: "#3c4858",
+        textTransform: "uppercase",
+        fontSize: "12px",
+        fontWeight: "500"
     },
     tableRow: {
         fontWeight: "300",

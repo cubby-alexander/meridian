@@ -28,7 +28,7 @@ export default function TableCellBuilder(props) {
 
         case "static":
             return <TableCell
-                id={props.rowId - props.cellId - 'static'}
+                id={(props.rowId * 10) + props.cellId}e
                 width="20%"
                 classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                 component="th"
@@ -39,7 +39,7 @@ export default function TableCellBuilder(props) {
         case "input":
             if (props.value.mutable) {
                 return <TableCell
-                    id={props.rowId - props.cellId - 'input'}
+                    id={(props.rowId * 10) + props.cellId}
                     width="20%"
                     height="80px"
                     classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
@@ -56,7 +56,7 @@ export default function TableCellBuilder(props) {
                 </TableCell>
             } else {
                 return <TableCell
-                     id={props.rowId - props.cellId - 'input'}
+                     id={(props.rowId * 10) + props.cellId}
                      width="20%"
                      classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                      component="td"
@@ -67,7 +67,7 @@ export default function TableCellBuilder(props) {
 
         case "rendered":
              return <TableCell
-                 id={props.rowId - props.cellId - 'rendered'}
+                 id={(props.rowId * 10) + props.cellId}
                  width="20%"
                  classes={props.class === "head" ? ({root: classes.tableHeader}) : {root: classes.tableRow}}
                  component="th"
