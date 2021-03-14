@@ -17,13 +17,12 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import Parallax from "components/Parallax/Parallax.js";
 import Hidden from "@material-ui/core/Hidden";
 import Button from "../../components/CustomButtons/Button";
-
-// data link
-import db from "../../db/modules";
-
-import styles from "views/Module/styles/module.js";
 import ProgressBar from "./ProgressBar/ProgressBar";
 import WorkbookPresentation from "./WorkbookPresentation/WorkbookPresentation";
+// data link
+import db from "../../db/modules";
+//styles
+import styles from "views/Module/styles/module.js";
 
 const useStyles = makeStyles(styles);
 

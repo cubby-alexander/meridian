@@ -12,6 +12,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import styles from "../styles/workbookPresentation";
 import Print from "@material-ui/icons/Print";
 import Email from "@material-ui/icons/Email";
+import GridContainer from "../../../components/Grid/GridContainer";
+import GridItem from "../../../components/Grid/GridItem";
 
 const useStyles = makeStyles(styles);
 
@@ -27,7 +29,7 @@ export default function WorkbookPresentation(props) {
 
     const handlePrint = useReactToPrint({
         content: () => printComponentRef.current,
-        documentTitle: props.content.title,
+        pageStyle: "@page { size: auto;  margin: 20mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
     });
 
     console.log("modal", props.content)
@@ -74,16 +76,19 @@ export default function WorkbookPresentation(props) {
                     <Email/>
                 </Button>
             </DialogTitle>
-            <DialogContent
-                id="classic-modal-slide-description"
-                className={classes.modalBody}
-            >
-                <ContentSlide
-                    title={props.content.title}
-                    html={props.content.htmlElements}
-                    ref={printComponentRef}
-                />
-            </DialogContent>
+                    <DialogContent
+                        id="classic-modal-slide-description"
+                        className={classes.modalBody}
+                    >
+
+                            <div className={classes.wrapper}>
+                                <ContentSlide
+                                    title={props.content.title}
+                                    html={props.content.htmlElements}
+                                    ref={printComponentRef}
+                                />
+                            </div>
+                    </DialogContent>
             <DialogActions className={classes.modalFooter}>
                 <Button
                     onClick={() => props.close()}

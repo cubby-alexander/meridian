@@ -4,6 +4,7 @@ import OrderedList from "../../../components/OrderedList/OrderedList";
 import ContentTable from "../ContentTable/ContentTable";
 import ContentChecklist from "../ContentChecklist/ContentChecklist";
 import Tip from "../ModuleComponents/Tip";
+import ImageTextTable from "../ModuleComponents/ImageTextTable";
 
 export default function SlideBuilder(props) {
     let htmlContent;
@@ -20,6 +21,9 @@ export default function SlideBuilder(props) {
             break;
         case "ordered list":
             htmlContent = <OrderedList content={props.content} />;
+            break;
+        case "image-text-table":
+            htmlContent = <ImageTextTable content={props.content} />
             break;
         case "break":
             htmlContent = <br />;
@@ -47,6 +51,9 @@ export default function SlideBuilder(props) {
             break;
         case "tip-list-ordered":
             htmlContent = <Tip content={props.content} type={"ordered"} />
+            break;
+        case "tip-list-unordered":
+            htmlContent = <Tip content={props.content} type={"unordered"} />
             break;
         default:
             htmlContent = null;

@@ -32,6 +32,17 @@ export default function Tip(props) {
                     </ol>
                 </GridItem>
             break;
+        case "unordered":
+            tip =
+                <GridItem xs={12} sm={10} md={11}>
+                    <p className={classes.tipDisclaim}>Tips: </p>
+                    <ul className={classes.tipList}>
+                        {props.content.map((tip, key) => (
+                            <li key={key}>{tip}</li>
+                        ))}
+                    </ul>
+                </GridItem>
+            break;
         default: return null
     }
 

@@ -60,6 +60,12 @@ const contentTableStyle = {
         borderRight: "solid white 8px",
         borderTop: "solid white 8px",
         borderBottom: "solid white 8px",
+    },
+    imageRow: {
+        fontWeight: "300",
+        color: "#3c4858",
+        position: "relative",
+        borderBottom: "none",
     }
 };
 

@@ -139,11 +139,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {
@@ -565,11 +565,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {
@@ -991,11 +991,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {
@@ -1417,11 +1417,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {
@@ -1843,11 +1843,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {
@@ -2269,11 +2269,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {
@@ -2696,11 +2696,11 @@ items: [{name: "Dedicated time during team meetings", default: true, current: fa
                     },
 
                     {
-                        typeOfElement: "unordered list",
+                        typeOfElement: "image-text-table",
                         content: [
-                            "The message doesn’t make staff feel personally invested in the change",
-                            "It isn’t clear how staff will support the change in their day-to-day"
-                        ],
+                            {image: "downthumb.png", text: "The message doesn’t make staff feel personally invested in the change"},
+                            {image: "question.png", text: "It isn’t clear how staff will support the change in their day-to-day"}
+                        ]
                     },
 
                     {

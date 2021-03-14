@@ -1,7 +1,7 @@
 import {
     container,
     title,
-    primaryColor,
+    primaryColor, grayColor,
 } from "assets/jss/material-kit-react.js";
 import sectionCardStyles from "assets/jss/material-kit-react/views/componentsSections/sectionCards"
 
@@ -70,7 +70,10 @@ const modulePageStyle = {
     },
     contentsListItem: {
         cursor: "pointer",
-        fontSize: "12px"
+        fontSize: "12px",
+        "&:hover": {
+            color: primaryColor,
+        },
     },
     contentsListItemActive: {
         fontWeight: "700",
